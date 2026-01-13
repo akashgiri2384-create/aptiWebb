@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% block object-tools %}
+<ul class="object-tools">
+    <li>
+        <a href="import-csv/" class="addlink" style="background-color: #8a2be2;">Import CSV (Questions)</a>
+    </li>
+    {{ block.super }}
+</ul>
+{% endblock %}

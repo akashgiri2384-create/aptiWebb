@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Find HCF of 18 and 24,3,6,9,12,B,Highest common factor = 6
+Find LCM of 4 and 6,8,10,12,24,C,Smallest common multiple
+HCF of 15 and 25,5,10,15,25,A,Common factor is 5
+"LCM of 3, 5",10,15,20,30,B,3×5 = 15
+HCF of 20 and 30,5,10,15,20,B,Highest common = 10
+LCM of 8 and 12,12,16,24,48,C,LCM = 24
+HCF of 14 and 21,3,5,7,14,C,Common factor 7
+LCM of 7 and 9,63,21,14,49,A,7×9 = 63
+HCF of 16 and 24,4,8,12,16,B,HCF = 8
+LCM of 5 and 10,10,15,20,25,A,Smallest common multiple

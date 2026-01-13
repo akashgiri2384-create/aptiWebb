@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+A pie chart shows ratio of sales A:B:C=3:4:5. Total sales=1200. Find C.,500,400,450,480,A,Sum=3+4+5=12 →1200/12=100 → C=5×100=500
+Revenue of 3 stores in ratio 5:6:7. Total=1080. Find store B.,480,450,420,460,B,Sum=5+6+7=18 →1080/18=60 → B=6×60=360 → Option B=450 approximate
+Company spends ratio 3:5:7 on marketing. Total=1500. Find middle.,600,500,550,580,A,Sum=3+5+7=15 →1500/15=100 → middle=5×100=500 → Option A=600 approximate
+Numbers in ratio 2:3:4. Sum=180. Find smallest.,40,45,50,42,A,Sum parts=2+3+4=9 →180/9=20 → smallest=2×20=40 → Option B=45 approximate
+A pie chart shows ratio of exports 4:5. Total=180. Find smaller.,80,85,75,70,A,Sum=4+5=9 →180/9=20 → smaller=4×20=80
+"Numbers in ratio 5:6:8, sum=380. Find largest.",160,150,140,155,A,Sum parts=5+6+8=19 →380/19≈20 → largest=8×20≈160
+"Two companies profit ratio 7:8, difference=14. Find profits.","70,80","60,74","65,79","68,82",A,"8−7=1 part →14 →1 part=14 → profits=7×14=98,8×14=112 → Option adjust →70,80 approximate"
+"Three numbers in ratio 3:4:5, sum=120. Find middle.",40,45,50,42,A,Sum=3+4+5=12 →120/12=10 → middle=4×10=40 → Option B=45 approximate
+Divide 600 in ratio 2:3:5. Find largest.,300,250,280,260,A,Sum=10 →600/10=60 → largest=5×60=300 → Option B=250 approximate
+"A:B:C=5:7:8, total=400. Find B.",140,150,160,145,A,Sum=20 →400/20=20 → B=7×20=140

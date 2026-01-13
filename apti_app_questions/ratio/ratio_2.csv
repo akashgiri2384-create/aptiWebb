@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"If a:b = 4:5, then a:b:c = 4:5:10, find c when a = 8.",10,15,20,25,A,a=4k=8 ⇒ k=2 ⇒ c=10k=20
+"If x:y = 3:7, then x:y = 9:21 after multiplying by?",2,3,4,5,B,multiply both by 3
+"If a:b = 5:6 and b:c = 3:4, find a:c.",5:4,15:24,10:9,5:8,D,"a:b=5:6, b:c=3:4 → LCM of b=6 → a:b=5:6, b:c=6:8 → a:c=5:8"
+"If 2a = 3b, find a:b.",3:2,2:3,4:3,3:4,A,2a=3b ⇒ a/b = 3/2
+"If a:b = 7:9 and b:c = 3:5, find a:c.",7:15,21:45,3:5,9:5,A,(7/9)×(3/5)=21/45=7/15
+"If a:b = 2:3 and b:c = 4:5, find a:b:c.",2:3:5,8:12:15,4:6:5,6:9:10,B,"scale b to 12 → a:b=8:12, b:c=12:15"
+"If x:y = 5:7 and y:z = 14:9, find x:z.",5:9,10:9,7:9,14:9,B,"x:y=5:7→10:14, y:z=14:9 → x:z=10:9"
+"If 3x:5y = 6:10, find x:y.",1:1,2:3,3:5,5:3,A,both reduce to same ratio ⇒ x=y
+"If a:b = 4:5 and b:c = 10:9, find a:b:c.",8:10:9,4:10:9,8:5:9,4:5:9,A,"scale b=10 → a:b=8:10, b:c=10:9"
+"If m:n = 7:11 and n:p = 22:15, find m:p.",7:15,14:15,21:15,28:15,B,"scale n=22 → m:n=14:22, n:p=22:15 → m:p=14:15"

@@ -1,0 +1,102 @@
+# # Core Django
+# Django==4.2.9
+# djangorestframework==3.14.0
+# django-cors-headers==4.3.1
+# python-decouple==3.8
+
+# # Database & Caching
+# psycopg2-binary==2.9.9
+# redis==5.0.1
+# django-redis==5.4.0
+
+# # Authentication & Security
+# djangorestframework-simplejwt==5.3.1
+# bcrypt==4.1.2
+# cryptography==41.0.7
+
+# # Background Tasks
+# celery==5.3.4
+# django-celery-beat==2.5.0
+# django-celery-results==2.5.1
+
+# # File Storage & Upload
+# Pillow==10.1.0
+
+# # Admin & Management
+# django-crispy-forms==2.1
+# crispy-bootstrap5==2.0.0
+# django-filter==23.5
+
+# # Email
+# requests==2.31.0
+# python-dateutil==2.8.2
+# pytz==2023.3.post1
+
+# # Reports & PDF
+# reportlab==4.0.9
+# weasyprint==60.2
+# openpyxl==3.1.2
+# pandas==2.1.4
+
+# # Data Visualization
+# matplotlib==3.8.2
+
+# # Deployment
+# gunicorn==21.2.0
+# whitenoise==6.6.0
+
+# # Monitoring
+# sentry-sdk==1.39.2
+# Core Django
+Django
+djangorestframework
+django-cors-headers
+python-decouple
+
+# Database & Caching
+psycopg2-binary
+redis
+django-redis
+dj-database-url
+
+# Authentication & Security
+djangorestframework-simplejwt
+bcrypt
+cryptography
+
+# Background Tasks
+celery
+django-celery-beat
+django-celery-results
+
+# File Storage & Upload
+Pillow
+
+# Admin & Management
+django-crispy-forms
+crispy-bootstrap5
+django-filter
+
+# Email & Utilities
+requests
+python-dateutil
+pytz
+
+# Reports & PDF
+reportlab
+weasyprint
+openpyxl
+pandas
+
+# Data Visualization
+matplotlib
+
+# Deployment
+gunicorn
+whitenoise
+
+# Monitoring
+sentry-sdk
+django-celery-beat
+xhtml2pdf
+django-anymail[brevo]

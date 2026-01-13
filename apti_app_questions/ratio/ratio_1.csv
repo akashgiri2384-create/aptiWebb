@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+A:B = 3:5 and A = 18. Find B.,24,30,36,45,B,B = (18×5)/3 = 30
+Simplify the ratio 20:50.,2:5,5:2,4:5,5:4,A,20/50 = 2/5
+The ratio of 12 to 18 simplified equals?,2:3,3:2,4:5,5:4,A,Divide by 6 → 12:18 = 2:3
+A:B = 4:7 and A = 24. Find B.,42,36,48,30,A,B = (24×7)/4 = 42
+A:B = 2:3 and B:C = 9:6. Find A:C.,1:1,2:2,3:3,4:4,A,B:C = 9:6 = 3:2; A:B = 2:3 → A:C = 2:2 = 1:1
+Two numbers are in the ratio 5:8 and sum is 39. Find the numbers.,15 and 24,10 and 29,18 and 21,20 and 19,A,5+8=13 parts; 39/13=3; → 15 and 24
+"Boys and girls are in ratio 7:5. If boys = 42, find girls.",20,24,30,35,C,girls = (42×5)/7 = 30
+A:B = 9:4. Difference is 25. Find B.,20,15,28,12,A,diff = 9−4 =5 parts → 25/5=5 → B=4×5=20
+Three numbers in ratio 2:3:5 sum to 80. Find largest number.,40,30,18,28,A,total parts=10; 80/10=8; largest=5×8=40
+"If A:B = 4:7 and B:C = 14:9, find A:C.",8:9,4:9,7:14,2:9,A,scale A:B=4:7→8:14; B:C=14:9 → A:C=8:9

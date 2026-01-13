@@ -1,0 +1,1007 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Login - IQurio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1e293b;
+            /* Slate 800 (Slightly Lighter than #0f172a) */
+            --text-color: #f1f5f9;
+            --primary-color: #6366f1;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --card-bg: #334155;
+            --input-bg: #0f172a;
+            --border-color: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Dark Premium Navbar (Shared) */
+        .navbar {
+            background: var(--nav-bg);
+            padding: 0 30px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 35px;
+        }
+
+        .nav-logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* Split Layout */
+        .split-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 70px;
+            /* Space for fixed navbar */
+        }
+
+        /* Left Side */
+        .brand-section {
+            width: 45%;
+            background: radial-gradient(circle at 10% 20%, rgb(90, 92, 106) 0%, rgb(32, 45, 58) 81.3%);
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 70px;
+            /* Below navbar */
+            height: calc(100vh - 70px);
+            overflow: hidden;
+        }
+
+        .brand-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .brand-header {
+            z-index: 10;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .brand-logo img {
+            height: 50px;
+        }
+
+        .brand-logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-hero {
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a3bffa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .value-props {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .prop-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .prop-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* .split-image and .login-split removed (redundant) */
+
+        .form-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            /* FIX: Stack vertical */
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: var(--bg-color);
+            width: 100%;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            min-height: 50px;
+            /* Touch friendly */
+            transition: all 0.2s;
+        }
+
+        .social-proof {
+            margin-top: auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .proof-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        /* Right Side - Form */
+        .form-section {
+            width: 55%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            /* Fixed: Was #1a202c */
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #cbd5e1;
+            /* Fixed: Was #718096 */
+            font-size: 1rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e2e8f0;
+            /* Fixed: Was #4a5568 */
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #718096;
+        }
+
+        .auth-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #a0aec0;
+        }
+
+        /* Navbar */
+        .auth-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+            transition: background 0.3s;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .split-container {
+                flex-direction: column;
+            }
+
+            .brand-section {
+                display: none !important;
+                /* Hide on mobile */
+            }
+
+            .auth-navbar {
+                background: #1a202c;
+                padding: 15px 16px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .value-props,
+            .social-proof {
+                display: none;
+            }
+
+            /* Full width form */
+            .form-section {
+                width: 100%;
+                padding: 80px 20px 40px;
+                /* Top padding for navbar */
+                justify-content: flex-start;
+                /* Align top */
+            }
+
+            .form-container {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #a0aec0;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .step-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .step-dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+
+        .otp-input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .otp-digit {
+            width: 45px;
+            height: 55px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .otp-digit:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        @media (max-width: 640px) {
+            .nav-brand span {
+                display: none !important;
+            }
+
+            .auth-navbar {
+                padding: 10px 16px !important;
+            }
+
+            .nav-brand img {
+                height: 32px !important;
+            }
+
+            .form-section {
+                padding-top: 10px !important;
+                /* Aggressively reduced */
+                justify-content: flex-start !important;
+            }
+
+            .form-header h2 {
+                margin-top: 10px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar (Absolute) -->
+    <!-- Premium Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="nav-brand" style="display: flex; align-items: center; gap: 12px;">
+                <img src="{% static 'images/logos/logo-dark.jpg' %}" alt="Logo" style="height: 40px;" id="nav-logo-img">
+                <span
+                    style="font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">⚡
+                    IQurio</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="/leaderboard/" class="nav-link" style="display: flex; align-items: center; gap: 5px;">
+                <span>🏆</span> Leaderboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="split-container">
+        <!-- Left Side: Brand & Value -->
+        <div class="brand-section">
+            <div class="brand-header">
+                <!-- Logo moved to navbar, maybe keep here or remove? User layout has just content on left. 
+                     Keeping simplified header content. -->
+                <div style="height: 20px;"></div> <!-- Spacer -->
+            </div>
+
+            <div class="brand-hero">
+                <h2 class="hero-title">Learn. Practice.<br>Compete.</h2>
+                <p class="hero-subtitle">Master aptitude, coding, and GK with our gamified platform.</p>
+
+                <div class="value-props">
+                    <div class="prop-item">
+                        <div class="prop-icon">🚀</div>
+                        <span>Earn XP, badges & climb ranks</span>
+                    </div>
+                    <div class="prop-item">
+                        <div class="prop-icon">📊</div>
+                        <span>Track accuracy & detailed analytics</span>
+                    </div>
+                    <div class="prop-item">
+                        <div class="prop-icon">⚡</div>
+                        <span>Daily challenges & live quizzes</span>
+                    </div>
+                </div>
+
+                <div class="social-proof">
+                    <div class="stars">★★★★★</div>
+                    <p class="proof-text">Trusted by students for campus placements</p>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Welcome Back! 👋</h2>
+                    <p>Enter your details to access your dashboard.</p>
+                </div>
+
+                <div id="message-area"></div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <div class="password-container">
+                            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('password', this)">👁️</button>
+                        </div>
+                        <div style="text-align: right; margin-top: 8px;">
+                            <a href="#" style="font-size: 0.85rem; color: #667eea; text-decoration: none;"
+                                onclick="openForgotModal(); return false;">Forgot
+                                password?</a>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Sign In to Dashboard</button>
+                </form>
+
+                <div class="auth-footer">
+                    New here? <a href="/register">Create an account →</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeForgotModal()">&times;</button>
+
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Reset Password</h3>
+                <p style="color: #718096; font-size: 0.9rem; margin-top: 5px;" id="modal-subtitle">Enter your email to
+                    receive an OTP</p>
+            </div>
+
+            <div class="step-indicators" id="step-indicators">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+
+            <div id="forgot-message-area"></div>
+
+            <!-- Step 1: Email -->
+            <form id="step-1-form" onsubmit="sendOTP(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="reset-email" class="form-control" required
+                        placeholder="Enter your registered email">
+                </div>
+                <button type="submit" class="btn-primary" id="btn-send-otp">Send OTP</button>
+            </form>
+
+            <!-- Step 2: OTP -->
+            <form id="step-2-form" style="display: none;" onsubmit="verifyOTP(event)">
+                <div class="form-group">
+                    <label class="form-label" style="text-align: center;">Enter 6-Digit Code</label>
+                    <div class="otp-input-group">
+                        <input type="text" class="otp-digit" maxlength="6" id="otp-input" placeholder="123456"
+                            style="width: 100%; letter-spacing: 5px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" id="btn-verify-otp">Verify Code</button>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button type="button"
+                        style="background: none; border: none; color: #667eea; cursor: pointer; font-size: 0.9rem;"
+                        onclick="resendOTP()">Resend Code</button>
+                </div>
+            </form>
+
+            <!-- Step 3: New Password -->
+            <form id="step-3-form" style="display: none;" onsubmit="resetPassword(event)">
+                <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <div class="password-container">
+                        <input type="password" id="new-password" class="form-control" required minlength="8"
+                            placeholder="New secure password">
+                        <button type="button" class="password-toggle"
+                            onclick="togglePassword('new-password', this)">👁️</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" class="form-control" required minlength="8"
+                            placeholder="Confirm password">
+                        <button type="button" class="password-toggle"
+                            onclick="togglePassword('confirm-password', this)">👁️</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" id="btn-reset-pass">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const messageArea = document.getElementById('message-area');
+
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerText = '🙈';
+            } else {
+                input.type = 'password';
+                btn.innerText = '👁️';
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Clear previous messages
+            messageArea.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/accounts/login/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('access_token', data.data.access);
+                    localStorage.setItem('refresh_token', data.data.refresh);
+                    localStorage.setItem('user', JSON.stringify(data.data.user));
+
+                    messageArea.innerHTML = '<div class="alert alert-success" style="background: #f0fff4; color: #22543d; border: 1px solid #c6f6d5; padding: 12px; border-radius: 8px; margin-bottom: 20px;">Login successful! Redirecting...</div>';
+
+                    setTimeout(() => { window.location.href = '/dashboard'; }, 1000);
+                } else {
+                    messageArea.innerHTML = `<div class="alert alert-danger" style="background: #fff5f5; color: #742a2a; border: 1px solid #fed7d7; padding: 12px; border-radius: 8px; margin-bottom: 20px;">${data.error.message || 'Login failed'}</div>`;
+                }
+            } catch (error) {
+                messageArea.innerHTML = '<div class="alert alert-danger">Network error.</div>';
+                console.error('Login error:', error);
+            }
+        });
+
+        // Theme Toggle Logic
+        const logoLight = "{% static 'images/logos/logo-dark.jpg' %}"; // Forced to dark
+        const logoDark = "{% static 'images/logos/logo-dark.jpg' %}";
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update Icon
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+
+            // Update Logo (Always Dark)
+            const logo = document.getElementById('nav-logo-img');
+            if (logo) logo.src = logoDark;
+        }
+
+        // Init Theme
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            // Set initial icon
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('theme-btn');
+                if (btn) {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    btn.innerText = current === 'dark' ? '☀️' : '🌙';
+                }
+                // Init Logo
+                const logo = document.getElementById('nav-logo-img');
+                if (logo) {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    logo.src = current === 'dark' ? logoLight : logoDark;
+                }
+            });
+        })();
+    </script>
+    <script>
+        // Forgot Password Logic
+        const modal = document.getElementById('forgot-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const forgotMsg = document.getElementById('forgot-message-area');
+
+        let currentEmail = '';
+
+        function openForgotModal() {
+            const loginEmail = document.getElementById('email').value.trim();
+
+            if (!loginEmail) {
+                showAppAlert("Please enter your email address in the login form first.", "Missing Email", "error");
+                document.getElementById('email').focus();
+                return;
+            }
+
+            // Check if email format is valid (basic check)
+            if (!loginEmail.includes('@')) {
+                showAppAlert("Please enter a valid email address.", "Validation Error", "error");
+                document.getElementById('email').focus();
+                return;
+            }
+
+            modal.style.display = 'flex';
+            currentEmail = loginEmail;
+
+            // Hide indicators (not needed for 1-step flow)
+            document.getElementById('step-indicators').style.display = 'none';
+
+            // Auto-fill hidden email
+            document.getElementById('reset-email').value = currentEmail;
+
+            // Trigger Send immediately
+            sendResetLink(new Event('submit'));
+        }
+
+        function closeForgotModal() {
+            modal.style.display = 'none';
+            resetModal();
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeForgotModal();
+            }
+        }
+
+        async function sendResetLink(e) {
+            if (e) e.preventDefault();
+
+            // Setup UI
+            modalTitle.innerText = "Reset Password";
+            modalSubtitle.innerText = `Sending link to ${currentEmail}...`;
+
+            const btn = document.getElementById('btn-send-otp');
+            // We use the email from the login form
+            const email = currentEmail;
+
+            btn.disabled = true;
+            btn.innerText = 'Sending Link...';
+            forgotMsg.innerHTML = '<div class="alert" style="color: #4a5568;">Sending secure reset link...</div>';
+
+            try {
+                // Call New API
+                const res = await fetch('/api/accounts/password-reset/request/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    modalSubtitle.innerText = "Link Sent!";
+                    // Replace form with success message
+                    document.getElementById('step-1-form').style.display = 'none';
+                    forgotMsg.innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">📧</div>
+                            <h4 style="color: #10B981; margin: 0 0 10px 0;">Check your Inbox</h4>
+                            <p style="color: #718096; font-size: 0.95rem; line-height: 1.5;">
+                                We've sent a password reset link to <strong>${email}</strong>.
+                                <br>Click the link in the email to set a new password.
+                            </p>
+                            <button onclick="closeForgotModal()" class="btn-primary" style="margin-top: 20px;">Close Window</button>
+                        </div>
+                    `;
+                } else {
+                    forgotMsg.innerHTML = `<div class="alert alert-danger" style="color: #ef4444; margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 8px;">${data.error?.message || data.message || 'Failed to send link'}</div>`;
+                    btn.innerText = 'Resend Link';
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                forgotMsg.innerHTML = '<div class="alert alert-danger" style="color: red;">Network error. Please try again.</div>';
+                btn.innerText = 'Retry Send';
+                btn.disabled = false;
+            }
+        }
+
+        // Removed legacy OTP functions (verifyOTP, resetPassword, resendOTP) as they are no longer used.
+
+        function resetModal() {
+            document.getElementById('step-1-form').style.display = 'block'; // Reset to show form
+            document.getElementById('step-2-form').style.display = 'none';
+            document.getElementById('step-3-form').style.display = 'none';
+            forgotMsg.innerHTML = '';
+            currentEmail = '';
+            // Reset button state
+            const btn = document.getElementById('btn-send-otp');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = 'Send Link';
+            }
+        }
+
+        // --- Clean State on Page Show (Fix for Back Button Logic) ---
+        window.addEventListener('pageshow', function (event) {
+            // Clear any stale success/error messages if page is restored from cache
+            document.getElementById('message-area').innerHTML = '';
+
+            // Optional: If you want to force logout on back-to-login
+            // localStorage.removeItem('access_token');
+            // localStorage.removeItem('user');
+
+            // Ensure inputs are interactable
+            document.querySelectorAll('input').forEach(i => i.disabled = false);
+            document.querySelectorAll('button').forEach(b => b.disabled = false);
+        });
+    </script>
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

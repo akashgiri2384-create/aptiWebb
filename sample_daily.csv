@@ -1,0 +1,6 @@
+question,option_a,option_b,option_c,option_d,correct_answer,explanation
+What is the complexity of Binary Search?,O(n),O(log n),O(n^2),O(1),B,Binary search divides the array in half each step.
+Which data structure uses LIFO?,Queue,Stack,Tree,Graph,B,Stack follows Last In First Out.
+What does SQL stand for?,Structured Query Language,Simple Query Logic,Standard Question List,System Query Link,A,Standard acronym.
+Which sorting algorithm is fastest on average?,Bubble Sort,Insertion Sort,Quick Sort,Selection Sort,C,Quick Sort matches O(n log n).
+What is the largest planet?,Earth,Mars,Jupiter,Saturn,C,Jupiter is the gas giant.

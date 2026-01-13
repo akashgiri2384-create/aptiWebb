@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+An article is bought for ₹600 and sold at ₹720. Profit %?,20%,18%,15%,25%,A,Profit=720−600=120 → % profit=120/600×100=20%
+"A man buys an item for ₹450, sells at ₹540. Gain %?",20%,18%,15%,25%,A,Profit=540−450=90 → % profit=90/450×100=20%
+"CP ₹500, SP ₹475. Loss %?",5%,4%,6%,7%,A,Loss=500−475=25 → % loss=25/500×100=5%
+"A trader buys 3 articles for ₹300 each, sells one at 10% profit, others at 5% loss. Net profit?",0,5,10,15,A,"SP1=330, SP2=2×285=570 → Total SP=900, CP=900 → Net=0"
+An article costing ₹800 is sold at ₹960. Profit %?,20%,15%,18%,25%,A,Profit=960−800=160 → % profit=160/800×100=20%
+"CP ₹600, sold at 10% loss, SP?",540,550,560,530,A,SP=600×0.9=540
+"Cost ₹500, sold at 15% profit. SP?",575,550,600,580,A,SP=500×1.15=575
+"A trader buys for ₹1200, sells at 25% profit. SP?",1500,1450,1550,1600,A,SP=1200×1.25=1500
+"A man buys 5 articles ₹200 each. Sells 3 at 10% gain, 2 at 5% loss. Net profit?",4%,5%,6%,7%,A,SP=3×220+2×190=660+380=1040 → CP=1000 → Profit=40 → %≈4%
+"An article CP ₹800, sold at 20% gain, then 10% discount. Net gain?",8%,10%,12%,15%,A,SP=800×1.2=960 → after 10% discount: 960×0.9=864 → Profit=864−800=64 → %≈8%

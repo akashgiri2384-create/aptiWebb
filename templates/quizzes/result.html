@@ -1,0 +1,690 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quiz Results - IQ</title>
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <style>
+        :root {
+            /* Premium Dark Theme */
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --primary-color: #6366f1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            /* Center content vertically if needed, or just let it flow */
+            flex-direction: column;
+        }
+
+        .dashboard-bg-accent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .result-header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative glow effect */
+        .result-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, transparent 40%, rgba(99, 102, 241, 0.05) 50%, transparent 60%);
+            animation: shine 8s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 auto 25px;
+            border: 4px solid #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .score-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: #27354f;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-review {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid #334155;
+            transition: all 0.2s;
+        }
+
+        .question-review:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .review-correct {
+            border-left-color: #10b981;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, rgba(30, 41, 59, 1) 100%);
+        }
+
+        .review-wrong {
+            border-left-color: #ef4444;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.05) 0%, rgba(30, 41, 59, 1) 100%);
+        }
+
+        .review-question-text {
+            color: #f8fafc;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .review-explanation {
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            border-left: 3px solid #6366f1;
+            line-height: 1.6;
+        }
+
+        .answer-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .badge-user {
+            background: rgba(51, 65, 85, 0.5);
+            color: #94a3b8;
+            margin-right: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .badge-correct {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-wrong {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .xp-pill {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            #review-container {
+                display: flex;
+                overflow-x: auto;
+                gap: 16px;
+                padding-bottom: 20px;
+                scroll-snap-type: x mandatory;
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Hide scrollbar */
+            #review-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .question-review {
+                flex: 0 0 85%;
+                width: 85%;
+                min-width: 85%;
+                scroll-snap-align: center;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-bg-accent"></div>
+    <div class="container" style="padding: 40px 20px; max-width: 1200px;">
+        <div id="result-content" style="display: none;">
+            <!-- Hero Section -->
+            <div class="result-header">
+                <div class="score-circle">
+                    <h1 id="score-text" class="score-text">0%</h1>
+                    <span
+                        style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #94a3b8; margin-top: 5px;">Score</span>
+                </div>
+                <h2 id="status-text" style="font-size: 2rem; margin-bottom: 10px;">Quiz Completed!</h2>
+                <div>
+                    <span class="xp-pill" id="xp-badge">+0 XP Earned</span>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <!-- Using class for responsive grid -->
+            <style>
+                .stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 20px;
+                    margin-bottom: 40px;
+                }
+
+                @media (max-width: 640px) {
+                    .stats-grid {
+                        display: flex;
+                        overflow-x: auto;
+                        gap: 12px;
+                        padding-bottom: 10px;
+                        /* Minimal padding */
+                        scroll-snap-type: x mandatory;
+                        margin-left: -20px;
+                        margin-right: -20px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        -webkit-overflow-scrolling: touch;
+                        grid-template-columns: none;
+                        /* Reset grid */
+                    }
+
+                    /* Hide scrollbar */
+                    .stats-grid::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .stat-card {
+                        flex: 0 0 140px;
+                        /* Fixed width for cards */
+                        min-width: 140px;
+                        scroll-snap-align: start;
+                        padding: 16px;
+                        /* Slightly reduce padding for smaller cards */
+                    }
+
+                    .stat-value {
+                        font-size: 1.5rem;
+                        /* Adjust font size for mobile */
+                    }
+                }
+            </style>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-questions">0</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="correct-answers" style="color: #10b981;">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="wrong-answers" style="color: #ef4444;">0</div>
+                    <div class="stat-label">Wrong</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="accuracy" style="color: #f59e0b;">0%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px;">
+                <a href="/dashboard" class="btn btn-secondary btn-block"
+                    style="background: rgba(30, 41, 59, 0.8); color: white; border: 1px solid rgba(255,255,255,0.1);">
+                    ← Back to Dashboard
+                </a>
+                <a href="/leaderboard" class="btn btn-primary btn-block" id="leaderboard-btn"
+                    style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                    🏆 View Leaderboard
+                </a>
+            </div>
+
+            <h3 style="margin-bottom: 25px; color: white; display: flex; align-items: center; gap: 10px;">
+                <span style="background: #334155; width: 4px; height: 24px; border-radius: 2px; display: block;"></span>
+                Detailed Analysis
+            </h3>
+            <div id="review-container"></div>
+        </div>
+
+        <div id="loading" style="text-align: center; padding: 100px 0;">
+            <div class="spinner" style="width: 50px; height: 50px; border-width: 4px;"></div>
+            <p style="color: #94a3b8; margin-top: 20px; font-size: 1.1rem;">Calculating your results...</p>
+        </div>
+    </div>
+
+    <script>
+        const attemptId = window.location.pathname.split('/')[2];
+        const accessToken = localStorage.getItem('access_token');
+
+        async function loadResults() {
+            try {
+                const response = await fetch(`/api/quizzes/attempts/${attemptId}/`, {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    renderResults(data.data);
+                } else {
+                    document.getElementById('loading').innerHTML = `<p style="color: #ef4444;">${data.error.message}</p>`;
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').innerHTML = '<p style="color: #ef4444;">Error loading results</p>';
+            }
+        }
+
+        function renderResults(data) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result-content').style.display = 'block';
+
+            // result-header update
+            document.getElementById('leaderboard-btn').href = `/leaderboard?quiz_id=${data.quiz.id}`;
+
+            const scorePct = data.score ? data.score.percentage : (data.percentage_score || 0);
+            const xpTotal = data.xp ? data.xp.total : (data.xp_earned || 0);
+            const correctObj = data.score ? data.score.correct : (data.correct_answers_count || 0);
+            const totalObj = data.score ? data.score.total : (data.total_questions || 0);
+            const wrongObj = data.score ? data.score.wrong : ((totalObj - correctObj) || 0);
+
+            document.getElementById('score-text').textContent = Math.round(scorePct) + '%';
+            document.getElementById('xp-badge').textContent = `+${xpTotal} XP Earned`;
+
+            let statusMsg = '';
+            if (scorePct === 100) statusMsg = 'Perfect Score! 🌟';
+            else if (scorePct >= 90) statusMsg = 'Outstanding! 🏆';
+            else if (scorePct >= 75) statusMsg = 'Excellent Job! 🎉';
+            else if (scorePct >= 50) statusMsg = 'Good Effort! 👍';
+            else statusMsg = 'Keep Practicing! 💪';
+
+            document.getElementById('status-text').textContent = statusMsg;
+
+            document.getElementById('total-questions').textContent = totalObj;
+            document.getElementById('correct-answers').textContent = correctObj;
+            document.getElementById('wrong-answers').textContent = wrongObj;
+            document.getElementById('accuracy').textContent = Math.round(scorePct) + '%';
+
+            // Detailed Analysis
+            const container = document.getElementById('review-container');
+            if (data.questions && data.questions.length > 0) {
+                container.innerHTML = data.questions.map((q, i) => `
+                    <div class="question-review ${q.is_correct ? 'review-correct' : 'review-wrong'}">
+                        <h5 class="review-question-text">Q${q.sequence}: ${q.text}</h5>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+                            <div class="answer-badge badge-user ${q.is_correct ? 'badge-correct' : 'badge-wrong'}">
+                                Your Answer: ${q.user_answer || 'Skipped'}
+                            </div>
+                            <div class="answer-badge badge-correct">
+                                Correct Answer: ${q.correct_answer}
+                            </div>
+                        </div>
+
+                        ${q.explanation ? `
+                            <div class="review-explanation">
+                                <strong>Explanation:</strong> ${q.explanation}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #94a3b8; text-align: center; background: rgba(30,41,59,0.5); padding: 20px; border-radius: 12px;">Detailed analysis available in history.</p>';
+            }
+
+            // Trigger Rank Up Animation if data present
+            // if (data.rank_up_animation) {
+            //     handleRankUpAnimation(data.rank_up_animation);
+            // }
+        }
+
+        loadResults();
+    </script>
+
+
+    <!-- Major Rank Up Overlay -->
+    <div id="rank-up-overlay" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        z-index: 10000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    ">
+        <!-- 
+            Mobile Fix Logic:
+            Attributes removed from HTML to protect Desktop Audio.
+            Mobile 'muted' + 'autoplay' applied via JS below.
+        -->
+        <video id="rank-up-video" style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            outline: none;
+            z-index: 10001;
+        " playsinline>
+            <source src="{% static 'videos/desktop_laptop/1_bronze-1.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Claim Badge Button (Black/Gold Combo) -->
+        <button id="claim-badge-btn" style="
+            position: absolute;
+            bottom: 15%;
+            z-index: 10002;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            
+            /* Black & Gold Theme */
+            color: #FFD700;
+            background: linear-gradient(145deg, #000000, #1a1a1a);
+            border: 2px solid #DAA520;
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3), inset 0 0 10px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+            display: none;
+        ">
+            Claim Badge
+        </button>
+
+        <!-- Sound Hint -->
+        <div id="sound-hint" style="
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10003;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        ">
+            <span>Tap for Sound</span> 🔊
+        </div>
+
+        <div id="rank-name-display" style="
+            position: absolute;
+            bottom: 25%;
+            z-index: 10002;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+            opacity: 0;
+            transition: opacity 1s ease;
+            text-transform: uppercase;
+            font-family: 'Outfit', sans-serif;
+        "></div>
+    </div>
+
+    <script>
+        function handleRankUpAnimation(animationData) {
+            if (!animationData) return;
+
+            const overlay = document.getElementById('rank-up-overlay');
+            const video = document.getElementById('rank-up-video');
+            const btn = document.getElementById('claim-badge-btn');
+            const nameDisplay = document.getElementById('rank-name-display');
+            const soundHint = document.getElementById('sound-hint');
+
+            // Check if already seen for this specific badge/event
+            // Version 3: Force Reset for User Testing
+            const cacheKey = `viewed_rank_v3_${animationData.badge_id}`;
+            if (localStorage.getItem(cacheKey)) {
+                console.log("Animation already viewed (v3 check).");
+                return; // Already played
+            }
+
+            // Set text (Requested to hide name)
+            if (nameDisplay) nameDisplay.style.display = 'none';
+
+            // Set Video Source (Responsive)
+            const isMobile = window.innerWidth < 768;
+            let videoSrc = animationData.video_path; // Default to desktop
+
+            // Force Mobile Path if available and we are on mobile
+            if (isMobile && animationData.video_path_mobile) {
+                videoSrc = animationData.video_path_mobile;
+            }
+
+            if (videoSrc) {
+                video.src = videoSrc;
+            } else {
+                // Fallback default
+                video.src = "{% static 'videos/desktop_laptop/1_bronze-1.mp4' %}";
+            }
+
+            // Show Overlay
+            overlay.style.display = 'flex';
+            // Force reflow
+            void overlay.offsetWidth;
+            overlay.style.opacity = '1';
+            document.body.style.overflow = 'hidden'; // Lock scroll
+
+            // Mobile Fix: Apply muted ONLY for mobile to preserve desktop audio
+            if (isMobile) {
+                video.muted = true;
+                video.autoplay = true;
+                // Show hint
+                soundHint.style.display = 'flex';
+            } else {
+                video.muted = false;
+                soundHint.style.display = 'none';
+            }
+            video.playsInline = true;
+
+            // Play Video
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    // Force mute if failed (Desktop safeguard)
+                    video.muted = true;
+                    video.play();
+                    soundHint.style.display = 'flex';
+                });
+            }
+
+            // Video ended or timed event
+            video.onended = () => {
+                showClaimButton();
+            };
+
+            // Fallback in case video length is unknown or long
+            setTimeout(showClaimButton, 4000);
+
+            function showClaimButton() {
+                if (btn.style.display === 'block') return;
+
+                nameDisplay.style.opacity = '1';
+                btn.style.display = 'block';
+                setTimeout(() => {
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'scale(1)';
+                }, 100);
+            }
+
+            // Close Logic
+            function closeRankUp() {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    // Mark as seen
+                    localStorage.setItem(cacheKey, 'true');
+                }, 500);
+            }
+
+            btn.onclick = closeRankUp;
+
+            // Click anywhere to close OR Unmute
+            overlay.onclick = (e) => {
+                // Feature: Tap to Unmute
+                if (video.muted) {
+                    video.muted = false;
+                    soundHint.style.display = 'none';
+                    return; // Don't do anything else on this click
+                }
+
+                if (video.paused && btn.style.display !== 'block') {
+                    video.play();
+                }
+                else if (btn.offsetParent !== null) { // If button is visible
+                    closeRankUp();
+                }
+            };
+        }
+    </script>
+
+    <script>
+        // --- Navigation Force: Back Button -> Dashboard ---
+        (function () {
+            // Push current state so there is a history entry to "pop"
+            window.history.pushState({ page: 'result' }, "", window.location.href);
+
+            window.addEventListener('popstate', function (event) {
+                // When back is pressed, force redirect to Dashboard
+                window.location.href = '/dashboard';
+            });
+        })();
+    </script>
+
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

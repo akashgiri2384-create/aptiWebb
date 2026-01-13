@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+A trader buys an article for ₹500 and sells it for ₹600. Profit?,100,90,110,120,A,Profit=SP−CP=600−500=100
+A man buys a pen for ₹50 and sells it for ₹60. Profit %?,20%,25%,15%,10%,A,Profit=60−50=10 → % profit=(10/50)×100=20%
+"A shopkeeper buys a book for ₹200, sells at ₹250. Gain %?",25%,20%,30%,15%,A,Profit=250−200=50 → % profit=50/200×100=25%
+"An article costs ₹400, sold at ₹360. Loss %?",10%,12%,15%,8%,A,Loss=400−360=40 → % loss=40/400×100=10%
+"Cost ₹1500, SP ₹1650. Profit %?",10%,12%,15%,8%,A,Profit=1650−1500=150 → % profit=150/1500×100=10%
+"A man sells an article for ₹1200, gain 20%. CP?",1000,950,1050,1100,A,CP=SP/(1+gain%)=1200/1.2=1000
+"A trader sells at ₹750, gain 25%. CP?",600,580,620,640,A,CP=750/1.25=600
+An article sold for ₹480 at 20% loss. CP?,600,580,590,620,A,CP=SP/(1−loss%)=480/0.8=600
+"A man bought 3 articles for ₹500 each. Sold two at 10% gain, one at 20% loss. Overall profit?",0,50,60,40,A,"SP=2×550+400=1500, CP=3×500=1500 → Net profit=0"
+"Cost ₹800, sold at 10% gain, then 5% discount on MP. Net gain?",4.5%,5%,4%,3.5%,A,SP=800×1.1=880 → after 5% discount: 880×0.95=836 → Profit=36 → % profit=36/800×100=4.5%

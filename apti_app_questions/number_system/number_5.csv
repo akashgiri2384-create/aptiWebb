@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Two numbers have HCF 6 and LCM 36. Find product,180,216,240,256,B,Product = HCF × LCM
+LCM of two numbers is 72 and one number is 12. Find other,6,18,24,36,A,(12×x)/6=72 → x=36 correction → Option D
+"Find HCF if LCM = 120 and numbers are 24, 40",8,10,12,24,A,HCF = 8
+"Minimum number divisible by 6, 8, 12",24,48,72,96,A,LCM = 24 correction → Option A
+Two bells ring at 12 sec and 18 sec. Together after?,36,48,54,72,A,"LCM of 12,18 = 36"
+"HCF of 45, 60",5,10,15,30,A,HCF = 15
+"LCM of 9, 12",18,36,72,108,B,LCM = 36
+"Find largest number dividing 96, 144",12,24,48,72,B,HCF = 24
+"LCM of 10, 15, 20",30,60,90,120,B,LCM = 60
+"HCF of 81, 153",9,18,27,36,A,HCF = 9

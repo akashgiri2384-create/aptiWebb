@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A:B = 3:5. If A increases by 6 and B by 10, new ratio?",9:15,3:5,1:2,5:9,B,"Let A=3k,B=5k → new A=3k+6, B=5k+10 → k=2 gives 12:20=3:5"
+"A:B = 4:7. If both increase by 6, new ratio?",10:13,4:7,5:8,1:1,A,(4+6):(7+6)=10:13
+"If A:B = 5:9 and A increases by 10, new ratio when original A=25?",7:9,5:9,35:45,1:1,A,"original A=25,B=45 → new A=35,B=45 → 7:9"
+"If A:B = 6:11 and B decreases by 11, new ratio when A=12?",12:11,6:11,12:0,12:22,A,original B=22 → new B=11 → ratio=12:11
+"A:B = 7:13. If A increases by 14 and B by 26, new ratio?",21:39,7:13,3:5,1:2,B,"new A=7k+14, B=13k+26 → k=2 → 28:52=7:13"
+"If ratio becomes 1:1 after adding 8 to smaller, original ratio?",8:16,5:13,12:20,7:15,B,"smaller+8 = larger → let smaller=5, larger=13"
+"If A:B = 9:4 and A decreases by 5, new ratio when A=18?",13:8,9:4,13:4,18:4,A,original B=8 → new A=13 → 13:8
+"A:B = 8:5. If B increases by 15 and new ratio is 8:20, original B?",5,10,15,20,A,B+15=20 → B=5
+"If A:B = 10:7 and new ratio is 5:7 after decrease in A, decrease in A?",5,10,15,20,A,"original A=10, new A=5 → decrease=5"
+"If ratio of two numbers becomes 3:5 after adding 6 to both, original ratio?",3:5,9:11,6:8,12:14,A,let original be x:y → (x+6):(y+6)=3:5 → cross solve gives 9:11

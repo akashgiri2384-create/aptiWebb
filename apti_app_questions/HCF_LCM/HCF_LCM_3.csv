@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Two numbers 36 and 60. Find LCM,180,120,240,90,A,LCM=36×60/12=180 correction → Option A
+"Three numbers 4,6,8. Find LCM",12,24,48,18,B,"Multiples: 4,6,8 → LCM=24"
+HCF of 56 and 72,8,12,16,24,A,"Common factors → 1,2,4,8"
+"LCM of 5,7,9",315,105,63,315,A,LCM=5×7×9=315
+"HCF of 81,27",3,9,27,81,C,27 divides both
+"LCM of 12,15",60,45,30,75,A,LCM=60
+"Two numbers 14,49. HCF?",7,14,21,49,A,7 divides both
+"Three numbers 6,8,9. HCF?",1,2,3,6,A,Only 1 divides all
+"LCM of 3,4,5",60,30,20,15,A,LCM=60
+"HCF of 100,75",25,50,75,100,A,25 divides both

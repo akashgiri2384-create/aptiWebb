@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+HCF of 96 and 128,16,32,64,8,B,"Factors: 96→1,2,3…; 128→1,2… → HCF=32"
+LCM of 18 and 24,72,108,96,144,A,LCM=72
+Two numbers 42 and 56. Find HCF,7,14,21,28,B,14 divides both
+"Three numbers 6,8,12. LCM?",12,24,48,36,B,LCM=24
+"HCF of 90,75",5,10,15,25,A,15 divides both
+"LCM of 5,15,20",60,90,120,100,A,LCM=60
+Two numbers 36 and 48. Find LCM,144,72,96,120,A,LCM=144? correction → 144
+"HCF of 45,120",5,15,30,45,A,15 divides both
+"LCM of 9,12,15",180,150,120,200,A,LCM=180
+"HCF of 84,126",14,21,28,42,B,21 divides both

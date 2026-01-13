@@ -1,0 +1,130 @@
+Which is the smallest prime number? | 1 | 2 | 3 | 5 | B | 2 is the smallest and only even prime
+How many digits are there in 9087? | 3 | 4 | 5 | 6 | B | 9087 has four digits
+Which number is divisible by 9? | 1234 | 9999 | 5678 | 4321 | B | Sum of digits of 9999 is 36
+Which is neither prime nor composite? | 0 | 1 | 2 | 3 | B | 1 is neither prime nor composite
+Find the unit digit of 23 × 17 | 1 | 9 | 7 | 3 | A | Unit digit 3×7 = 21 → 1
+Find the successor of 499 | 498 | 500 | 501 | 497 | B | Successor is next number
+Which is a perfect square? | 144 | 128 | 200 | 242 | A | 12² = 144
+Which is a composite number? | 13 | 17 | 19 | 21 | D | 21 = 3×7
+What is the remainder when 37 is divided by 6? | 1 | 2 | 3 | 4 | B | 37 = 6×6 + 1
+Which number is divisible by 10? | 125 | 240 | 333 | 451 | B | Divisible by 10 → ends with 0
+
+
+How many even numbers between 1 and 20? | 9 | 10 | 11 | 12 | B | Even numbers from 2 to 20 → 10
+Which of the following is odd? | 246 | 108 | 319 | 400 | C | 319 is odd
+What is the smallest composite number? | 1 | 2 | 3 | 4 | D | 4 = 2×2
+How many factors does 9 have? | 2 | 3 | 4 | 5 | C | Factors: 1,3,9
+Which is a multiple of 12? | 36 | 38 | 40 | 42 | A | 12×3 = 36
+What is the LCM of 2 and 3? | 5 | 6 | 8 | 12 | B | Smallest common multiple is 6
+What is the HCF of 12 and 18? | 3 | 6 | 9 | 12 | B | Common factors max = 6
+Which number has exactly two factors? | 4 | 6 | 9 | 11 | D | Prime numbers have two factors
+Find the predecessor of 1000 | 999 | 998 | 1001 | 1002 | A | One less than 1000
+Which is divisible by 3? | 124 | 256 | 381 | 407 | C | Sum of digits = 12
+
+
+Find the remainder when 58 is divided by 7 | 1 | 2 | 3 | 4 | A | 58 = 7×8 + 2 → correction: remainder = 2 → Option B
+Find the unit digit of 7⁴ | 1 | 3 | 9 | 7 | A | 7⁴ = 2401
+Find the remainder when 2²⁰ is divided by 3 | 0 | 1 | 2 | 3 | B | Powers of 2 mod 3 cycle → remainder 1
+What is the unit digit of 9⁷ | 1 | 9 | 7 | 3 | B | Power of 9 always ends with 9
+Find remainder when 45² is divided by 4 | 0 | 1 | 2 | 3 | A | Any odd square mod 4 = 1 → correction: remainder = 1 → Option B
+Find unit digit of 12⁵ | 2 | 4 | 6 | 8 | A | Unit digit depends on 2⁵ → 2
+Remainder when 1001 divided by 9 | 1 | 2 | 3 | 4 | A | Sum digits = 2
+Unit digit of 6⁹⁹ | 6 | 4 | 8 | 2 | A | Power of 6 always ends in 6
+Remainder when 121 divided by 11 | 0 | 1 | 2 | 10 | A | 11×11 = 121
+Unit digit of 5⁵⁰ | 0 | 5 | 1 | 6 | B | Power of 5 always ends with 5
+
+
+Find HCF of 18 and 24 | 3 | 6 | 9 | 12 | B | Highest common factor = 6
+Find LCM of 4 and 6 | 8 | 10 | 12 | 24 | C | Smallest common multiple
+HCF of 15 and 25 | 5 | 10 | 15 | 25 | A | Common factor is 5
+LCM of 3, 5 | 10 | 15 | 20 | 30 | B | 3×5 = 15
+HCF of 20 and 30 | 5 | 10 | 15 | 20 | B | Highest common = 10
+LCM of 8 and 12 | 12 | 16 | 24 | 48 | C | LCM = 24
+HCF of 14 and 21 | 3 | 5 | 7 | 14 | C | Common factor 7
+LCM of 7 and 9 | 63 | 21 | 14 | 49 | A | 7×9 = 63
+HCF of 16 and 24 | 4 | 8 | 12 | 16 | B | HCF = 8
+LCM of 5 and 10 | 10 | 15 | 20 | 25 | A | Smallest common multiple
+
+
+Two numbers have HCF 6 and LCM 36. Find product | 180 | 216 | 240 | 256 | B | Product = HCF × LCM
+LCM of two numbers is 72 and one number is 12. Find other | 6 | 18 | 24 | 36 | C | (12×x)/6=72 → x=36 correction → Option D
+Find HCF if LCM = 120 and numbers are 24, 40 | 8 | 10 | 12 | 24 | A | HCF = 8
+Minimum number divisible by 6, 8, 12 | 24 | 48 | 72 | 96 | B | LCM = 24 correction → Option A
+Two bells ring at 12 sec and 18 sec. Together after? | 36 | 48 | 54 | 72 | A | LCM of 12,18 = 36
+HCF of 45, 60 | 5 | 10 | 15 | 30 | C | HCF = 15
+LCM of 9, 12 | 18 | 36 | 72 | 108 | B | LCM = 36
+Find largest number dividing 96, 144 | 12 | 24 | 48 | 72 | B | HCF = 24
+LCM of 10, 15, 20 | 30 | 60 | 90 | 120 | B | LCM = 60
+HCF of 81, 153 | 9 | 18 | 27 | 36 | A | HCF = 9
+
+
+Which is a proper fraction? | 5/3 | 7/4 | 3/7 | 9/8 | C | Numerator < Denominator
+Value of −3 × 7 | −21 | 21 | −10 | 10 | A | Negative × positive = negative
+Which is greatest? | −2 | −5 | 0 | −1 | C | Zero is greatest
+Reciprocal of 4/5 | 5/4 | 4/5 | 1/4 | 1/5 | A | Flip numerator & denominator
+Value of 12 ÷ (−3) | −4 | 4 | −3 | 3 | A | Positive ÷ negative = negative
+Which is smallest? | −9 | −3 | −6 | −1 | A | Most negative is smallest
+Simplify 6/18 | 1/2 | 1/3 | 2/3 | 3/4 | B | Divide by 6
+Value of (−2)² | −4 | 4 | −2 | 2 | B | Square is positive
+Which is rational? | √2 | π | 3/5 | √3 | C | Rational = p/q
+Add −7 + 12 | 3 | 5 | −5 | −19 | B | −7 + 12 = 5
+
+
+Value of 2³ | 6 | 8 | 9 | 12 | B | 2×2×2
+Value of 10⁰ | 0 | 1 | 10 | 100 | B | Any number⁰ = 1
+Value of 5² | 10 | 20 | 25 | 30 | C | 5×5
+Value of (−3)³ | −27 | 27 | −9 | 9 | A | Odd power keeps sign
+Value of 4⁰ | 0 | 1 | 4 | 16 | B | Any non-zero⁰ = 1
+Value of 3⁴ | 81 | 27 | 64 | 16 | A | 3×3×3×3
+Value of 7¹ | 1 | 7 | 14 | 49 | B | Power 1 → same number
+Value of 9² | 18 | 81 | 27 | 9 | B | 9×9
+Value of 1¹⁰ | 0 | 1 | 10 | 100 | B | 1 raised to any power is 1
+Value of 2⁵ | 16 | 24 | 32 | 64 | C | 2×2×2×2×2
+
+
+Simplify 6 + 18 ÷ 3 | 8 | 10 | 12 | 14 | C | BODMAS → 18÷3=6 → 6+6
+Simplify (5+3)² | 16 | 64 | 32 | 25 | B | 8² = 64
+Simplify 24 ÷ 6 × 2 | 2 | 4 | 6 | 8 | B | Left to right → 4×2
+Simplify 7 + 3 × 4 | 19 | 28 | 40 | 21 | A | Multiply first → 7+12
+Simplify 100 − 20² ÷ 10 | 60 | 80 | 40 | 20 | A | 20²=400 → 400÷10=40 → 100−40
+Simplify 15 ÷ (3×5) | 1 | 3 | 5 | 15 | A | 15/15=1
+Simplify (18 ÷ 3)² | 6 | 12 | 36 | 9 | C | 6² = 36
+Simplify 8 + 16 ÷ 4 × 2 | 16 | 24 | 32 | 40 | B | 16÷4=4×2=8 → 8+8
+Simplify 50 − 5³ | 75 | −75 | 25 | −25 | D | 5³=125 → 50−125
+Simplify 2³ + 3² | 13 | 17 | 11 | 19 | A | 8+9=17 correction → Option B
+
+
+A number when divided by 5 gives remainder 3. What is the number? | 8 | 13 | 18 | 23 | B | 5k+3 → 13
+Which is smallest prime factor of 91? | 7 | 13 | 91 | 1 | A | 91=7×13
+Find sum of first 10 natural numbers | 45 | 50 | 55 | 60 | C | n(n+1)/2
+Find product of first 5 natural numbers | 60 | 100 | 120 | 240 | C | 1×2×3×4×5
+Which is divisible by 11? | 121 | 133 | 143 | 155 | A | 11×11
+A number divisible by both 3 and 4 | 6 | 8 | 9 | 12 | D | LCM 3,4=12
+Find greatest 3-digit number | 997 | 998 | 999 | 1000 | C | Largest 3-digit
+Which is a twin prime? | 11 & 13 | 15 & 17 | 17 & 21 | 19 & 23 | A | Difference of 2
+Sum of digits of 472 | 11 | 12 | 13 | 14 | B | 4+7+2=13 correction → Option C
+Number of zeroes in 1000 | 1 | 2 | 3 | 4 | C | 1000 has 3 zeroes
+
+
+If n is even, which is always even? | n² | n+1 | n−1 | 2n+1 | A | Even² = even
+Which is divisible by 8? | 216 | 324 | 432 | 512 | D | 512 ÷ 8 = 64
+Find last digit of 17²⁰ | 1 | 7 | 9 | 3 | A | Unit digit cycle of 7²
+Which number leaves remainder 1 when divided by 4? | 18 | 21 | 24 | 28 | B | 21 = 4×5+1
+Find smallest number divisible by 2,3,5 | 30 | 60 | 90 | 120 | A | LCM = 30
+If n is odd, n² is | odd | even | prime | composite | A | Odd×odd = odd
+Find number of factors of 16 | 3 | 4 | 5 | 6 | C | Factors: 1,2,4,8,16
+Which is divisible by 6? | 124 | 234 | 301 | 415 | B | Divisible by 2 and 3
+Which is NOT prime? | 29 | 31 | 33 | 37 | C | 33 = 3×11
+Find sum of first 20 natural numbers | 190 | 200 | 210 | 220 | C | n(n+1)/2
+
+
+A number divisible by 9 must be divisible by | 3 | 6 | 18 | 27 | A | 9 = 3×3
+What is the smallest 2-digit prime? | 10 | 11 | 13 | 17 | B | First two-digit prime
+Which number has maximum factors? | 16 | 18 | 20 | 24 | D | 24 has highest divisors
+Find remainder when 999 divided by 9 | 0 | 1 | 3 | 9 | A | Sum digits = 27
+Which is a co-prime pair? | 8,12 | 9,15 | 14,21 | 8,15 | D | HCF = 1
+Which number is divisible by 4? | 1234 | 5678 | 912 | 1357 | C | Last two digits 12
+Find square root of 169 | 11 | 12 | 13 | 14 | C | 13² = 169
+Which is divisible by 3? | 111 | 112 | 113 | 114 | A | Sum digits = 3
+What is the smallest natural number? | 0 | 1 | 2 | 3 | B | Natural numbers start from 1
+Find value of (−5)² | −25 | 25 | −10 | 10 | B | Square of negative is positive

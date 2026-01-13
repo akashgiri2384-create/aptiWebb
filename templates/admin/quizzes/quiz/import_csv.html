@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static " admin/css/forms.css" %}">{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo; <a href="{% url 'admin:app_list' app_label='quizzes' %}">Quizzes</a>
+    &rsaquo; <a href="{% url 'admin:quizzes_quiz_changelist' %}">Quizzes</a>
+    &rsaquo; Import CSV
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <fieldset class="module aligned">
+                <h2>Upload Quiz CSV</h2>
+                <div class="description">
+                    <p>CSV Format required:
+                        <code>question,option_a,option_b,option_c,option_d,correct_answer,explanation</code></p>
+                </div>
+                {% for field in form %}
+                <div class="form-row">
+                    <div>
+                        <label class="required" for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <div class="help">{{ field.help_text }}</div>
+                        {% endif %}
+                        {{ field.errors }}
+                    </div>
+                </div>
+                {% endfor %}
+            </fieldset>
+
+            <div class="submit-row">
+                <input type="submit" value="Import Questions" class="default" name="_save">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

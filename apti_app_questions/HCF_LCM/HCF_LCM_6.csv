@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Two bells 12s and 15s → ring together after?,60,45,75,90,A,"LCM(12,15)=60"
+"Two numbers sum 100, HCF 10. One=40. Other?",60,50,55,70,A,Other =100−40=60
+"Three numbers 18,24,30. HCF?",2,3,6,12,C,6 divides all
+"LCM of 6,9,12",36,72,108,144,B,LCM=72
+"HCF of 64,80",8,16,32,48,B,16 divides both
+"Two numbers divisible by 8,12. LCM?",24,36,48,60,A,LCM=24? correction → LCM=24
+"HCF of 21,35",5,7,14,21,B,7 divides both
+"LCM of 10,12,15",60,120,180,240,A,LCM=60? correction → LCM=60
+"HCF of 110,55",5,10,55,50,A,55 divides both
+"LCM of 4,6,8",12,24,48,36,B,LCM=24

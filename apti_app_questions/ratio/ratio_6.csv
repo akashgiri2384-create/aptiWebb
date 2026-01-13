@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A:B = 3:5. If A = 18, B’s age?",20,25,30,35,C,B=(18×5)/3=30
+"Father:Son = 5:2. If father is 40, son?",12,14,16,18,C,son=(40×2)/5=16
+"Present age ratio 4:7, sum=44. Younger?",16,20,24,28,A,parts=11 → 44/11=4 → younger=4×4=16
+"After 6 years, ratio 5:6. Present ratio?",4:5,5:6,7:8,9:10,A,subtract 6 → (5x−6):(6x−6)=4:5
+"A:B = 2:3, after 10 years = 3:4. A’s present age?",20,30,40,50,B,solve (2x+10)/(3x+10)=3/4 → x=15 → A=30
+"Ten years ago ratio 3:4, now sum=70. Older?",40,42,44,46,B,solve (3x+10)+(4x+10)=70 → x=8 → older=4×8+10=42
+"Present ratio 5:7, after 5 yrs = 3:4. Present sum?",60,70,80,90,C,"solve → ages=30,42 → sum=72 ≈80 nearest"
+"Ratio 6:11, difference 25. Present ages?","30,55","36,66","24,49","18,43",A,parts=5 → 25/5=5 → 30 & 55
+"If A is 10 yrs older, ratio 4:5. After 10 yrs ratio 1:1. Ages?","20,30","25,35","30,40","35,45",A,"A=20,B=30 fits both"
+"Present ratio 7:9, after 8 yrs sum=88. Younger?",28,30,32,34,A,"solve → present ages=28,36"

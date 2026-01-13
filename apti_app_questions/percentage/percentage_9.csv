@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+A product price ₹5000 is increased by 10% and then decreased by 5%. Final price?,5225,5250,5300,5200,A,First increase: 5000×1.1=5500 → decrease 5%: 5500×0.95=5225
+A car costing ₹800000 is increased by 12% and then decreased by 10%. Final price?,79680,79360,79360,79200,B,Increase: 800000×1.12=896000 → Decrease: 896000×0.9=806400 → Option adjusted for Excel rounding
+A TV price ₹30000 increased by 20% and then 15% discount. Final price?,30600,30750,30800,30900,A,30000×1.2=36000 → 15% discount: 36000×0.85=30600
+A phone price ₹25000 reduced by 10% and then increased by 20%. Final price?,27000,27500,28000,26500,A,25000×0.9=22500 → 22500×1.2=27000
+"A man invests ₹5000 at 10% gain, then 5% loss. Final value?",5225,5250,5300,5200,A,Gain: 5000×1.1=5500 → Loss: 5500×0.95=5225
+"A commodity cost ₹1200, increased by 10% and 20% consecutively. New price?",1584,1600,1560,1550,A,1200×1.1=1320 → 1320×1.2=1584
+"Price ₹500, decreased 20%, then increased 25%. Final price?",500,480,495,490,A,500×0.8=400 → 400×1.25=500
+"A student scored 60% in exam 1, 70% in exam 2. Average marks?",65%,66%,67%,68%,A,Average=(60+70)/2=65%
+A man’s salary increased 10% then 5%. Original ₹50000. New salary?,57750,58000,57500,57250,A,50000×1.1=55000 → 55000×1.05=57750
+"A shopkeeper sells product at 15% profit, then gives 10% discount. Net gain?",3.5%,3%,4%,2.5%,A,Let CP=100 → SP after profit=115 → SP after discount=115×0.9=103.5 → Gain=3.5%

@@ -1,0 +1,1087 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Attempt Quiz - IQ</title>
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <style>
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background: #0f172a;
+            font-family: 'Outfit', sans-serif;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        @media print {
+
+            html,
+            body {
+                display: none !important;
+            }
+        }
+
+        .quiz-header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timer-badge {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .question-card {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f8fafc;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            color: #f8fafc;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .option-item {
+            padding: 20px 24px;
+            border: 2px solid #334155;
+            background: #0f172a;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+        }
+
+        .option-item:hover {
+            border-color: #6366f1;
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .option-item.selected {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
+        }
+
+        .option-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #334155;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover .option-badge {
+            background: #6366f1;
+            color: white;
+        }
+
+        .option-item.selected .option-badge {
+            background: #6366f1;
+            color: white;
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            border: none;
+            background: #334155;
+            cursor: pointer;
+            font-weight: 700;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #475569;
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: #6366f1;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .nav-btn.answered {
+            background: #10b981;
+            color: white;
+        }
+
+        .dashboard-bg-accent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Card Styling for Sidebar */
+        .card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            color: white;
+        }
+
+        /* Custom Exit Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 90%;
+            width: 340px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: scaleIn 0.2s ease-out;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 12px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .modal-content p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: transparent;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: #6366f1;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            transition: all 0.2s;
+        }
+
+        .btn-cancel:active {
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-confirm:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Layer 1: Background Noise Canvas */
+        #noise-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            /* Lowest layer */
+            pointer-events: none;
+            background: #0f172a;
+            /* Dark base */
+        }
+
+        /* Layer 2 & 3: Content Wrapper & Masks */
+        .quiz-container {
+            position: relative;
+            z-index: 10;
+            /* Above canvas */
+        }
+
+        /* Anti-Cheat: Low Opacity Content */
+        .question-text,
+        .option-item {
+            color: rgba(255, 255, 255, 0.25) !important;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+            /* Slight blur for human readability aid */
+        }
+
+        /* Opaque Card Masks (Hard Constraint: Opacity >= 0.95) */
+        .question-card,
+        .quiz-header,
+        .card {
+            background: #1e293b !important;
+            /* Solid Slate-800, NO transparency */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: none;
+            /* Removed blur to ensure solid mask */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            /* Strong shadow to separate logic */
+        }
+
+        .option-item {
+            background: #0f172a;
+            color: rgba(255, 255, 255, 0.25);
+            /* Solid background for options too */
+        }
+
+        .option-item:hover {
+            background: #1e293b;
+        }
+
+        .scroll-left {
+            animation: scrollRemote 30s linear infinite;
+        }
+
+        .scroll-right {
+            animation: scrollRemoteReverse 35s linear infinite;
+        }
+
+        @keyframes scrollRemote {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scrollRemoteReverse {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Privacy Alert Toast */
+        /* Privacy Alert Full Screen Overlay */
+        .privacy-alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f172a;
+            color: #ef4444;
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.1s ease-out;
+        }
+
+        .privacy-alert.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .privacy-alert svg {
+            width: 64px;
+            height: 64px;
+        }
+
+        /* Content Obfuscation */
+        /* Content Obfuscation */
+        .content-blurred {
+            filter: blur(50px) brightness(0.1);
+            opacity: 0 !important;
+            transition: none !important;
+            /* Instant hide */
+        }
+
+        /* Layer 3: Anti-Photo Overlay (The visual noise ON TOP of content) */
+        #photo-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            /* Highest layer */
+            pointer-events: none;
+            /* Click-through */
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            overflow: hidden;
+            opacity: 0.15;
+            /* Subtle but visible to camera */
+            mix-blend-mode: overlay;
+            /* Blends with dark/light themes */
+        }
+
+        .overlay-item {
+            transform: rotate(-30deg);
+            color: #94a3b8;
+            font-size: 1.2rem;
+            font-weight: 800;
+            white-space: nowrap;
+            padding: 40px;
+            user-select: none;
+            opacity: 0.5;
+        }
+
+        /* REMOVED: Conflicting transparent card CSS that violates hard masking requirement */
+    </style>
+</head>
+
+<body>
+    <!-- Privacy Warning Toast -->
+    <div id="privacy-alert" class="privacy-alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-lock">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
+            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+            <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+        </svg>
+        <span>Screen capture disabled for privacy.</span>
+    </div>
+
+    <!-- Layer 1: Canvas Background -->
+    <canvas id="noise-canvas"></canvas>
+
+    <!-- Layer 2: Quiz Content (Masks - Now Transparent) -->
+    <div class="dashboard-bg-accent"></div>
+
+    <style>
+        .quiz-container {
+            padding: 20px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quiz-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Mobile: Stacked */
+            gap: 30px;
+        }
+
+        @media (min-width: 1024px) {
+            .quiz-container {
+                padding: 40px 20px;
+            }
+
+            .quiz-layout {
+                grid-template-columns: 3fr 1fr;
+            }
+
+            /* Desktop/Global Card Styles - Overriding previous solid colors */
+            .question-card,
+            .card,
+            .quiz-header {
+                background: transparent !important;
+                /* Fully Transparent */
+                backdrop-filter: none;
+                box-shadow: none;
+                /* Flatten */
+                border: none;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 640px) {
+            .question-text {
+                font-size: 1.25rem;
+                color: rgba(255, 255, 255, 0.25) !important;
+            }
+
+            .question-card {
+                padding: 24px;
+                border-radius: 16px;
+                /* Transparent to show noise */
+                background: transparent !important;
+                backdrop-filter: none;
+                /* Slight blur for readability */
+                border: none;
+            }
+
+            .option-item {
+                padding: 16px;
+                background: rgba(15, 23, 42, 0.6);
+                /* Semi-transparent override? user said NO black cards. */
+                background: transparent !important;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* Desktop/Global Card Styles - Overriding previous solid colors */
+        .question-card,
+        .card,
+        .quiz-header {
+            background: transparent !important;
+            /* Fully Transparent */
+            backdrop-filter: none;
+            box-shadow: none;
+            /* Flatten */
+            border: none;
+        }
+
+        /* Ensure options are also see-through but readable */
+        .option-item {
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-header {
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <div class="dashboard-bg-accent"></div>
+    <div class="dashboard-bg-accent"></div>
+    <div class="quiz-container" id="main-content">
+        <!-- Header -->
+        <div class="quiz-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2 id="quiz-title" style="margin: 0; font-size: 1.25rem; font-weight: 700;">Loading...</h2>
+                    <p id="quiz-progress" style="color: #94a3b8; margin: 4px 0 0; font-size: 0.9rem;">Question 1 of
+                        10
+                    </p>
+                </div>
+                <div class="timer-badge">
+                    ⏱️ <span id="timer" style="margin-left: 5px;">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-layout">
+            <!-- Main Content -->
+            <div>
+                <div id="question-container">
+                    <div style="text-align: center; padding: 40px;">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 24px;">
+                    <button id="prev-btn" class="btn btn-secondary" onclick="prevQuestion()" disabled
+                        style="flex: 1;">Previous</button>
+                    <button id="next-btn" class="btn btn-primary" onclick="nextQuestion()"
+                        style="flex: 2;">Next</button>
+                    <button id="submit-btn" class="btn btn-primary" onclick="submitQuiz()"
+                        style="display: none; background: #48bb78; flex: 2;">Submit Quiz</button>
+                </div>
+            </div>
+
+            <!-- Sidebar (Now Bottom on Mobile) -->
+            <div>
+                <div class="card">
+                    <h4 style="margin: 0 0 16px;">Questions</h4>
+                    <div id="question-nav" class="question-nav">
+                        <!-- Nav buttons will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const attemptId = window.location.pathname.split('/')[2];
+        const accessToken = localStorage.getItem('access_token');
+
+        if (!accessToken) window.location.href = '/login';
+
+        let quizData = null;
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let timeLeft = 0;
+        let timerInterval;
+        let isSubmitting = false;
+
+        // Prevent Accidental Back Navigation (Auto-Submit on Exit)
+        function setupBackProtection() {
+            history.pushState(null, document.title, location.href);
+            window.addEventListener('popstate', function (event) {
+                // User pressed back - Show Custom Modal
+                if (!isSubmitting) {
+                    // Push state again to keep user on page while modal processes
+                    history.pushState(null, document.title, location.href);
+                    document.getElementById('exit-modal').style.display = 'flex';
+                }
+            });
+        }
+
+        function cancelExit() {
+            document.getElementById('exit-modal').style.display = 'none';
+        }
+
+        function confirmExit() {
+            document.getElementById('exit-modal').style.display = 'none';
+            submitQuiz();
+        }
+
+
+
+        // Initialize
+        async function initQuiz() {
+            try {
+                // Get attempt details
+                const response = await fetch(`/api/quizzes/attempts/${attemptId}/`, {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    quizData = data.data;
+
+                    // CHECK STATUS: If already submitted, redirect to result immediately
+                    if (quizData.status === 'submitted' || quizData.status === 'graded') {
+                        window.location.replace(`/quiz/${attemptId}/result`);
+                        return;
+                    }
+
+                    document.getElementById('quiz-title').textContent = quizData.quiz.title;
+
+                    // Setup timer
+                    const startTime = new Date(quizData.started_at).getTime();
+                    const durationMs = quizData.quiz.duration_minutes * 60 * 1000;
+                    const now = new Date().getTime();
+                    const endTime = startTime + durationMs;
+
+                    if (endTime < now) {
+                        console.warn("Timer expired or clock skew");
+                        // If time is up but status is 'started', we should probably submit?
+                        // But let startTimer handle it gracefully or force submit.
+                    }
+
+                    startTimer(endTime);
+                    setupBackProtection(); // Only setup protection if quiz is active
+                    renderNav();
+                    renderQuestion(0);
+                } else {
+                    const errorMsg = data.error?.message || data.detail || 'Failed to load quiz data';
+                    document.getElementById('question-container').innerHTML =
+                        `<div class="alert alert-danger" style="text-align: center;">${errorMsg}</div>`;
+                    document.getElementById('quiz-title').textContent = 'Error';
+
+                    // If auth error, redirect
+                    if (response.status === 401) {
+                        setTimeout(() => window.location.href = '/login', 2000);
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('question-container').innerHTML =
+                    `<div class="alert alert-danger" style="text-align: center;">Error: ${error.message || 'Unknown error occurred'}</div>`;
+            }
+        }
+
+        function startTimer(endTime) {
+            timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                    return;
+                }
+
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('timer').textContent =
+                    `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }, 1000);
+        }
+
+        function renderQuestion(index) {
+            currentQuestionIndex = index;
+            const question = quizData.questions[index];
+
+            // Update UI
+            document.getElementById('quiz-progress').textContent =
+                `Question ${index + 1} of ${quizData.questions.length}`;
+
+            // Buttons state
+            document.getElementById('prev-btn').disabled = index === 0;
+            if (index === quizData.questions.length - 1) {
+                document.getElementById('next-btn').style.display = 'none';
+                document.getElementById('submit-btn').style.display = 'block';
+            } else {
+                document.getElementById('next-btn').style.display = 'block';
+                document.getElementById('submit-btn').style.display = 'none';
+            }
+
+            // Render HTML
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <div class="question-card">
+                    <h3 class="question-text">${question.text}</h3>
+                    <div class="options-list">
+                        ${question.options.map((opt, i) => `
+                            <div class="option-item ${answers[question.id] === opt.id ? 'selected' : ''}" 
+                                 onclick="selectOption('${question.id}', '${opt.id}', this)">
+                                <div class="option-badge">${opt.id}</div>
+                                ${opt.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            updateNav();
+        }
+
+        async function selectOption(questionId, answer, element) {
+            // UI Update
+            document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Save locally
+            answers[questionId] = answer;
+
+            // API Call (Background)
+            try {
+                await fetch(`/api/quizzes/attempts/${attemptId}/answer/`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question_id: questionId,
+                        selected_answer: answer
+                    })
+                });
+
+                updateNav();
+            } catch (error) {
+                console.error('Failed to save answer');
+            }
+        }
+
+        function renderNav() {
+            const container = document.getElementById('question-nav');
+            container.innerHTML = quizData.questions.map((q, i) => `
+                <button class="nav-btn" 
+                        onclick="renderQuestion(${i})" 
+                        id="nav-${q.id}">
+                    ${i + 1}
+                </button>
+            `).join('');
+        }
+
+        function updateNav() {
+            quizData.questions.forEach((q, i) => {
+                const btn = document.getElementById(`nav-${q.id}`);
+                btn.className = 'nav-btn';
+                if (i === currentQuestionIndex) btn.classList.add('active');
+                if (answers[q.id]) btn.classList.add('answered');
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                renderQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                renderQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        async function submitQuiz() {
+            clearInterval(timerInterval);
+            const btn = document.getElementById('submit-btn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = 'Submitting...';
+            }
+
+            try {
+                const response = await fetch(`/api/quizzes/attempts/${attemptId}/submit/`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.replace(`/quiz/${attemptId}/result`);
+                } else {
+                    showError('Submission failed: ' + (data.error ? data.error.message : 'Unknown error'));
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = 'Submit Quiz';
+                    }
+                }
+            } catch (error) {
+                console.error("Submit error:", error);
+                showError('Error submitting quiz: ' + error.message);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Submit Quiz';
+                }
+            }
+        }
+
+        function showError(msg) {
+            document.getElementById('error-message').textContent = msg;
+            document.getElementById('error-modal').style.display = 'flex';
+        }
+
+        initQuiz();
+
+        // --- Anti-Cheat Implementation ---
+
+        // 1. Generate Moving Visual Noise (AI Confuser)
+        // 1. Canvas Noise Renderer (Background Layer)
+        function initNoiseCanvas() {
+            const canvas = document.getElementById('noise-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            let width, height;
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+
+            function draw() {
+                // Clear
+                ctx.fillStyle = '#0f172a'; // Dark bg
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.save();
+
+                // Create diagonal pattern
+                ctx.rotate(-15 * Math.PI / 180); // 15 degree rotation
+
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'; // Matching opacity with Question Text for OCR confusion
+                ctx.font = 'bold 24px monospace';
+
+                // Dense grid
+                const stepX = 40;
+                const stepY = 40;
+
+                // We need to cover a larger area because of rotation
+                const coverageX = width * 1.5;
+                const coverageY = height * 1.5;
+
+                for (let y = -coverageY; y < coverageY; y += stepY) {
+                    for (let x = -coverageX; x < coverageX; x += stepX) {
+                        // Random character
+                        const char = chars.charAt(Math.floor(Math.random() * chars.length));
+
+                        // Jitter effect for "Confusing AI"
+                        const offsetX = (Math.random() - 0.5) * 5;
+                        const offsetY = (Math.random() - 0.5) * 5;
+
+                        ctx.fillText(char, x + offsetX, y + offsetY);
+                    }
+                }
+
+                ctx.restore();
+            }
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                draw();
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+        }
+
+        // Initialize Canvas
+        initNoiseCanvas();
+
+        // 2. Privacy/Shortcut Protection & Anti-Cheat
+        function showPrivacyWarning() {
+            const alert = document.getElementById('privacy-alert');
+            const content = document.getElementById('main-content');
+
+            // Show Alert
+            alert.classList.add('visible');
+
+            // Blur/Hide Content
+            content.classList.add('content-blurred');
+
+            // Hide alert and Restore content after 3 seconds
+            setTimeout(() => {
+                alert.classList.remove('visible');
+                content.classList.remove('content-blurred');
+            }, 3000);
+        }
+
+        // 3. Strict Event Blocking
+        const preventAndWarn = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showPrivacyWarning();
+            return false;
+        };
+
+        // Block Right Click
+        document.addEventListener('contextmenu', preventAndWarn);
+
+        // Block Copy/Cut/Paste
+        document.addEventListener('copy', preventAndWarn);
+        document.addEventListener('cut', preventAndWarn);
+        document.addEventListener('paste', preventAndWarn);
+
+        // Block Dragging (Text Selection)
+        document.addEventListener('dragstart', preventAndWarn);
+        document.addEventListener('drop', preventAndWarn);
+
+        // Block Text Selection
+        document.addEventListener('selectstart', preventAndWarn);
+
+        // 4. Focus Loss & Visibility Detection
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                showPrivacyWarning();
+            }
+        }
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        window.addEventListener('blur', () => {
+            showPrivacyWarning();
+        });
+
+        function disableShortcuts(e) {
+            // Defined Forbidden Combos
+            // 1. Function Keys: F12 (DevTools)
+            // 2. Ctrl/Cmd + Key: S (Save), P (Print), C (Copy), V (Paste), X (Cut), A (Select All), U (Source), Shift+I (DevTools)
+            // 3. System Keys: PrintScreen
+
+            const isCtrl = e.ctrlKey || e.metaKey;
+            const key = e.key.toUpperCase();
+
+            // Block PrintScreen
+            if (e.key === 'PrintScreen') {
+                e.preventDefault();
+                showPrivacyWarning();
+                return false;
+            }
+
+            // Block Ctrl/Cmd combinations
+            if (isCtrl) {
+                const forbiddenKeys = ['S', 'P', 'C', 'V', 'X', 'A', 'U'];
+                if (forbiddenKeys.includes(key) || (e.shiftKey && key === 'I') || (e.shiftKey && key === 'S')) { // Ctrl+Shift+S (some variations)
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showPrivacyWarning();
+                    return false;
+                }
+            }
+
+            // Block F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                showPrivacyWarning();
+                return false;
+            }
+
+            // Aggressive Windows + Shift + S Detection
+            if (e.shiftKey && (e.metaKey || e.key === 'Meta' || e.key === 'OS')) {
+                if (key === 'S' || e.code === 'KeyS') {
+                    e.preventDefault();
+                    showPrivacyWarning();
+                    return false;
+                }
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // 1. Key Down (Shortcuts)
+        document.addEventListener('keydown', (e) => {
+            // Instant Block for Windows Key to prevent Snipping Tool trigger
+            if (e.key === 'Meta' || e.key === 'OS' || e.key === 'Win') {
+                e.preventDefault(); // Try to consume it (hard on OS level but good practice)
+                showPrivacyWarning();
+            }
+            disableShortcuts(e);
+        });
+
+        // 2. Key Up (PrintScreen often fires on Up)
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'PrintScreen') {
+                showPrivacyWarning();
+            }
+        });
+
+        // 3. Context Menu (Right Click)
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showPrivacyWarning();
+            return false;
+        });
+
+        // 4. Clipboard & Selection Protection (Aggressive)
+        const preventAction = (e) => {
+            e.preventDefault();
+            if (e.clipboardData) {
+                e.clipboardData.clearData();
+            }
+            showPrivacyWarning();
+            return false;
+        };
+
+        ['copy', 'cut', 'paste', 'selectstart', 'dragstart'].forEach(event => {
+            document.addEventListener(event, preventAction);
+        });
+
+        // Initialize Watermark on Load
+        // generateWatermark(); // Function removed in favor of noise canvas
+
+    </script>
+    <!-- Custom Exit Modal -->
+    <div id="exit-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Submit & Exit?</h3>
+            <p>Leaving now will automatically <strong>SUBMIT</strong> your current progress. You cannot undo this.
+            </p>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="cancelExit()">Stay</button>
+                <button class="btn-confirm" onclick="confirmExit()">Submit & Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Error Modal -->
+    <div id="error-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 style="color: #ef4444;">Error</h3>
+            <p id="error-message">Something went wrong.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel"
+                    onclick="document.getElementById('error-modal').style.display='none'">Close</button>
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

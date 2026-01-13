@@ -1,0 +1,1153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Register - IQurio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --primary-color: #6366f1;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --card-bg: #1e293b;
+            --input-bg: #0f172a;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Dark Premium Navbar */
+        .navbar {
+            background: var(--nav-bg);
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 35px;
+            border-radius: 6px;
+        }
+
+        .nav-logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        /* Split Layout */
+        .split-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 70px;
+            /* Navbar space */
+        }
+
+        /* Left Side - Brand (Hidden on Mobile) */
+        .brand-section {
+            width: 45%;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            position: relative;
+            display: none;
+            /* Mobile Default */
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            color: white;
+            overflow: hidden;
+            border-right: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 1024px) {
+            .brand-section {
+                display: flex;
+            }
+        }
+
+        /* Decorative Blob */
+        .brand-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        /* Right Side - Form */
+        .form-section {
+            width: 100%;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 1024px) {
+            .form-section {
+                width: 55%;
+                padding: 40px;
+                justify-content: center;
+            }
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 0 8px;
+        }
+
+        .form-header p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Progress Steps */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step.active {
+            color: var(--primary-color);
+        }
+
+        .step-circle {
+            width: 28px;
+            height: 28px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: #94a3b8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-circle {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            background: #1e293b;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Autofill Dark Mode Fix */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+            -webkit-text-fill-color: white !important;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: var(--border-color);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .auth-footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .auth-footer a {
+            color: var(--primary-color);
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Validation Styles */
+        .form-control.is-invalid {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #a0aec0;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background: #f0fff4;
+            color: #22543d;
+            border: 1px solid #c6f6d5;
+        }
+
+        .alert-danger {
+            background: #fff5f5;
+            color: #742a2a;
+            border: 1px solid #fed7d7;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            margin-top: 4px;
+            accent-color: #667eea;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .split-container {
+                flex-direction: column;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-logo span {
+                font-size: 1.1rem;
+            }
+
+            .brand-section {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 250px;
+                padding: 30px;
+                padding-top: 90px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                display: none;
+            }
+
+            .form-section {
+                width: 100%;
+                margin-left: 0;
+                padding: 40px 20px;
+                min-height: auto;
+            }
+
+            /* Ensure selects don't overflow */
+            select.form-control {
+                box-sizing: border-box !important;
+                max-width: 85vw !important;
+                /* Force width within screen */
+                width: 100% !important;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                font-size: 9px !important;
+                /* Reduce font size further */
+                padding: 8px 4px !important;
+                /* Reduce padding to save space */
+            }
+
+            select.form-control optgroup,
+            select.form-control option {
+                font-size: 9px !important;
+                max-width: 85vw !important;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-brand span {
+                display: none !important;
+            }
+
+            .navbar {
+                height: 50px !important;
+                padding: 0 15px !important;
+            }
+
+            .nav-logo img {
+                height: 30px !important;
+            }
+
+            /* Adjust body/container spacing */
+            .brand-section {
+                padding-top: 15px !important;
+                /* Removed redundant duplicate padding */
+                padding-bottom: 20px !important;
+            }
+
+            .split-container {
+                padding-top: 50px !important;
+                /* Navbar height only */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Premium Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="nav-brand" style="display: flex; align-items: center; gap: 12px;">
+                <img src="{% static 'images/logos/logo-dark.jpg' %}" alt="Logo" style="height: 40px;" id="nav-logo-img">
+                <span
+                    style="font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">⚡
+                    IQurio</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="/leaderboard/" class="nav-link" style="display: flex; align-items: center; gap: 5px;">
+                <span>🏆</span> Leaderboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="split-container">
+        <!-- Left Side -->
+        <div class="brand-section">
+            <div class="brand-header">
+                <div style="height: 20px;"></div> <!-- Spacer -->
+            </div>
+
+            <div class="brand-hero">
+                <h2 class="hero-title">Start your<br>journey today.</h2>
+                <p class="hero-subtitle">Join 5000+ students mastering their skills.</p>
+
+                <div class="feature-card">
+                    <h4>🏆 Competitive Leaderboards</h4>
+                    <p>Compete with friends and top the charts.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🧠 Personalized Learning</h4>
+                    <p>AI-driven recommendations based on your weak areas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Create Account 🚀</h2>
+                    <p>It takes less than a minute.</p>
+                </div>
+
+                <!-- Revised Steps UI -->
+                <div class="steps-container">
+                    <div class="step active">
+                        <div class="step-circle">1</div>
+                        Personal Info
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">2</div>
+                        Academic Info
+                    </div>
+                </div>
+
+                <div id="message-area"></div>
+
+                <form id="register-form">
+                    <!-- Personal Info -->
+                    <div style="margin-bottom: 30px;">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="full_name" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address / Email that college provided you <span
+                                    id="verified-badge" style="display:none; color: #38a169; float: right;">(Verified
+                                    ✅)</span></label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="email" id="email" class="form-control" placeholder="sample@gmail.com"
+                                    required style="flex: 1;">
+                                <button type="button" id="verify-btn" class="btn-secondary"
+                                    onclick="initiateVerification()"
+                                    style="padding: 0 15px; border-radius: 8px; border: 1px solid #e2e8f0; background: #f7fafc; cursor: pointer;">Verify</button>
+                            </div>
+                            <small id="verify-msg" style="display: block; margin-top: 5px; color: #718096;"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password (min 8 chars)</label>
+                            <div class="password-container">
+                                <input type="password" id="password" class="form-control" placeholder="••••••••"
+                                    required minlength="8">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('password', this)">👁️</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Contact Number</label>
+                            <input type="tel" id="mobile_number" class="form-control" placeholder="+91 9876543210">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Roll Number</label>
+                            <input type="text" id="roll_number" class="form-control" placeholder="e.g. A-13 or 101"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Academic Info -->
+                    <div style="margin-bottom: 20px;">
+                        <h4
+                            style="margin: 0 0 15px 0; color: #2d3748; font-size: 1.1rem; border-bottom: 1px solid #edf2f7; padding-bottom: 10px; margin-bottom: 20px;">
+                            Academy Details</h4>
+
+                        <div class="form-group">
+                            <label class="form-label">College/University</label>
+                            <select id="college" class="form-control">
+                                <option value="">Loading colleges...</option>
+                            </select>
+                        </div>
+
+                        <script>
+                            (function () {
+                                async function loadColleges() {
+                                    const collegeSelect = document.getElementById('college');
+                                    // Safety check
+                                    if (!collegeSelect) return;
+
+                                    try {
+                                        console.log("Fetching colleges from /api/accounts/colleges/...");
+                                        const res = await fetch('/api/accounts/colleges/');
+                                        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+                                        const data = await res.json();
+
+                                        if (data.success && Array.isArray(data.data)) {
+                                            // Sort alphabetically
+                                            data.data.sort((a, b) => a.name.localeCompare(b.name));
+
+                                            let optionsHtml = '<option value="">Select your college...</option>';
+                                            data.data.forEach(college => {
+                                                optionsHtml += `<option value="${college.name}">${college.name}</option>`;
+                                            });
+                                            collegeSelect.innerHTML = optionsHtml;
+                                            console.log(`Loaded ${data.data.length} colleges.`);
+                                        } else {
+                                            console.error("API returned failure:", data);
+                                            collegeSelect.innerHTML = '<option value="">Failed to load list</option>';
+                                        }
+                                    } catch (e) {
+                                        console.error("Error loading colleges:", e);
+                                        collegeSelect.innerHTML = '<option value="">Error (Check Console)</option>';
+                                    }
+                                }
+
+                                if (document.readyState === 'loading') {
+                                    document.addEventListener('DOMContentLoaded', loadColleges);
+                                } else {
+                                    loadColleges();
+                                }
+                            })();
+                        </script>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Year</label>
+                                <select id="year" class="form-control">
+                                    <option value="">Select...</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Branch</label>
+                                <select id="branch" class="form-control" required style="background-image: none;">
+                                    <option value="">Select Branch...</option>
+
+                                    <optgroup label="Engineering & Technology">
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                        <option value="Electrical Engineering">Electrical Engineering</option>
+                                        <option value="Electronics and Communication Engineering">Electronics and
+                                            Communication Engineering</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Robotics">Robotics</option>
+                                        <option value="Mechatronics">Mechatronics</option>
+                                        <option value="Automation and Robotics Engineering">Automation and Robotics
+                                            Engineering
+                                        </option>
+                                        <option value="Architecture">Architecture</option>
+                                    </optgroup>
+
+                                    <optgroup label="Science (B.Sc)">
+                                        <option value="B.Sc Mathematics">B.Sc Mathematics</option>
+                                        <option value="B.Sc Physics">B.Sc Physics</option>
+                                        <option value="B.Sc Statistics">B.Sc Statistics</option>
+                                        <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+                                        <option value="B.Sc Artificial Intelligence and Data Science">B.Sc Artificial
+                                            Intelligence and Data Science
+                                        </option>
+                                        <option value="B.Sc Data Science">B.Sc Data Science</option>
+                                        <option value="B.Sc Cyber Security">B.Sc Cyber Security</option>
+                                    </optgroup>
+
+                                    <optgroup label="Commerce & Management">
+                                        <option value="B.Com">B.Com</option>
+                                        <option value="B.Com Financial Markets">B.Com Financial Markets</option>
+                                        <option value="B.Com Accounting and Finance">B.Com Accounting and Finance
+                                        </option>
+                                        <option value="B.Com Business Administration">B.Com Business Administration
+                                        </option>
+                                        <option value="BBA">BBA</option>
+                                        <option value="BBA Innovation and Entrepreneurship">BBA Innovation and
+                                            Entrepreneurship</option>
+                                        <option value="BBA Digital Marketing">BBA Digital Marketing</option>
+                                        <option value="BBA Financial Management">BBA Financial Management</option>
+                                        <option value="BBA Marketing Management">BBA Marketing Management</option>
+                                        <option value="BBA Human Resource Management">BBA Human Resource Management
+                                        </option>
+                                        <option value="BBA Banking and Financial Services">BBA Banking and Financial
+                                            Services</option>
+                                        <option value="BBM">BBM</option>
+                                        <option value="Business Analytics">Business Analytics</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="E Commerce">E Commerce</option>
+                                        <option value="Entrepreneurship">Entrepreneurship</option>
+                                    </optgroup>
+
+                                    <optgroup label="Professional Courses">
+                                        <option value="CA">CA</option>
+                                        <option value="CS">CS</option>
+                                        <option value="CMA">CMA</option>
+                                        <option value="ACCA">ACCA</option>
+                                        <option value="CFA">CFA</option>
+                                    </optgroup>
+
+                                    <optgroup label="Arts & Social Sciences">
+                                        <option value="BA">BA</option>
+                                        <option value="Economics">Economics</option>
+                                        <option value="Political Science">Political Science</option>
+                                        <option value="History">History</option>
+                                        <option value="Sociology">Sociology</option>
+                                        <option value="Psychology">Psychology</option>
+                                        <option value="English">English</option>
+                                        <option value="Law">Law</option>
+                                        <option value="Journalism">Journalism</option>
+                                        <option value="Mass Communication">Mass Communication</option>
+                                        <option value="Public Administration">Public Administration</option>
+                                        <option value="International Relations">International Relations</option>
+                                        <option value="Social Work">Social Work</option>
+                                    </optgroup>
+
+                                    <optgroup label="Medical & Health Sciences">
+                                        <option value="MBBS">MBBS</option>
+                                        <option value="BDS">BDS</option>
+                                        <option value="BAMS">BAMS</option>
+                                        <option value="BHMS">BHMS</option>
+                                        <option value="BUMS">BUMS</option>
+                                        <option value="Nursing">Nursing</option>
+                                        <option value="B.Pharm">B.Pharm</option>
+                                        <option value="D.Pharm">D.Pharm</option>
+                                        <option value="Pharm.D">Pharm.D</option>
+                                        <option value="Veterinary Science">Veterinary Science</option>
+                                        <option value="Biotechnology">Biotechnology</option>
+                                        <option value="Microbiology">Microbiology</option>
+                                        <option value="Forensic Science">Forensic Science</option>
+                                        <option value="Physiotherapy">Physiotherapy</option>
+                                        <option value="Nutrition and Dietetics">Nutrition and Dietetics</option>
+                                        <option value="Radiology">Radiology</option>
+                                        <option value="Medical Lab Technology">Medical Lab Technology</option>
+                                        <option value="Paramedical Sciences">Paramedical Sciences</option>
+                                    </optgroup>
+
+                                    <optgroup label="Others">
+                                        <option value="BCA">BCA</option>
+                                        <option value="Actuarial Science">Actuarial Science</option>
+                                        <option value="Commercial Pilot">Commercial Pilot</option>
+                                        <option value="NDA">NDA</option>
+                                        <option value="Fashion Designing">Fashion Designing</option>
+                                        <option value="Interior Designing">Interior Designing</option>
+                                        <option value="Graphic Design">Graphic Design</option>
+                                        <option value="Animation and VFX">Animation and VFX</option>
+                                        <option value="Fine Arts">Fine Arts</option>
+                                        <option value="Film Making">Film Making</option>
+                                        <option value="Music">Music</option>
+                                        <option value="Performing Arts">Performing Arts</option>
+                                        <option value="Polytechnic">Polytechnic</option>
+                                        <option value="ITI">ITI</option>
+                                        <option value="Hotel Management">Hotel Management</option>
+                                        <option value="Culinary Arts">Culinary Arts</option>
+                                        <option value="Aviation">Aviation</option>
+                                        <option value="Travel and Tourism">Travel and Tourism</option>
+                                        <option value="Event Management">Event Management</option>
+                                        <option value="Sports Science">Sports Science</option>
+                                        <option value="Fitness and Nutrition">Fitness and Nutrition</option>
+                                        <option value="Foreign Languages">Foreign Languages</option>
+                                        <option value="Game Development">Game Development</option>
+                                    </optgroup>
+
+                                    <optgroup label="Post Graduate">
+                                        <option value="MBA Human Resource Management">MBA Human Resource Management
+                                        </option>
+                                        <option value="MBA Marketing Management">MBA Marketing Management</option>
+                                        <option value="MBA Business Analytics">MBA Business Analytics</option>
+                                        <option value="MBA Financial Management">MBA Financial Management</option>
+                                        <option value="MBA Operations and Supply Chain Management">MBA Operations and
+                                            Supply Chain Management
+                                        </option>
+                                        <option value="M.Sc Computer Science">M.Sc Computer Science</option>
+                                        <option value="M.Sc Computer Application">M.Sc Computer Application</option>
+                                        <option value="M.E / M.Tech Mechanical Engineering">M.E / M.Tech Mechanical
+                                            Engineering
+                                        </option>
+                                        <option value="M.E / M.Tech Civil Engineering">M.E / M.Tech Civil Engineering
+                                        </option>
+                                        <option value="M.E / M.Tech Computer Engineering">M.E / M.Tech Computer
+                                            Engineering</option>
+                                        <option value="M.Pharm Pharmaceutics">M.Pharm Pharmaceutics</option>
+                                        <option value="M.Pharm Pharmaceutical Quality Assurance">M.Pharm Pharmaceutical
+                                            Quality Assurance
+                                        </option>
+                                        <option value="M.Pharm Pharmacology">M.Pharm Pharmacology</option>
+                                    </optgroup>
+
+                                    <optgroup label="Ph.D">
+                                        <option value="Ph.D Pharmaceutical Sciences">Ph.D Pharmaceutical Sciences
+                                        </option>
+                                        <option value="Ph.D Commerce and Economics">Ph.D Commerce and Economics</option>
+                                        <option value="Ph.D Information Technology">Ph.D Information Technology</option>
+                                        <option value="Ph.D Business Studies">Ph.D Business Studies</option>
+                                        <option value="Ph.D Liberal Arts">Ph.D Liberal Arts</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span>I agree to the Terms & Conditions and Privacy Policy</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="btn-primary" disabled
+                        style="opacity: 0.6; cursor: not-allowed;">Create Account</button>
+                </form>
+
+                <div class="auth-footer">
+                    Already have an account? <a href="/login">Login</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Logic
+        // Theme Toggle Logic
+        const logoLight = "{% static 'images/logos/logo-dark.jpg' %}"; // Forced to dark
+        const logoDark = "{% static 'images/logos/logo-dark.jpg' %}";
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update Icon
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+
+            // Update Logo (Always Dark)
+            const logo = document.getElementById('nav-logo-img');
+            if (logo) logo.src = logoDark;
+        }
+
+        // Init Theme
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            // Set initial icon
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('theme-btn');
+                if (btn) {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    btn.innerText = current === 'dark' ? '☀️' : '🌙';
+                }
+                // Init Logo
+                const logo = document.getElementById('nav-logo-img');
+                if (logo) {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    logo.src = current === 'dark' ? logoLight : logoDark;
+                }
+            });
+        })();
+
+        const messageArea = document.getElementById('message-area');
+        let verificationPollInterval;
+
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') { input.type = 'text'; btn.innerText = '🙈'; }
+            else { input.type = 'password'; btn.innerText = '👁️'; }
+        }
+
+        async function initiateVerification() {
+            const email = document.getElementById('email').value;
+            const fullName = document.getElementById('full_name').value;
+            const btn = document.getElementById('verify-btn');
+            const msg = document.getElementById('verify-msg');
+
+            if (!email || !email.includes('@')) {
+                msg.style.color = 'red';
+                msg.innerText = "Please enter a valid email address first.";
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+            msg.innerText = "";
+
+            try {
+                const response = await fetch('/api/accounts/initiate-verification/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, full_name: fullName })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    btn.innerText = "Sent";
+                    msg.style.color = 'blue';
+                    msg.innerText = "Link sent! Please check your email inbox.";
+
+                    // Start Polling
+                    if (verificationPollInterval) clearInterval(verificationPollInterval);
+                    verificationPollInterval = setInterval(() => checkVerificationStatus(email), 3000);
+                } else {
+                    btn.disabled = false;
+                    btn.innerText = "Verify";
+                    msg.style.color = 'red';
+                    msg.innerText = data.message || "Failed to send link.";
+                }
+            } catch (error) {
+                console.error(error);
+                btn.disabled = false;
+                btn.innerText = "Verify";
+                msg.style.color = 'red';
+                msg.innerText = "Network error.";
+            }
+        }
+
+        async function checkVerificationStatus(email) {
+            try {
+                const response = await fetch(`/api/accounts/check-status/?email=${encodeURIComponent(email)}`);
+                const data = await response.json();
+
+                if (data.success && data.verified) {
+                    clearInterval(verificationPollInterval);
+
+                    // UI Updates
+                    document.getElementById('verify-btn').style.display = 'none';
+                    document.getElementById('verified-badge').style.display = 'inline';
+                    document.getElementById('verify-msg').style.color = 'green';
+                    document.getElementById('verify-msg').innerText = "Email successfully verified.";
+
+                    const submitBtn = document.getElementById('submit-btn');
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    submitBtn.style.cursor = 'pointer';
+
+                    document.getElementById('email').readOnly = true; // Lock email
+                }
+            } catch (e) { console.error("Polling error", e); }
+        }
+
+        async function checkVerificationParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const verified = urlParams.get('verified');
+            const emailParam = urlParams.get('email');
+
+            if (verified === 'true' && emailParam) {
+                const emailInput = document.getElementById('email');
+                emailInput.value = emailParam;
+                emailInput.readOnly = true;
+
+                // UI Updates
+                document.getElementById('verify-btn').style.display = 'none';
+                document.getElementById('verified-badge').style.display = 'inline';
+
+                const msg = document.getElementById('verify-msg');
+                msg.style.color = 'green';
+                msg.innerText = "Email verification success! Please proceed.";
+
+                const submitBtn = document.getElementById('submit-btn');
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+
+                // Show banner
+                const messageArea = document.getElementById('message-area');
+                messageArea.innerHTML = '<div class="alert alert-success">Email verified successfully! Please fill in your details to create account.</div>';
+
+                // Also trigger check just in case, or trust the param? Trust param but cleaner to just set UI.
+            }
+        }
+
+        // Run on load
+        checkVerificationParams();
+
+        // Check Params
+        checkVerificationParams();
+
+        function validateForm(data) {
+            const errors = [];
+
+            // Full Name
+            if (!data.full_name || data.full_name.trim().length < 2) {
+                errors.push("Full Name is required.");
+                document.getElementById('full_name').classList.add('is-invalid');
+            } else document.getElementById('full_name').classList.remove('is-invalid');
+
+            // Email (Should be locked/verified)
+            if (!data.email || !data.email.includes('@')) {
+                errors.push("Valid Email is required.");
+            }
+
+            // Password
+            if (!data.password || data.password.length < 8) {
+                errors.push("Password must be at least 8 characters long.");
+                document.getElementById('password').classList.add('is-invalid');
+            } else document.getElementById('password').classList.remove('is-invalid');
+
+            // Mobile
+            const phoneRegex = /^[+]?[\s0-9]{10,13}$/;
+            if (!data.mobile_number || !phoneRegex.test(data.mobile_number.replace(/\s/g, ''))) {
+                errors.push("Please enter a valid 10-digit mobile number.");
+                document.getElementById('mobile_number').classList.add('is-invalid');
+            } else document.getElementById('mobile_number').classList.remove('is-invalid');
+
+            // College
+            if (!data.college_name) {
+                errors.push("Please select your College.");
+                document.getElementById('college').classList.add('is-invalid');
+            } else document.getElementById('college').classList.remove('is-invalid');
+
+            // Year & Branch
+            if (!data.year) {
+                errors.push("Please select your Year.");
+                document.getElementById('year').classList.add('is-invalid');
+            } else document.getElementById('year').classList.remove('is-invalid');
+
+            if (!data.branch) {
+                errors.push("Please select your Branch.");
+                document.getElementById('branch').classList.add('is-invalid');
+            } else document.getElementById('branch').classList.remove('is-invalid');
+
+            // Terms
+            if (!data.accepted_terms) {
+                errors.push("You must agree to the Terms & Privacy Policy.");
+                document.getElementById('terms').classList.add('is-invalid');
+            } else document.getElementById('terms').classList.remove('is-invalid');
+
+            return errors;
+        }
+
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+
+            const formData = {
+                full_name: document.getElementById('full_name').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                college_name: document.getElementById('college').value,
+                year: document.getElementById('year').value ? parseInt(document.getElementById('year').value) : null,
+                branch: document.getElementById('branch').value || null,
+                roll_number: document.getElementById('roll_number').value || null,
+                mobile_number: document.getElementById('mobile_number').value || null,
+                accepted_terms: document.getElementById('terms').checked,
+                accepted_privacy: true // Combined checkbox
+            };
+
+            messageArea.innerHTML = '';
+
+            // Client Validation
+            const validationErrors = validateForm(formData);
+            if (validationErrors.length > 0) {
+                messageArea.innerHTML = `<div class="alert alert-danger"><ul>` +
+                    validationErrors.map(err => `<li>${err}</li>`).join('') +
+                    `</ul></div>`;
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            try {
+                // Disable button
+                const btn = document.getElementById('submit-btn');
+                const originalText = btn.innerText;
+                btn.disabled = true;
+                btn.innerText = "Creating Account...";
+
+                const response = await fetch('/api/accounts/register/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    messageArea.innerHTML = '<div class="alert alert-success">Registration successful! Redirecting...</div>';
+                    setTimeout(() => { window.location.href = '/login'; }, 2000);
+                } else {
+                    let errorMessage = data.error?.message || data.message || 'Registration failed';
+
+                    if (data.error?.details) {
+                        const details = data.error.details;
+                        const detailedErrors = Object.keys(details).map(key => {
+                            const fieldErrors = Array.isArray(details[key]) ? details[key].join(', ') : details[key];
+                            // Format key nicely (e.g. mobile_number -> Mobile Number)
+                            const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            return `<strong>${formattedKey}</strong>: ${fieldErrors}`;
+                        }).join('<br>');
+                        errorMessage += `<br><div style="margin-top:5px; font-size:0.9em">${detailedErrors}</div>`;
+                    }
+
+                    messageArea.innerHTML = `<div class="alert alert-danger">${errorMessage}</div>`;
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch (error) {
+                messageArea.innerHTML = '<div class="alert alert-danger">Network error. Please try again.</div>';
+                document.getElementById('submit-btn').disabled = false;
+                document.getElementById('submit-btn').innerText = "Create Account";
+            }
+        });
+
+        // --- Navigation Force: Back Button -> Login ---
+        (function () {
+            // Push current state so there is a history entry to "pop"
+            window.history.pushState({ page: 'register' }, "", window.location.href);
+
+            window.addEventListener('popstate', function (event) {
+                // When back is pressed, force redirect to Login
+                window.location.href = '/login';
+            });
+        })();
+    </script>
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

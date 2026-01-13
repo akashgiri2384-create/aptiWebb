@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: #6366F1;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .period {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .greeting {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .kpi-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .kpi-card {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 30%;
+            border: 1px solid #e2e8f0;
+        }
+
+        .kpi-val {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e293b;
+            display: block;
+        }
+
+        .kpi-lbl {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #475569;
+            margin: 20px 0 10px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            text-align: left;
+            color: #64748b;
+            padding: 8px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #333;
+        }
+
+        .alert-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert-title {
+            color: #b91c1c;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .alert-msg {
+            color: #7f1d1d;
+            font-size: 13px;
+            margin: 5px 0 0;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6366F1;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>IQ Analytics</h1>
+            <div class="period">Weekly Report: {{ start_date|date:"M d" }} - {{ end_date|date:"M d, Y" }}</div>
+        </div>
+
+        <div class="content">
+            <div class="greeting">Hello Admin, here is the executive summary for <strong>{{ college_name }}</strong>.
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <span class="kpi-val">{{ stats.active_students }}</span>
+                    <span class="kpi-lbl">Active Users</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-val">{{ stats.avg_accuracy }}%</span>
+                    <span class="kpi-lbl">Avg Accuracy</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-val">{{ stats.total_tests }}</span>
+                    <span class="kpi-lbl">Tests Taken</span>
+                </div>
+            </div>
+
+            <!-- Alert Box for At-Risk -->
+            {% if stats.at_risk_count > 0 %}
+            <div class="alert-box">
+                <div class="alert-title">⚠️ Attention Required</div>
+                <div class="alert-msg">{{ stats.at_risk_count }} students are flagged as <strong>At-Risk</strong> (Low
+                    accuracy or inactive). Please review the attached CSV for details.</div>
+            </div>
+            {% endif %}
+
+            <!-- Top Performers -->
+            {% if top_performers %}
+            <div class="section-title">🏆 Top Performers this Week</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student</th>
+                        <th>Accuracy</th>
+                        <th>Tests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in top_performers %}
+                    <tr>
+                        <td>#{{ forloop.counter }}</td>
+                        <td>{{ s.name }}</td>
+                        <td>{{ s.accuracy }}%</td>
+                        <td>{{ s.tests }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+            <div style="text-align: center;">
+                <p style="font-size: 13px; color: #666; margin-top: 20px;">
+                    Full detailed report is attached as a CSV file.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 IQ Analytics. Automated Report.<br>
+            Need help? Contact support@iqanalytics.com
+        </div>
+    </div>
+</body>
+
+</html>

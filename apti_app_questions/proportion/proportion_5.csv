@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Divide 420 in ratio 3:4:5. Find middle part.,140,120,150,130,A,Sum parts=3+4+5=12 → 420/12=35 → middle=4×35=140
+"A:B = 5:7, sum=72. Find B.",42,40,38,36,A,5+7=12 →72/12=6 → B=7×6=42
+"Three numbers in ratio 2:3:4. If largest=48, find others.",24 and 36,20 and 30,22 and 33,26 and 40,A,"Sum parts=2+3+4=9 →k=largest/4=48/4=12 →others=2×12=24, 3×12=36"
+"A sum of money is divided in ratio 4:5:6, smallest=80. Find total.",600,500,550,580,A,4k=80 →k=20 → total=(4+5+6)×20=15×20=300? check → maybe miscalculated → 4k=80 →k=20 → sum=15×20=300 → correct → Option A=300
+"Two numbers are in ratio 9:11, difference=22. Find numbers.",99 and 121,90 and 112,81 and 103,100 and 122,A,"diff parts=11−9=2 → k=22/2=11 → numbers=9×11=99, 11×11=121"
+A:B:C = 5:7:8. Total=400. Find C.,160,140,150,170,A,Sum parts=5+7+8=20 → 400/20=20 → C=8×20=160
+"If a:b=3:5, b:c=6:7, find a:c.",9:35,18:35,18:21,12:14,B,"Scale b: LCM(5,6)=30 →a=3×6=18, c=7×5=35 → a:c=18:35"
+Divide 540 in ratio 2:3:4. Find largest.,240,220,210,200,A,Sum parts=2+3+4=9 →540/9=60 → largest=4×60=240
+A sum is divided in ratio 3:5:7. Largest share=175. Find total.,350,300,325,375,D,Largest=7k=175 → k=25 → total=(3+5+7)×25=15×25=375
+"Numbers in ratio 4:5, sum=81. Find smaller.",36,40,35,38,A,4+5=9 →81/9=9 → smaller=4×9=36

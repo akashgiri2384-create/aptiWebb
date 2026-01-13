@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A number is divided in the ratio 3:2. If the sum is 25, find the numbers.",15 and 10,12 and 13,14 and 11,16 and 9,A,"3+2=5 parts →25/5=5 → numbers: 3×5=15, 2×5=10"
+"Two friends share money in ratio 7:3. If total is $200, find each share.",140 and 60,120 and 80,150 and 50,130 and 70,A,"7+3=10 parts → 200/10=20 → shares=7×20=140, 3×20=60"
+"A:B:C = 2:3:5. If total=100, find B.",30,25,35,40,A,Sum parts=10 →100/10=10 → B=3×10=30
+"The speeds of two pipes are in ratio 5:6. If the faster fills a tank in 12h, how long for slower?",14,15,16,18,A,Rate inversely proportional → slower=12×6/5=14.4 → Option C=16
+"A sum of money is divided among A, B, C in ratio 2:3:5. Total=1000. Find C’s share.",500,400,450,480,A,Sum=2+3+5=10 →1000/10=100 → C=5×100=500
+Two numbers in ratio 4:5. Sum=81. Find numbers.,36 and 45,40 and 41,35 and 46,34 and 47,A,"4+5=9 parts →81/9=9 →4×9=36, 5×9=45"
+"A:B = 7:9, sum=64. Find A.",28,30,32,26,A,7+9=16 →64/16=4 → A=7×4=28
+"If 6 pens cost $15, how much for 10 pens?",20,25,24,28,B,Cost ∝ number → 15/6=2.5 per pen →10×2.5=25 → Option B=25
+Divide 120 in ratio 3:4:5. Find smallest part.,30,40,35,25,A,3+4+5=12 →120/12=10 → smallest=3×10=30 → Option A=30
+A:B:C = 5:7:8. Sum=400. Find B.,140,150,160,130,A,Sum parts=5+7+8=20 →400/20=20 → B=7×20=140

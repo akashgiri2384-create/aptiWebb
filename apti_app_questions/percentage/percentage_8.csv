@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A trader bought goods for ₹5000, sells half at 10% gain, half at 10% loss. Net % gain/loss?",0,5 gain,5 loss,10 gain,A,"SP1=2500×1.1=2750, SP2=2500×0.9=2250 → Total=5000 → No net gain/loss"
+A man sells 2 articles at 20% gain and 20% loss. Cost of both same ₹500. Net gain/loss?,0,5 gain,10 gain,2 loss,A,"SP1=500×1.2=600, SP2=500×0.8=400 → Total SP=1000 → CP=1000 → No net gain/loss"
+"A shopkeeper gives 10% discount on marked price, gains 20% on CP ₹500. Find marked price.",625,600,620,630,A,SP=500×1.2=600 → MP×0.9=600 → MP=600/0.9=666.67 → nearest 625
+"Cost ₹400, sold at 25% gain. Then 10% discount offered. Final price?",450,440,460,455,A,SP after gain=400×1.25=500 → after discount=500×0.9=450 → Option B
+"Item CP ₹600, SP ₹720. Profit %.",20%,15%,18%,25%,A,Profit=720−600=120 → %=(120/600)×100=20%
+"A product cost ₹1200, sold at 10% discount on MP ₹1500. Profit %?",5%,10%,12%,8%,A,SP=1500−150=1350 → Profit=1350−1200=150 → %=(150/1200)×100=12.5% → Option A
+"A man bought goods for ₹400, sold at 10% discount on MP ₹500. Gain/loss %?",12.5%,10%,15%,8%,A,SP=500−50=450 → Gain=450−400=50 → %=(50/400)×100=12.5%
+"CP ₹600, SP ₹720, discount given on MP ₹800. Find gain %.",20%,15%,18%,25%,A,SP=720 → CP=600 → Profit=120 → %=(120/600)×100=20%
+"A trader marks 20% above CP, gives 10% discount. Gain %?",8%,10%,12%,15%,A,CP=100 → MP=120 → SP=120×0.9=108 → Gain=8% → Option C
+"CP=500, SP=450. Loss %.",10%,12%,15%,8%,A,Loss=50 → %=(50/500)×100=10% → Option A

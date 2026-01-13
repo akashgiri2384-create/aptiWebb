@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 40px;
+            background: #ffffff;
+        }
+
+        .otp-box {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .otp-code {
+            font-size: 36px;
+            font-weight: 800;
+            color: #4f46e5;
+            letter-spacing: 8px;
+            font-family: monospace;
+        }
+
+        .warning {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 20px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .footer {
+            background: #f8fafc;
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">⚡ IQ Platform</div>
+            <div class="subtitle">Security Verification</div>
+        </div>
+
+        <div class="content">
+            <h2 style="text-align: center; color: #1e293b; margin-top: 0;">Password Reset Request</h2>
+            <p>Hello,</p>
+            <p>We received a request to reset the password for your IQ Platform account. If you didn't make this
+                request, you can safely ignore this email.</p>
+
+            <div class="otp-box">
+                <div style="font-size: 12px; text-transform: uppercase; color: #64748b; margin-bottom: 5px;">Your
+                    One-Time Password</div>
+                <div class="otp-code">{{ otp }}</div>
+            </div>
+
+            <p style="text-align: center;">This OTP is valid for <strong>{{ expiry_minutes }} minutes</strong>.</p>
+
+            <p class="warning">Do not share this code with anyone. Our support team will never ask for it.</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; {% now "Y" %} IQ Platform. All rights reserved.</p>
+            <p>This is an automated message, please do not reply.</p>
+        </div>
+    </div>
+</body>
+
+</html>

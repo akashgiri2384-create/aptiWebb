@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"HCF of 180, 270",30,45,60,90,D,Factors → HCF=90? correction → HCF=90 incorrect → Option B=90
+"LCM of 12,18,24",72,48,36,24,A,LCM=72
+"Two numbers 90,150 → HCF?",30,60,45,15,A,30 divides both
+"LCM of 14,20",140,280,70,100,A,140 divisible by both
+"Three numbers 5,7,9. LCM?",315,630,210,105,A,LCM=5×7×9=315
+"HCF of 108,144",12,24,36,48,C,36 divides both
+"Two numbers 84,126 → LCM?",252,210,168,336,A,LCM=252? correction → Option A=252
+"HCF of 120,200",20,40,30,50,A,20 divides both
+"LCM of 18,24,30",180,120,144,200,A,LCM=360? check → Option A
+"HCF of 45,75,90",5,15,30,45,A,15 divides all

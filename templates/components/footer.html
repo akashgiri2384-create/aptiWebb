@@ -1,0 +1,115 @@
+<style>
+    .site-footer {
+        background: var(--card-bg, #1e293b);
+        color: var(--text-color, #f8fafc);
+        padding: 40px 0 20px;
+        margin-top: auto;
+        border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .footer-section h3 {
+        color: var(--primary-color, #6366f1);
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .footer-section p,
+    .footer-section ul li {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--primary-color, #6366f1);
+    }
+
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 40px auto 0;
+        padding: 20px 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+    }
+
+    .heart-icon {
+        color: #ef4444;
+        animation: pulse 1.5s infinite;
+        display: inline-block;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>IQurio</h3>
+            <p>Elevate your knowledge with our premium aptitude assessment platform. Designed for excellence, built for
+                achievers.</p>
+            <h3><span
+                    style="font-weight: 900; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡
+                    IQurio</span></h3>
+            <p>Premium assessment platform for students and professionals.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'quizzes' %}">Quizzes</a></li>
+                <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@iqurio.com</p>
+            <p>Phone: +91 98765 43210</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; {% now "Y" %} IQurio. All rights reserved.</p>
+        <p style="margin-top: 10px; font-weight: 500;">
+            Made with <span class="heart-icon">❤️</span> in India
+        </p>
+    </div>
+</footer>

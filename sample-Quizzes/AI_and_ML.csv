@@ -1,0 +1,11 @@
+question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Which loss function is most appropriate for binary classification with probabilistic outputs?,Mean Squared Error,Mean Absolute Error,Binary Cross Entropy,Hinge Loss,C,Binary Cross Entropy measures the difference between predicted probabilities and actual binary labels.
+What problem does L1 regularization primarily help to solve?,Overfitting by shrinking weights to zero,Vanishing gradients,Exploding gradients,Class imbalance,A,L1 regularization performs feature selection by forcing some weights to exactly zero.
+"In decision trees, which metric is used by CART for node splitting?",Information Gain,Gain Ratio,Gini Impurity,Chi-square,C,CART (Classification and Regression Trees) uses Gini Impurity.
+What is the main disadvantage of k-means clustering?,High memory usage,Sensitivity to initial centroids,Inability to scale,Requires labeled data,B,k-means can converge to local minima depending on centroid initialization.
+Which technique is used to handle class imbalance in datasets?,Principal Component Analysis,SMOTE,Bagging,Early stopping,B,SMOTE generates synthetic samples for minority classes.
+What does the bias-variance tradeoff describe?,Tradeoff between training and testing time,Tradeoff between underfitting and overfitting,Tradeoff between precision and recall,Tradeoff between data size and accuracy,B,"High bias leads to underfitting, high variance leads to overfitting."
+Which optimization algorithm adapts learning rates for each parameter individually?,Stochastic Gradient Descent,Momentum,Adam,Batch Gradient Descent,C,Adam maintains adaptive learning rates using first and second moment estimates.
+What is the purpose of dropout in neural networks?,Increase training speed,Prevent overfitting,Improve gradient flow,Normalize inputs,B,Dropout randomly disables neurons during training to reduce overfitting.
+Which metric is most suitable for evaluating imbalanced classification problems?,Accuracy,Mean Squared Error,F1-score,R-squared,C,"F1-score balances precision and recall, making it suitable for imbalanced data."
+What does backpropagation compute in a neural network?,Forward activations,Weight initialization,Gradients of loss w.r.t weights,Prediction probabilities,C,Backpropagation computes gradients used to update weights via optimization algorithms.

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>IQurio Platform - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .status {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .status h2 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .links {
+            display: grid;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: block;
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: #28a745;
+        }
+
+        .btn-secondary:hover {
+            background: #218838;
+        }
+
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .code {
+            background: #f8f9fa;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d63384;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 IQurio Platform</h1>
+        <p class="subtitle">Educational Quiz Platform - Development Server</p>
+
+        <div class="status">
+            <h2>✅ Server Running Successfully!</h2>
+            <p>Django development server is operational</p>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">36</div>
+                    <div class="metric-label">Models</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">8</div>
+                    <div class="metric-label">Apps</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Users</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Quiz</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="/admin/" class="btn">🔐 Admin Panel</a>
+            <a href="/api/" class="btn btn-secondary">📡 API Explorer</a>
+        </div>
+
+        <div class="info">
+            <p><strong>Test Credentials:</strong></p>
+            <p>Admin: <span class="code">admin@iqurio.com</span> / <span class="code">admin123</span></p>
+            <p>User: <span class="code">test@iqurio.com</span> / <span class="code">testpass123</span></p>
+        </div>
+
+        <div class="info" style="margin-top: 15px;">
+            <p><strong>⚠️ Important:</strong> Use <span class="code">http://</span> not <span
+                    class="code">https://</span></p>
+            <p>Development server doesn't have SSL certificate</p>
+        </div>
+    </div>
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

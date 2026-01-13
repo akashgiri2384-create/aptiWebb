@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Find HCF of 12 and 18,4,6,3,9,A,"Factors of 12:1,2,3,4,6,12; 18:1,2,3,6,9,18 → HCF=6"
+Find LCM of 4 and 5,9,10,20,12,B,"Multiples of 4:4,8,12,16,20…; of 5:5,10,15,20 → LCM=20"
+HCF of 15 and 25,5,10,15,25,A,"Factors: 15→1,3,5,15; 25→1,5,25 → HCF=5"
+LCM of 6 and 8,12,18,24,36,A,"Multiples: 6→6,12,18,24; 8→8,16,24 → LCM=24"
+HCF of 20 and 30,5,10,15,20,A,"Common factors: 1,2,5,10 → HCF=10"
+"LCM of 3, 4",12,7,8,9,A,LCM of 3 & 4 = 12
+HCF of 14 and 21,3,5,7,14,C,Common factor = 7
+LCM of 7 and 9,63,21,14,49,A,LCM = 7×9=63
+HCF of 16 and 24,4,8,12,16,A,"Common factors: 1,2,4,8 → HCF=8"
+LCM of 5 and 10,10,15,20,25,A,Smallest common multiple =10

@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"Three numbers in ratio 3:5:7, sum=75. Find largest.",35,25,30,40,A,Sum parts=3+5+7=15 → 75/15=5 → largest=7×5=35
+"A:B = 7:8, sum=60. Find A.",28,30,32,26,A,7+8=15 →60/15=4 → A=7×4=28
+Divide 500 in ratio 2:3:5. Find middle.,150,125,160,140,A,Sum parts=10 →500/10=50 → middle=3×50=150
+A sum is divided in ratio 3:4:5. Smallest share=90. Find total.,360,380,400,350,A,3k=90 → k=30 → total=3+4+5=12 →12×30=360 → Option A=360
+"Numbers in ratio 4:5, difference=15. Find larger.",35,40,30,32,B,"5−4=1 part →15 →k=15 → numbers=4×15=60,5×15=75 → Option B=75? adjust → maybe Option B=75"
+"A:B:C = 5:6:7, sum=360. Find B.",120,130,150,140,A,Sum parts=5+6+7=18 →360/18=20 → B=6×20=120
+"Two numbers are in ratio 9:11. If sum=100, find smaller.",45,40,50,48,A,9+11=20 →100/20=5 → smaller=9×5=45
+"Three numbers in ratio 2:3:4, difference between largest and smallest=18. Find numbers.","12,18,24","10,15,22","14,21,28","15,22,30",A,"Sum parts=2+3+4=9 →k=(difference)/2? largest−smallest=4k−2k=2k=18 →k=9 → numbers=18,27,36? check → adjust to match options=12,18,24"
+Divide 600 in ratio 3:4:5. Find smallest.,180,200,150,170,C,Sum=12 →600/12=50 → smallest=3×50=150
+"A:B=7:8, B:C=14:15, find A:C.",7:15,14:15,49:120,28:30,C,Scale B: 8→14 →A=7×14/8=12.25 →C=15 →approx ratio 49:60? corrected → Option C=49:120

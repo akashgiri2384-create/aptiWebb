@@ -1,0 +1,915 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>My Profile - IQ</title>
+    <!-- Use Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <style>
+        :root {
+            /* Premium Dark Theme */
+            --bg-color: #0f172a;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --text-color: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: 1px solid rgba(255, 255, 255, 0.08);
+            --primary-color: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --input-bg: rgba(15, 23, 42, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            /* Critical for preventing overflow */
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 80px;
+            /* Space for footer */
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* Nav Buttons */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .btn-nav-back {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-logout {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            margin-bottom: 24px;
+            width: 100%;
+            /* Ensure fits in container */
+        }
+
+        /* Avatar Styling */
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+        }
+
+        .avatar-large {
+            width: 100%;
+            height: 100%;
+            background: #1e293b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            overflow: hidden;
+            border: 3px solid #0f172a;
+        }
+
+        .avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Center Profile Info */
+        .profile-header {
+            text-align: center;
+        }
+
+        /* Layout Grid */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 800px) {
+            .profile-layout {
+                grid-template-columns: 1fr;
+                /* Stack vertically */
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+                /* Reduce padding slightly */
+            }
+        }
+
+        /* Stats Grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Default 2 columns */
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 600px) {
+            .stat-grid {
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 columns on desktop/tablet */
+            }
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            /* Reduced from 2rem to fit */
+            font-weight: 700;
+            margin-bottom: 4px;
+            word-wrap: break-word;
+            /* Prevent overflow */
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* Badge Grid */
+        .badge-grid {
+            display: grid;
+            /* Auto-fill with min width 90px ensures they wrap instead of overflow */
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .badge-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-img-container {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            place-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .modal {
+            background: #1e293b;
+            width: 100%;
+            max-width: 400px;
+            /* Constrain width */
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 85vh;
+            /* Limit height */
+            overflow-y: auto;
+            /* Enable scrolling */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            /* For z-index context if needed */
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* Shimmer */
+        .shimmer {
+            background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            color: transparent !important;
+            border-radius: 6px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Desktop Optimization (Min Width 1024px) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1280px;
+                /* Wider container */
+                padding: 30px 40px;
+                /* More breathing room on sides */
+            }
+
+            .profile-layout {
+                grid-template-columns: 260px 1fr;
+                /* Compacter sidebar */
+                gap: 32px;
+                /* Better separation */
+                align-items: stretch;
+                /* Stretch columns to match height */
+            }
+
+            /* Compact Sidebar for Desktop */
+            .profile-header {
+                padding: 24px 20px;
+                /* Reduced side padding in card */
+            }
+
+            .avatar-container {
+                width: 100px;
+                /* Smaller Avatar */
+                height: 100px;
+                margin-bottom: 12px;
+            }
+
+            #profile-name {
+                font-size: 1.35rem !important;
+                /* Slightly smaller header */
+            }
+
+            #profile-email {
+                margin-bottom: 16px !important;
+            }
+
+            #rank-badge-container {
+                margin-bottom: 16px !important;
+            }
+
+            #profile-level {
+                margin-bottom: 16px !important;
+                padding: 4px 12px !important;
+            }
+
+            /* Denser Stats Grid */
+            .stat-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+
+            .stat-box {
+                padding: 16px 12px;
+            }
+
+            .stat-value {
+                font-size: 1.35rem;
+                /* Compact stats */
+            }
+
+            /* Dense Badge Grid with Internal Scroll */
+            .badge-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                /* Denser badges */
+                gap: 12px;
+
+                /* Responsive Height Strategy */
+                /* Ensure 4-5 rows visible (500px) but scale up on laptops/desktops */
+                min-height: clamp(500px, 60vh, 800px);
+                /* Cap at viewport height minus header to allow scrolling if needed */
+                max-height: calc(100vh - 180px);
+
+                overflow-y: auto;
+                padding-right: 8px;
+                /* Space for scrollbar */
+                align-content: start;
+            }
+
+            /* Custom Scrollbar for Badge Grid */
+            .badge-grid::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .badge-grid::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 4px;
+            }
+
+            .badge-grid::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 4px;
+            }
+
+            .badge-grid::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.25);
+            }
+
+            .badge-item {
+                padding: 10px;
+                border-radius: 12px;
+            }
+
+            .badge-img-container {
+                width: 40px;
+                height: 40px;
+            }
+
+            .badge-item div:last-child {
+                font-size: 0.7rem !important;
+                /* Smaller text */
+            }
+
+            .card {
+                padding: 24px 32px;
+                /* Wider cards internally */
+            }
+
+            /* Sidebar Card specific override for full height */
+            .profile-header.card {
+                padding: 24px;
+                display: flex !important;
+                flex-direction: column !important;
+                height: 100% !important;
+                /* Ensure it fills the grid cell */
+                box-sizing: border-box;
+            }
+
+            /* Push reports to bottom */
+            .profile-header.card>div:last-child {
+                margin-top: auto !important;
+            }
+
+            /* Right Column Wrapper */
+            .profile-layout>div:last-child {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                /* Fill grid cell height */
+            }
+
+            /* Badges Card Expansion */
+            .profile-layout>div:last-child>.card:last-child {
+                flex: 1;
+                /* Stretch to fill remaining space */
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 0 !important;
+                /* Align with bottom of sidebar */
+            }
+
+            /* Denser Badge Grid with Internal Scroll */
+            .badge-grid {
+                flex: 1;
+                /* Fill the Card height */
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                /* Denser badges */
+                gap: 12px;
+
+                /* Responsive Height Strategy */
+                min-height: clamp(500px, 60vh, 800px);
+                max-height: calc(100vh - 180px);
+
+                overflow-y: auto;
+                padding-right: 8px;
+                /* Space for scrollbar */
+                align-content: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <a href="/dashboard/" class="btn-nav-back">
+                <span>←</span> Dashboard
+            </a>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+
+        <div class="profile-layout">
+            <!-- Left: Profile Info -->
+            <div class="card profile-header">
+                <div class="avatar-container">
+                    <div class="avatar-large" id="profile-avatar">
+                        <!-- Initials or Image injected here -->
+                    </div>
+                </div>
+
+                <h1 id="profile-name" class="shimmer"
+                    style="margin: 0 0 5px 0; font-size: 1.5rem; word-wrap: break-word;">Loading...</h1>
+                <p id="profile-email"
+                    style="margin: 0 0 24px 0; color: #94a3b8; font-size: 0.9rem; word-wrap: break-word;">...</p>
+
+                <!-- Rank -->
+                <div id="rank-badge-container" style="margin-bottom: 24px;"></div>
+
+                <!-- Level Pill -->
+                <div style="display: inline-block; padding: 6px 16px; background: rgba(99, 102, 241, 0.15); color: #818cf8; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 24px;"
+                    id="profile-level">
+                    Level 1
+                </div>
+
+                <button onclick="openEditModal()" class="btn-nav-back"
+                    style="width: 100%; justify-content: center; background: #6366f1; border-color: #6366f1; font-weight: 600; padding: 12px; margin-bottom: 24px;">
+                    Edit Profile
+                </button>
+
+                <!-- Details -->
+                <div
+                    style="text-align: left; opacity: 0.9; background: rgba(255,255,255,0.03); padding: 16px; border-radius: 16px;">
+                    <div style="margin-bottom: 16px;">
+                        <label
+                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">College</label>
+                        <div id="profile-college" style="font-weight: 500;">-</div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label
+                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">Year
+                            / Branch</label>
+                        <div id="profile-details" style="font-weight: 500;">-</div>
+                    </div>
+
+                    <div>
+                        <label
+                            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">Bio</label>
+                        <div id="profile-bio" style="font-style: italic; color: #cbd5e1; font-size: 0.95rem;">-</div>
+                    </div>
+                </div>
+
+                <!-- Reports Buttons Stacked -->
+                <!-- Reports Buttons Stacked -->
+                <div style="margin-top: 16px;">
+                    <label
+                        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; display: block; margin-bottom: 8px;">Download
+                        Report</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <a href="/api/reports/download/?type=weekly&format=pdf" target="_blank"
+                            style="text-align: center; padding: 12px; background: rgba(16, 185, 129, 0.1); color: #34d399; border-radius: 12px; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; justify-content: center;">
+                            📄 Weekly
+                        </a>
+                        <a href="/api/reports/download/?type=monthly&format=pdf" target="_blank"
+                            style="text-align: center; padding: 12px; background: rgba(99, 102, 241, 0.1); color: #818cf8; border-radius: 12px; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; justify-content: center;">
+                            📅 Monthly
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Stats & Content -->
+            <div style="display: flex; flex-direction: column;">
+
+                <!-- Stats Row -->
+                <div>
+                    <h3 style="margin: 0 0 16px 0; font-weight: 600;">Overview</h3>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-xp" style="color: #818cf8;">0</div>
+                            <div class="stat-label">Total XP</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-season-xp" style="color: #f472b6;">0</div>
+                            <div class="stat-label">Season XP</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-quizzes" style="color: #34d399;">0</div>
+                            <div class="stat-label">Quizzes</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="stat-accuracy" style="color: #fbbf24;">0%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="card">
+                    <h3 style="margin: 0 0 20px 0; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.2rem;">🏆</span> Earned Badges
+                    </h3>
+                    <div id="badges-container" class="badge-grid">
+                        <div
+                            style="grid-column: 1/-1; padding: 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">
+                            Loading badges...
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h2 style="margin: 0; font-size: 1.2rem;">Edit Profile</h2>
+                <button onclick="closeEditModal()"
+                    style="background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+
+            <form id="editForm" onsubmit="saveProfile(event)">
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div class="avatar-large" id="preview-avatar"
+                        style="width: 80px; height: 80px; margin: 0 auto 12px; font-size: 2rem;">
+                        <!-- Preview -->
+                    </div>
+                    <label for="avatar-input"
+                        style="color: #818cf8; cursor: pointer; font-weight: 600; font-size: 0.9rem;">
+                        Change Photo
+                    </label>
+                    <input type="file" id="avatar-input" name="avatar" accept="image/*" style="display: none;"
+                        onchange="previewImage(this)">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" name="full_name" id="edit-name" required
+                        placeholder="Your Name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">College</label>
+                    <select class="form-select" name="college_id" id="edit-college">
+                        <option value="">Select College</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Bio</label>
+                    <textarea class="form-textarea" name="bio" id="edit-bio" rows="3"
+                        placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-nav-back"
+                    style="width: 100%; justify-content: center; background: #6366f1; border: none; color: white; cursor: pointer; padding: 12px; font-weight: 600;">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const accessToken = localStorage.getItem('access_token');
+        const STATIC_URL = "{% static '' %}"; // Get static root from Django
+
+        if (!accessToken) window.location.href = '/login';
+
+        let currentUser = null;
+        let currentProfile = null;
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/login';
+        }
+
+        function formatNumber(num) {
+            if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+            return num;
+        }
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            if (start === end) { obj.textContent = formatNumber(end); return; }
+
+            const range = end - start;
+            const startTime = new Date().getTime();
+            const endTime = startTime + duration;
+
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const remaining = Math.max((endTime - now) / duration, 0);
+                const value = Math.round(end - (remaining * range));
+                obj.textContent = formatNumber(value);
+
+                if (remaining === 0) clearInterval(timer);
+            }, 20);
+        }
+
+        async function loadProfile() {
+            try {
+                const response = await fetch('/api/accounts/profile/', {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+
+                if (response.status === 401) { logout(); return; }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentUser = data.data.user;
+                    currentProfile = data.data.profile;
+                    renderProfile(currentUser, currentProfile);
+
+                    // Check for Rank Up Animation from backend
+                    if (data.data.recent_rank_up) {
+                        handleRankUpAnimation(data.data.recent_rank_up);
+                    }
+                } else {
+                    document.getElementById('profile-name').textContent = 'Failed to load';
+                    showAppAlert(data.error?.message || 'Failed to load profile', 'Error', 'error');
+                }
+
+                loadBadges();
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('profile-name').textContent = 'Error';
+                document.getElementById('profile-name').classList.remove('shimmer');
+            }
+        }
+
+        async function loadBadges() {
+            try {
+                const res = await fetch('/api/xp/badges/', { headers: { 'Authorization': `Bearer ${accessToken}` } });
+                const data = await res.json();
+                const container = document.getElementById('badges-container');
+
+                if (data.success && data.data.badges && data.data.badges.length > 0) {
+                    container.innerHTML = data.data.badges.map(b => {
+                        let subText = '';
+                        if (b.badge.xp_threshold > 0) {
+                            subText = `<div style="font-size: 0.65rem; color: #F472B6; margin-top: 4px;">Unlocked at ${formatNumber(b.badge.xp_threshold)} XP</div>`;
+                        } else if (b.badge.xp_bonus > 0) {
+                            subText = `<div style="font-size: 0.65rem; color: #10B981; margin-top: 4px;">+${formatNumber(b.badge.xp_bonus)} XP</div>`;
+                        }
+
+                        return `
+                        <div class="badge-item">
+                            ${b.badge.image_path ?
+                                `<div class="badge-img-container"><img src="${STATIC_URL}${b.badge.image_path}" class="badge-img" alt="${b.badge.name}" onerror="this.src='${STATIC_URL}img/badges/default.png'; this.onerror=null;"></div>` :
+                                `<div style="font-size: 1.5rem; margin-bottom:8px;">${b.badge.icon || '🏅'}</div>`
+                            }
+                            <div style="font-weight: 600; font-size: 0.75rem; line-height: 1.2;">${b.badge.name}</div>
+                            ${subText}
+                        </div>
+                    `}).join('');
+                } else {
+                    container.innerHTML = '<div style="grid-column: 1/-1; padding: 20px; text-align: center; color: #94a3b8; font-style: italic;">No badges earned yet.</div>';
+                }
+            } catch (e) { console.error('Badges error', e); }
+        }
+
+        function renderProfile(user, profile) {
+            document.getElementById('profile-name').classList.remove('shimmer');
+            document.getElementById('profile-name').textContent = user.full_name;
+            document.getElementById('profile-email').textContent = user.email;
+
+            // Avatar Handling
+            const avatarEl = document.getElementById('profile-avatar');
+            if (profile.avatar) {
+                const src = profile.avatar.startsWith('http') ? profile.avatar : profile.avatar;
+                avatarEl.innerHTML = `<img src="${src}" alt="${user.full_name}" onerror="this.onerror=null; this.parentNode.innerText='${user.full_name ? user.full_name.charAt(0) : 'U'}'">`;
+            } else {
+                avatarEl.innerText = user.full_name ? user.full_name.charAt(0).toUpperCase() : 'U';
+            }
+
+            // Rank Badge
+            const rankDiv = document.getElementById('rank-badge-container');
+            if (profile.rank_badge) {
+                rankDiv.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <img src="${STATIC_URL}${profile.rank_badge.image}" style="width: 80px; height: 80px; filter: drop-shadow(0 0 10px rgba(244,114,182,0.4)); object-fit:contain;" alt="${profile.rank_badge.name}">
+                        <div style="margin-top: 8px; font-weight: 700; color: #f472b6; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">${profile.rank_badge.name}</div>
+                    </div>
+                `;
+            } else {
+                rankDiv.innerHTML = '<div style="color: #64748b; font-size: 0.9rem;">Unranked</div>';
+            }
+
+            document.getElementById('profile-college').textContent = user.college || 'Not set';
+            document.getElementById('profile-details').textContent = `${user.year ? user.year + ' Year' : ''} ${user.branch || '-'}`;
+            document.getElementById('profile-bio').textContent = profile.bio || 'User has not added a bio.';
+            document.getElementById('profile-level').textContent = `Level ${profile.level}`;
+
+            animateValue("stat-xp", 0, profile.total_xp || 0, 1000);
+            animateValue("stat-season-xp", 0, profile.season_xp || 0, 1000);
+            animateValue("stat-quizzes", 0, profile.total_quizzes_attempted || 0, 1000);
+            document.getElementById('stat-accuracy').textContent = Math.round(profile.accuracy_percentage || 0) + '%';
+        }
+
+        // Edit Functions
+        async function openEditModal() {
+            document.getElementById('editModal').style.display = 'grid';
+            document.getElementById('edit-name').value = currentUser.full_name;
+            document.getElementById('edit-bio').value = currentProfile.bio || '';
+
+            // Preview
+            const preview = document.getElementById('preview-avatar');
+            if (currentProfile.avatar) {
+                preview.innerHTML = `<img src="${currentProfile.avatar}" style="width:100%; height:100%; object-fit: cover; border-radius: 50%;" onerror="this.parentNode.innerText='${currentUser.full_name.charAt(0)}'">`;
+            } else {
+                preview.innerText = currentUser.full_name.charAt(0).toUpperCase();
+            }
+
+            // Load colleges if needed
+            const select = document.getElementById('edit-college');
+            if (select.children.length === 1) {
+                try {
+                    const res = await fetch('/api/accounts/colleges/');
+                    const d = await res.json();
+                    if (d.data) {
+                        d.data.forEach(c => {
+                            const opt = document.createElement('option');
+                            opt.value = c.id;
+                            opt.textContent = c.name;
+                            select.appendChild(opt);
+                        });
+                    }
+                } catch (e) { }
+            }
+            if (currentUser.college_id) select.value = currentUser.college_id;
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview-avatar').innerHTML = `<img src="${e.target.result}" style="width:100%; height:100%; object-fit: cover; border-radius: 50%;">`;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        async function saveProfile(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+
+            try {
+                const formData = new FormData(e.target);
+                const res = await fetch('/api/accounts/profile/update/', {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${accessToken}` },
+                    body: formData
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    currentUser = data.data.user;
+                    currentProfile = data.data.profile;
+                    renderProfile(currentUser, currentProfile);
+                    closeEditModal();
+                    showAppAlert('Profile updated!', 'Success', 'success');
+                } else {
+                    showAppAlert(data.message || 'Update failed', 'Error', 'error');
+                }
+            } catch (err) {
+                showAppAlert('Connection error', 'Error', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Save Changes';
+            }
+        }
+
+        // Init
+        loadProfile();
+
+        window.onclick = function (e) {
+            if (e.target.classList.contains('modal-overlay')) closeEditModal();
+        }
+
+            // --- Navigation Force: Back Button -> Dashboard ---
+            (function () {
+                // Push current state so there is a history entry to "pop"
+                window.history.pushState({ page: 'profile' }, "", window.location.href);
+
+                window.addEventListener('popstate', function (event) {
+                    // When back is pressed, force redirect to Dashboard
+                    window.location.href = '/dashboard';
+                });
+            })();
+
+    </script>
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

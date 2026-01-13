@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>API Test Suite - Quizzy</title>
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <style>
+        .test-section {
+            margin-bottom: 30px;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .test-button {
+            padding: 15px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .test-button:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .test-button h4 {
+            margin: 0 0 5px 0;
+            color: #2d3748;
+        }
+
+        .test-button p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #718096;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .status-pending {
+            background: #e6fffa;
+            color: #234e52;
+        }
+
+        #results {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .result-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .result-item.error {
+            border-left-color: #f56565;
+        }
+
+        .json-preview {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            max-height: 200px;
+            overflow: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="padding: 40px 20px; max-width: 1400px;">
+        <h1>🧪 Quizzy API Test Suite</h1>
+        <p style="color: #718096; margin-bottom: 30px;">
+            Test all 35+ API endpoints to verify complete functionality
+        </p>
+
+        <div id="auth-status" class="alert alert-info">
+            <strong>Status:</strong> <span id="auth-message">Checking authentication...</span>
+        </div>
+
+        <!-- Authentication Tests -->
+        <div class="test-section">
+            <h2>🔐 Authentication APIs (7 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('register')">
+                    <h4>Register User <span class="status status-pending" id="status-register">Not Tested</span></h4>
+                    <p>POST /api/accounts/register/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('login')">
+                    <h4>Login <span class="status status-pending" id="status-login">Not Tested</span></h4>
+                    <p>POST /api/accounts/login/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('profile')">
+                    <h4>Get Profile <span class="status status-pending" id="status-profile">Not Tested</span></h4>
+                    <p>GET /api/accounts/profile/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('update-profile')">
+                    <h4>Update Profile <span class="status status-pending" id="status-update-profile">Not Tested</span>
+                    </h4>
+                    <p>PUT /api/accounts/profile/update/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('sessions')">
+                    <h4>List Sessions <span class="status status-pending" id="status-sessions">Not Tested</span></h4>
+                    <p>GET /api/accounts/sessions/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('colleges')">
+                    <h4>List Colleges <span class="status status-pending" id="status-colleges">Not Tested</span></h4>
+                    <p>GET /api/accounts/colleges/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Tests -->
+        <div class="test-section">
+            <h2>📚 Quiz APIs (8 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('quizzes-list')">
+                    <h4>List Quizzes <span class="status status-pending" id="status-quizzes-list">Not Tested</span></h4>
+                    <p>GET /api/quizzes/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('quiz-detail')">
+                    <h4>Quiz Details <span class="status status-pending" id="status-quiz-detail">Not Tested</span></h4>
+                    <p>GET /api/quizzes/:id/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('start-quiz')">
+                    <h4>Start Quiz <span class="status status-pending" id="status-start-quiz">Not Tested</span></h4>
+                    <p>POST /api/quizzes/:id/start/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('save-answer')">
+                    <h4>Save Answer <span class="status status-pending" id="status-save-answer">Not Tested</span></h4>
+                    <p>POST /api/quizzes/attempts/:id/answer/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('submit-quiz')">
+                    <h4>Submit Quiz <span class="status status-pending" id="status-submit-quiz">Not Tested</span></h4>
+                    <p>POST /api/quizzes/attempts/:id/submit/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('quiz-results')">
+                    <h4>Get Results <span class="status status-pending" id="status-quiz-results">Not Tested</span></h4>
+                    <p>GET /api/quizzes/attempts/:id/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('user-attempts')">
+                    <h4>User's Attempts <span class="status status-pending" id="status-user-attempts">Not Tested</span>
+                    </h4>
+                    <p>GET /api/quizzes/:id/attempts/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('quiz-stats')">
+                    <h4>Quiz Stats <span class="status status-pending" id="status-quiz-stats">Not Tested</span></h4>
+                    <p>GET /api/quizzes/stats/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- XP System Tests -->
+        <div class="test-section">
+            <h2>⭐ XP System APIs (4 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('xp-stats')">
+                    <h4>XP Stats <span class="status status-pending" id="status-xp-stats">Not Tested</span></h4>
+                    <p>GET /api/xp/stats/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('level-progress')">
+                    <h4>Level Progress <span class="status status-pending" id="status-level-progress">Not Tested</span>
+                    </h4>
+                    <p>GET /api/xp/level-progress/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('badges')">
+                    <h4>My Badges <span class="status status-pending" id="status-badges">Not Tested</span></h4>
+                    <p>GET /api/xp/badges/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('xp-logs')">
+                    <h4>XP Transaction History <span class="status status-pending" id="status-xp-logs">Not Tested</span>
+                    </h4>
+                    <p>GET /api/xp/logs/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Tests -->
+        <div class="test-section">
+            <h2>🏆 Leaderboard APIs (4 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('leaderboard')">
+                    <h4>Overall Leaderboard <span class="status status-pending" id="status-leaderboard">Not
+                            Tested</span></h4>
+                    <p>GET /api/leaderboards/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('quiz-leaderboard')">
+                    <h4>Quiz Leaderboard <span class="status status-pending" id="status-quiz-leaderboard">Not
+                            Tested</span></h4>
+                    <p>GET /api/leaderboards/quiz/:id/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('college-leaderboard')">
+                    <h4>College Rankings <span class="status status-pending" id="status-college-leaderboard">Not
+                            Tested</span></h4>
+                    <p>GET /api/leaderboards/colleges/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('my-position')">
+                    <h4>My Position <span class="status status-pending" id="status-my-position">Not Tested</span></h4>
+                    <p>GET /api/leaderboards/my-position/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tests -->
+        <div class="test-section">
+            <h2>📊 Dashboard APIs (4 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('dashboard-stats')">
+                    <h4>Dashboard Stats <span class="status status-pending" id="status-dashboard-stats">Not
+                            Tested</span></h4>
+                    <p>GET /api/dashboard/stats/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('recent-activity')">
+                    <h4>Recent Activity <span class="status status-pending" id="status-recent-activity">Not
+                            Tested</span></h4>
+                    <p>GET /api/dashboard/activity/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('weekly-stats')">
+                    <h4>Weekly Stats <span class="status status-pending" id="status-weekly-stats">Not Tested</span></h4>
+                    <p>GET /api/dashboard/weekly/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('accuracy-trend')">
+                    <h4>Accuracy Trend <span class="status status-pending" id="status-accuracy-trend">Not Tested</span>
+                    </h4>
+                    <p>GET /api/dashboard/accuracy-trend/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Quiz Tests -->
+        <div class="test-section">
+            <h2>🗓️ Daily Quiz APIs (4 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('today-quiz')">
+                    <h4>Today's Quiz <span class="status status-pending" id="status-today-quiz">Not Tested</span></h4>
+                    <p>GET /api/daily-quizzes/today/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('unlock-quiz')">
+                    <h4>Unlock Quiz <span class="status status-pending" id="status-unlock-quiz">Not Tested</span></h4>
+                    <p>POST /api/daily-quizzes/unlock/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('watch-ad')">
+                    <h4>Watch Ad <span class="status status-pending" id="status-watch-ad">Not Tested</span></h4>
+                    <p>POST /api/daily-quizzes/watch-ad/</p>
+                </div>
+                <div class="test-button" onclick="testAPI('key-balance')">
+                    <h4>Key Balance <span class="status status-pending" id="status-key-balance">Not Tested</span></h4>
+                    <p>GET /api/daily-quizzes/keys/</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Tests -->
+        <div class="test-section">
+            <h2>⚙️ Admin Panel APIs (5 endpoints)</h2>
+            <div class="test-grid">
+                <div class="test-button" onclick="testAPI('admin-stats')">
+                    <h4>Admin Stats <span class="status status-pending" id="status-admin-stats">Not Tested</span></h4>
+                    <p>GET /api/admin-panel/stats/</p>
+                </div>
+                <div class="test-button" onclick="alert('Admin-only function')">
+                    <h4>Approve User <span class="status status-pending">Admin Only</span></h4>
+                    <p>POST /api/admin-panel/users/:id/approve/</p>
+                </div>
+                <div class="test-button" onclick="alert('Admin-only function')">
+                    <h4>Ban User <span class="status status-pending">Admin Only</span></h4>
+                    <p>POST /api/admin-panel/users/:id/ban/</p>
+                </div>
+                <div class="test-button" onclick="alert('Admin-only function')">
+                    <h4>Grant XP <span class="status status-pending">Admin Only</span></h4>
+                    <p>POST /api/admin-panel/users/:id/grant-xp/</p>
+                </div>
+                <div class="test-button" onclick="alert('Admin-only function')">
+                    <h4>Import Quizzes <span class="status status-pending">Admin Only</span></h4>
+                    <p>POST /api/admin-panel/quizzes/import/</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Test Results</h3>
+            <button class="btn btn-primary" onclick="runAllTests()">Run All Tests</button>
+            <button class="btn btn-secondary" onclick="clearResults()">Clear Results</button>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/api-tester.js' %}"></script>
+</body>
+
+</html>

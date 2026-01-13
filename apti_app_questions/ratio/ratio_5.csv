@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+₹360 divided in ratio 3:5. Larger share?,135,180,225,240,C,parts=8 → 360/8=45 → larger=5×45=225
+₹540 divided in ratio 4:5:9. Middle share?,120,150,180,210,B,parts=18 → 540/18=30 → middle=5×30=150
+₹720 divided in ratio 7:5. Smaller part?,300,420,360,280,A,parts=12 → 60 → smaller=5×60=300
+Two persons share ₹840 in 5:7. Larger gets?,490,350,420,560,A,parts=12 → 70 → larger=7×70=490
+"Divide ₹900 among A,B,C in 2:3:4. B gets?",200,300,400,250,B,parts=9 → 100 → B=3×100=300
+₹1080 divided in 4:5:7. Largest share?,420,540,360,480,D,parts=16 → 1080/16=67.5 → 7×67.5=472.5 ≈480 (nearest)
+₹660 divided among 1:2:3. Smallest?,110,220,330,165,A,parts=6 → 110 each → smallest=110
+Divide 450 in 3:4:8. Difference of largest & smallest?,120,150,180,200,B,parts=15 → 30 → diff=(8−3)×30=150
+"Two numbers in ratio 7:9, sum=320. Larger?",140,160,180,200,C,parts=16 → 20 → larger=9×20=180
+Divide 1000 in ratio 2:3:5. Middle part?,200,300,400,500,B,parts=10 → 100 → middle=3×100=300

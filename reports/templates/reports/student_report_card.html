@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @page {
+            size: a4 portrait;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica', sans-serif;
+            color: #1e293b;
+            margin: 40px;
+        }
+
+        /* Branding Header */
+        .header {
+            display: block;
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .report-meta {
+            color: #64748b;
+            font-size: 12px;
+            text-align: right;
+            margin-top: -25px;
+            /* Pull up to align with logo */
+        }
+
+        /* User Profile Section */
+        .profile-section {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .user-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .user-details {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            width: 30%;
+            /* Approx 3 per row */
+            display: inline-block;
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #f1f5f9;
+            margin-right: 10px;
+        }
+
+        .card-val {
+            font-size: 28px;
+            font-weight: 800;
+            color: #6366f1;
+            display: block;
+        }
+
+        .card-lbl {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Main Content Split */
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e293b;
+            border-left: 4px solid #f43f5e;
+            padding-left: 10px;
+            margin-bottom: 15px;
+            margin-top: 40px;
+        }
+
+        .skill-bar-container {
+            margin-bottom: 12px;
+        }
+
+        .skill-label {
+            font-size: 12px;
+            color: #334155;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .skill-track {
+            background: #e2e8f0;
+            height: 8px;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: #6366f1;
+        }
+
+        /* Badges */
+        .badge-list {
+            margin-top: 10px;
+        }
+
+        .badge-item {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #dbeafe;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 40px;
+            right: 40px;
+            text-align: center;
+            font-size: 10px;
+            color: #cbd5e1;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 10px;
+        }
+
+        /* Helpers */
+        .trend-up {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .trend-down {
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .flag-box {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-text">IQ PLATFORM</div>
+        <div class="report-meta">
+            {{ report_type }} Performance Report<br>
+            {{ start_date|date:"M d" }} - {{ end_date|date:"M d, Y" }}
+        </div>
+    </div>
+
+    <!-- User Profile -->
+    <div class="profile-section">
+        <div class="user-name">{{ user.full_name|default:user.username }}</div>
+        <div class="user-details">
+            {{ user.email }}<br>
+            {{ user.college|default:"No College Set" }} | {{ user.year|default:"-" }} Year
+        </div>
+
+        {% if stats.flags %}
+        <div style="margin-top: 15px;">
+            {% for flag in stats.flags %}
+            <span class="badge-item" style="background: #e2e8f0; color: #334155;">{{ flag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="summary-grid">
+        <div class="summary-card">
+            <span class="card-val" style="color: #6366f1;">{{ stats.avg_score }}%</span>
+            <span class="card-lbl">Avg Accuracy</span>
+        </div>
+        <div class="summary-card">
+            <span class="card-val" style="color: #6366f1;">{{ profile.current_rank|default:"-" }}</span>
+            <span class="card-lbl">Global Rank</span>
+        </div>
+        <div class="summary-card">
+            <span class="card-val" style="color: #6366f1;">{{ stats.total_quizzes }}</span>
+            <span class="card-lbl">Tests Taken</span>
+        </div>
+    </div>
+
+    <!-- Insight Message -->
+    <div
+        style="background: #fff1f2; border: 1px solid #ffe4e6; padding: 15px; border-radius: 8px; color: #be123c; font-size: 13px; margin-bottom: 30px;">
+        <strong>Performance Insight:</strong>
+        {% if stats.trend.accuracy_change > 0 %}
+        Great job! Your accuracy has improved by <span class="trend-up">+{{ stats.trend.accuracy_change }}%</span>
+        compared to last {{ report_type|lower }}.
+        {% elif stats.trend.accuracy_change < 0 %} Your accuracy dropped slightly by <span class="trend-down">{{
+            stats.trend.accuracy_change }}%</span>. Focus on reviewing your weak areas.
+            {% else %}
+            Your performance is stable. Push harder to see improvements!
+            {% endif %}
+    </div>
+
+    <!-- Content Columns -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <!-- Left Column: Skills -->
+            <td width="48%" valign="top">
+                <div class="section-title">Skill Analysis</div>
+                {% if skills %}
+                {% for skill in skills %}
+                <div class="skill-bar-container">
+                    <span class="skill-label">{{ skill.name }} - <strong>{{ skill.score }}%</strong></span>
+                    <div class="skill-track">
+                        <div class="skill-fill" style="width: {{ skill.score }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p style="font-size: 12px; color: #64748b; font-style: italic;">No skill data available for this period.
+                </p>
+                {% endif %}
+            </td>
+
+            <td width="4%">&nbsp;</td> <!-- Spacer -->
+
+            <!-- Right Column: Badges & logs -->
+            <td width="48%" valign="top">
+                <!-- Right Column: Recent Activity -->
+            <td width="48%" valign="top">
+                <div class="section-title" style="border-color: #10b981;">Recent Activity</div>
+                <ul style="padding-left: 20px; font-size: 12px; color: #475569; margin: 0;">
+                    {% for r in results %}
+                    <li style="margin-bottom: 5px;">
+                        <strong>{{ r.quiz.title }}</strong>: {{ r.percentage_score }}%
+                        <span style="color: #94a3b8; font-size: 10px;">({{ r.submitted_at|date:"M d" }})</span>
+                    </li>
+                    {% empty %}
+                    <li style="color: #94a3b8;">No recent activity.</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer -->
+    <div class="footer">
+        Generated by IQ Platform on {% now "Y-m-d H:i" %} | Validated Report
+    </div>
+
+</body>
+
+</html>

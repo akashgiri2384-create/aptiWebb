@@ -1,0 +1,1359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>IQurio Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <style>
+        :root {
+            /* Premium Dark Theme Variables */
+            --bg-dark: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.75);
+            /* Slightly clearer */
+            --glass-bg-hover: rgba(30, 41, 59, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary-accent: #6366f1;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(167, 139, 250, 0.08) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            /* More solid for better logo visibility */
+            border-bottom: 1px solid var(--glass-border);
+            height: 70px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* Increased gap */
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .nav-logo img {
+            height: 38px;
+            width: 38px;
+            object-fit: contain;
+            border-radius: 8px;
+            /* Smooth corners if it has bg */
+        }
+
+        /* New Horizontal Scroll Container */
+        .horizontal-scroll-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            /* Space for scrollbar */
+            margin-right: -20px;
+            /* Break out of container padding on right */
+            padding-right: 20px;
+            /* Add padding back */
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scroll iOS */
+            scrollbar-width: none;
+            /* Firefox: Hide scrollbar */
+        }
+
+        /* Hide scrollbar for Chrome/Safari but keep functionality */
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .horizontal-card {
+            min-width: 300px;
+            /* Fixed width for cards */
+            max-width: 300px;
+            flex-shrink: 0;
+            /* Prevent squishing */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-accent);
+        }
+
+        /* Mobile Nav Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+
+        /* Mobile Drawer */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 16px;
+                /* Reduced padding */
+            }
+
+            .nav-toggle {
+                display: block;
+                /* Show hamburger */
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                /* Below navbar */
+                left: 0;
+                width: 100%;
+                background: #0f172a;
+                /* Solid background */
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--glass-border);
+                transform: translateY(-150%);
+                /* Hidden by default */
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                /* Slide down */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-link.active::after {
+                display: none;
+                /* Remove bottom bar on mobile */
+            }
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .user-menu:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        /* Profile Dropdown */
+        .profile-dropdown {
+            position: absolute;
+            top: 75px;
+            right: 40px;
+            background: #1e293b;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            width: 200px;
+            padding: 8px;
+            display: none;
+            /* Toggled by JS */
+            flex-direction: column;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            z-index: 200;
+        }
+
+        .dropdown-item {
+            padding: 10px 12px;
+            border-radius: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        /* Main Layout */
+        .dashboard-container {
+            flex: 1;
+            /* Pushes footer down */
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px 16px;
+            /* Reduced mobile padding */
+            box-sizing: border-box;
+        }
+
+        /* Hero Section - Redesigned */
+        .hero {
+            margin-bottom: 32px;
+            /* Reduced margin */
+            position: relative;
+            padding: 10px 0;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            /* Mobile First Size */
+            margin: 0 0 12px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        /* Desktop Text Scaling */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .dashboard-container {
+                padding: 40px 20px;
+            }
+
+            .hero {
+                margin-bottom: 45px;
+            }
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
+        }
+
+        .hero-wave {
+            display: inline-block;
+            animation: wave 2.5s infinite;
+            transform-origin: 70% 70%;
+            margin-left: 10px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 1rem;
+            /* Mobile */
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0.9;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Stats Row - Mobile First Refactor */
+        /* Stats Row - Mobile First Refactor */
+        /* Stats Row - Single Horizontal Card Strip (Mobile Default) */
+        .stats-row {
+            display: flex;
+            flex-wrap: nowrap;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 12px 0;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            /* Hide scrollbar */
+        }
+
+        .stats-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .stat-card {
+            flex: 0 0 auto;
+            /* Don't shrink below content size, allow scroll if needed */
+            min-width: 80px;
+            /* Target ~4 items in 320px */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10px;
+            position: relative;
+            background: none;
+            border: none;
+            border-radius: 0;
+        }
+
+        /* Vertical Divider */
+        .stat-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            display: block;
+        }
+
+        /* Desktop Restoration (Grid) */
+        @media (min-width: 640px) {
+            .stats-row {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                background: transparent;
+                border: none;
+                padding: 0;
+                overflow: visible;
+                border-radius: 0;
+            }
+
+            .stat-card {
+                background: var(--glass-bg);
+                border: 1px solid var(--glass-border);
+                padding: 20px;
+                border-radius: 16px;
+                align-items: flex-start;
+                text-align: left;
+                flex: unset;
+                min-width: auto;
+            }
+
+            .stat-card:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-row {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Text Adjustments */
+        .stat-icon {
+            font-size: 1.2rem;
+            width: 28px;
+            height: 28px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-val {
+            font-size: 1.1rem;
+            /* Compact for 320px */
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            /* Small label */
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 640px) {
+            .stat-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+
+            .stat-val {
+                font-size: 1.75rem;
+            }
+
+            .stat-lbl {
+                font-size: 0.9rem;
+            }
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .stat-val {
+            font-size: 1.75rem;
+            /* Mobile */
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .stat-val {
+                font-size: clamp(1.5rem, 2.5vw, 2rem);
+            }
+        }
+
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 24px;
+            }
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary-accent);
+            border-radius: 4px;
+        }
+
+        /* Daily Challenge */
+        /* Daily Challenge & Quiz List */
+        .daily-grid,
+        .quiz-grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-right: -20px;
+            /* Negative margin to scroll edge-to-edge */
+            padding-right: 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            /* Hide Scrollbar */
+            margin-bottom: 30px;
+        }
+
+        .daily-grid::-webkit-scrollbar,
+        .quiz-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Enforce horizontal card sizing */
+        .daily-card,
+        .quiz-card {
+            min-width: 280px;
+            max-width: 280px;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+
+            .daily-grid,
+            .quiz-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 24px;
+                overflow-x: visible;
+                margin-right: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                margin-bottom: 40px;
+                /* Fix overlap */
+            }
+
+            .daily-card,
+            .quiz-card {
+                min-width: auto;
+                max-width: none;
+            }
+        }
+
+        .daily-card {
+            background: linear-gradient(145deg, #1e293b, #111827);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .daily-info h3 {
+            margin: 0 0 8px;
+            font-size: 1.4rem;
+        }
+
+        .daily-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        /* Filtering */
+        .filter-bar {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 8px;
+            border-radius: 12px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            /* Space for scrollbar */
+        }
+
+        .filter-bar::-webkit-scrollbar {
+            height: 6px;
+            /* Horizontal scrollbar height */
+        }
+
+        .filter-bar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .filter-bar::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            /* Subtle gray thumb */
+            border-radius: 10px;
+        }
+
+        .filter-bar::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-accent);
+            /* Active brand color on hover */
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-accent);
+            color: white;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Quiz Grid */
+        /* Quiz Grid (Handled above in shared block) */
+        /* .quiz-grid { display: grid... removed to allow shared flex/grid logic } */
+
+        .quiz-card {
+            background: #1e293b;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+
+        .quiz-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .quiz-badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            font-weight: 600;
+        }
+
+        .quiz-title {
+            font-size: 1.15rem;
+            margin: 0 0 6px;
+            color: white;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .quiz-cat {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-quiz {
+            margin-top: auto;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--primary-accent);
+            background: transparent;
+            color: var(--primary-accent);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-quiz:hover {
+            background: var(--primary-accent);
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Modal etc */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Utility to hide text on mobile */
+        @media (max-width: 640px) {
+            .nav-text-desktop {
+                display: none;
+            }
+        }
+
+        /* Ultra Small Screen optimisations */
+        @media (max-width: 380px) {
+            .navbar {
+                padding: 0 12px;
+                /* Tight padding */
+            }
+
+            #nav-username {
+                display: none;
+                /* Hide Name, keep Avatar */
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                /* Smaller Title */
+            }
+
+            .hero p {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-logo span {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="nav-logo">
+            <!-- Restored Image Logo -->
+            <img src="{% static 'images/logos/logo-dark.jpg' %}" alt="IQ Logo" id="nav-logo-img">
+            <span
+                style="font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">⚡
+                IQurio</span>
+        </a>
+
+        <div class="nav-right" style="display: flex; gap: 24px; align-items: center;">
+            <a href="/leaderboard" class="nav-link">
+                <span class="nav-icon">🏆</span> <span class="nav-text-desktop">Leaderboard</span>
+            </a>
+
+            <div class="user-menu" onclick="toggleMenu()">
+                <div class="user-avatar" id="nav-avatar">U</div>
+                <span style="font-size: 0.9rem; color: white;" id="nav-username">User</span>
+            </div>
+
+            <div id="profile-menu" class="profile-dropdown">
+                <a href="/profile" class="dropdown-item">👤 My Profile</a>
+                <a href="/leaderboard" class="dropdown-item">🏆 Leaderboard</a>
+                <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
+                <div onclick="logout()" class="dropdown-item" style="color: #ef4444;">🚪 Logout</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Hero -->
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Welcome back, <span id="welcome-name" class="highlight">Capt. Akash</span> <span
+                    class="hero-wave">👋</span></h1>
+            <p>
+                <span
+                    style="background: rgba(52, 211, 153, 0.1); color: #34d399; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(52, 211, 153, 0.2);">🚀
+                    READY TO LEARN?</span>
+                <span>Track your progress and conquer new challenges today.</span>
+            </p>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats-row">
+            <div class="stat-card">
+                <div class="stat-icon" style="color: #6366f1;">⚡</div>
+                <div class="stat-val" id="stat-xp">0</div>
+                <div class="stat-lbl">Total XP</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="color: #34d399;">🎯</div>
+                <div class="stat-val" id="stat-accuracy">0%</div>
+                <div class="stat-lbl">Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="color: #fbbf24;">🔥</div>
+                <div class="stat-val" id="stat-streak">0</div>
+                <div class="stat-lbl">Day Streak</div>
+            </div>
+            <div class="stat-card" style="cursor: pointer;" onclick="window.location.href='/leaderboard'">
+                <div class="stat-icon" style="color: #f472b6;">🏆</div>
+                <div class="stat-val" id="stat-rank">-</div>
+                <div class="stat-lbl">Global Rank</div>
+            </div>
+        </section>
+
+        <!-- Daily Challenges -->
+        <h2 class="section-title">Daily Challenges</h2>
+        <div id="daily-container" class="daily-grid">
+            <div style="color: var(--text-muted); grid-column: 1/-1;">Loading challenges...</div>
+        </div>
+        <!-- Practice Quizzes -->
+        <h2 class="section-title">Practice Library</h2>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar" id="category-filters">
+            <button class="filter-btn active" onclick="filterQuizzes('all', this)">All Quizzes</button>
+            <!-- Dynamic categories will be loaded here -->
+        </div>
+
+        <div id="practice-container" class="quiz-grid">
+            <div style="color: var(--text-muted); grid-column: 1/-1;">Loading library...</div>
+        </div>
+    </main>
+
+    <!-- Ad Modal -->
+    <div id="ad-modal" class="modal-overlay">
+        <div
+            style="background: #1f2937; padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 3rem; margin-bottom: 20px;">📺</div>
+            <h3 style="color: white; margin: 0 0 10px;">Watch Ad</h3>
+            <p style="color: #94a3b8; margin-bottom: 30px;">Support us to earn a key!</p>
+            <div id="ad-timer" style="font-size: 2.5rem; font-weight: bold; color: #818cf8; margin-bottom: 20px;">5
+            </div>
+            <button id="ad-continue-btn" disabled
+                style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #374151; color: #9ca3af; font-weight: 600;">Wait...</button>
+        </div>
+    </div>
+
+    <!-- Minimal Footer -->
+    {% include 'components/footer_minimal.html' %}
+
+    <script>
+        // Global State
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) window.location.href = '/login';
+
+        const adCooldowns = {};
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadCategories(); // Load categories dynamically
+            loadDailyQuizzes();
+            loadPracticeQuizzes('all');
+
+            // Close dropdown on click outside
+            document.addEventListener('click', (e) => {
+                const menu = document.getElementById('profile-menu');
+                const btn = document.querySelector('.user-menu');
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('profile-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        async function loadStats() {
+            try {
+                const res = await fetch('/api/dashboard/stats/', { headers: { 'Authorization': `Bearer ${accessToken}` } });
+
+                if (res.status === 401) {
+                    localStorage.clear();
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const data = await res.json();
+                if (data.success) {
+                    const s = data.data;
+                    animateValue('stat-xp', 0, s.total_xp, 1000);
+                    document.getElementById('stat-accuracy').innerText = s.accuracy_percentage + '%';
+                    document.getElementById('stat-streak').innerText = s.practice_streak || 0;
+                    document.getElementById('stat-rank').innerText = typeof s.current_rank === 'number' ? '#' + formatNumber(s.current_rank) : '-';
+
+                    const name = s.full_name ? s.full_name.split(' ')[0] : 'User';
+                    document.getElementById('welcome-name').innerText = name;
+                    document.getElementById('nav-username').innerText = name;
+
+                    const avatarEl = document.getElementById('nav-avatar');
+                    if (s.avatar) {
+                        avatarEl.innerHTML = `<img src="${s.avatar}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                        avatarEl.style.background = 'transparent';
+                        avatarEl.style.border = '2px solid #6366f1';
+                    } else if (s.full_name) {
+                        avatarEl.innerText = s.full_name[0].toUpperCase();
+                        avatarEl.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
+                        avatarEl.innerHTML = s.full_name[0].toUpperCase();
+                    }
+                }
+            } catch (e) { console.error('Stats error', e); }
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000000) {
+                return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
+            }
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+            }
+            return num;
+        }
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            // Immediate set if formatting is needed and not animated? 
+            // The request says "switch to ... 1K so on". Animation is nice but final value MUST be formatted.
+            // Let's keep animation but format the displayed text.
+
+            if (start === end) { obj.textContent = formatNumber(end); return; }
+
+            const range = end - start;
+            const startTime = new Date().getTime();
+            const endTime = startTime + duration;
+
+            const timer = setInterval(function () {
+                const now = new Date().getTime();
+                const remaining = Math.max((endTime - now) / duration, 0);
+                const value = Math.round(end - (remaining * range));
+
+                obj.textContent = formatNumber(value);
+
+                if (value == end) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+
+        async function loadCategories() {
+            try {
+                const res = await fetch('/api/quizzes/categories/', { headers: { 'Authorization': `Bearer ${accessToken}` } });
+                if (res.status === 401) return; // Silent fail or logout
+                const data = await res.json();
+                if (data.success) {
+                    const container = document.getElementById('category-filters');
+                    // Keep "All Quizzes" button
+                    const allBtn = container.firstElementChild;
+                    container.innerHTML = '';
+                    container.appendChild(allBtn);
+
+                    data.data.forEach(cat => {
+                        const btn = document.createElement('button');
+                        btn.className = 'filter-btn';
+                        btn.innerText = cat.name; // Use name as label
+                        btn.onclick = () => filterQuizzes(cat.slug, btn); // Use slug for filtering
+                        container.appendChild(btn);
+                    });
+                }
+            } catch (e) { console.error('Categories error', e); }
+        }
+
+        async function loadDailyQuizzes() {
+            try {
+                const res = await fetch('/api/daily-quizzes/today/', { headers: { 'Authorization': `Bearer ${accessToken}` } });
+                if (res.status === 401) return;
+                const data = await res.json();
+                const container = document.getElementById('daily-container');
+
+                if (data.success && data.data.quizzes.length > 0) {
+                    container.innerHTML = data.data.quizzes.map(renderDailyCard).join('');
+                } else {
+                    container.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 12px; text-align: center; border: 1px dashed rgba(255,255,255,0.1);">No daily challenges today. Check back tomorrow!</div>`;
+                }
+            } catch (e) { console.error('Daily error', e); }
+        }
+
+        function renderDailyCard(quiz) {
+            const locked = !quiz.is_unlocked;
+            const collected = quiz.keys_earned || 0;
+            // Fix: Allow 0 to be a valid value. '|| 5' treats 0 as false.
+            const needed = (quiz.keys_required !== undefined && quiz.keys_required !== null) ? quiz.keys_required : 5;
+            const ready = collected >= needed;
+
+            let actionBtn = '';
+
+            if (quiz.is_completed) {
+                actionBtn = `<button class="btn-quiz" disabled style="background: #10b981; color: white; opacity: 0.8; cursor: default;">✅ Completed</button>`;
+            } else if (locked) {
+                if (ready) {
+                    if (needed === 0) {
+                        // Free Quiz - Use Primary Style
+                        actionBtn = `<button class="btn-quiz" style="background: var(--primary-accent); color: white;" onclick="unlockQuiz('${quiz.id}')">🚀 Start Now</button>`;
+                    } else {
+                        // Unlocking with Keys - Use Yellow/Warning Style
+                        actionBtn = `<button class="btn-quiz" style="background: #fbbf24; color: #111827; border: none;" onclick="unlockQuiz('${quiz.id}')">🔓 Unlock Now</button>`;
+                    }
+                } else {
+                    // Check cooldown
+                    const cd = adCooldowns[quiz.id];
+                    if (cd && Date.now() < cd) {
+                        actionBtn = `<button id="btn-ad-${quiz.id}" class="btn-quiz" disabled style="opacity: 0.5;">⏳ Wait...</button>`;
+                        setTimeout(() => runCooldown(quiz.id), 0);
+                    } else {
+                        actionBtn = `<button id="btn-ad-${quiz.id}" class="btn-quiz" onclick="watchAd('${quiz.id}')">📺 Watch Ad (+1 🔑)</button>`;
+                    }
+                }
+            } else {
+                actionBtn = `<button class="btn-quiz" style="background: var(--primary-accent); color: white;" onclick="startQuiz('${quiz.quiz_id}')">🚀 Start Challenge</button>`;
+            }
+
+            return `
+                <div class="quiz-card" style="position: relative; overflow: hidden;">
+                     <!-- Accent top border for Daily -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #6366f1, #a855f7);"></div>
+                    
+                    <div class="quiz-header">
+                        <div class="quiz-icon" style="color: #fbbf24; background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.2);">⚡</div>
+                        <span class="quiz-badge" style="background: rgba(99, 102, 241, 0.1); color: #818cf8;">${quiz.xp_multiplier || 5}x XP</span>
+                    </div>
+                    
+                    <h4 class="quiz-title">${quiz.title || quiz.quiz_title}</h4>
+                    
+                    <p class="quiz-cat" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                        <span>📝 ${quiz.total_questions || '?'} Questions</span>
+                        <span>•</span>
+                        <span>${quiz.difficulty || 'Easy'}</span>
+                    </p>
+
+                    ${locked && needed > 0 ? `
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 6px; color: var(--text-muted);">
+                                <span>Keys Required</span>
+                                <span>${collected} / ${needed}</span>
+                            </div>
+                            <div style="height: 4px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
+                                <div style="height: 100%; width: ${(collected / needed) * 100}%; background: #fbbf24;"></div>
+                            </div>
+                        </div>
+                    ` : ''}
+                    ${!locked ? '<div style="margin-bottom: 15px; font-size: 0.85rem; color: #34d399; font-weight: 500;">✨ Unlocked & Ready</div>' : ''}
+                    
+                    ${actionBtn}
+                </div>
+            `;
+        }
+
+        // Increased limit to show ALL quizzes
+        async function loadPracticeQuizzes(cat) {
+            const container = document.getElementById('practice-container');
+            container.innerHTML = '<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-muted);">Searching library...</div>';
+
+            let url = `/api/quizzes/?limit=200`; // Increased limit
+            if (cat && cat !== 'all') url += `&category=${cat}`;
+
+            try {
+                const res = await fetch(url, { headers: { 'Authorization': `Bearer ${accessToken}` } });
+                if (res.status === 401) return;
+                const data = await res.json();
+
+                if (data.success) {
+                    if (data.data.results.length === 0) {
+                        container.innerHTML = `<div style="grid-column: 1/-1; padding: 60px; text-align: center; color: var(--text-muted);">
+                            <div style="font-size: 2rem; margin-bottom: 15px;">🔍</div>
+                            No quizzes found for this category.
+                        </div>`;
+                        return;
+                    }
+                    container.innerHTML = data.data.results.map(q => `
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <div class="quiz-icon">📝</div>
+                                <span class="quiz-badge">${q.category.name}</span>
+                            </div>
+                            <h4 class="quiz-title">${q.title}</h4>
+                            <p class="quiz-cat" style="display: flex; gap: 10px; align-items: center;">
+                                <span>⏱ ${q.duration_minutes}m</span>
+                                <span>•</span>
+                                <span>${q.total_questions} Questions</span>
+                            </p>
+                            <button class="btn-quiz" onclick="startQuiz('${q.id}')">Start Quiz</button>
+                        </div>
+                    `).join('');
+                }
+            } catch (e) {
+                container.innerHTML = 'Error loading quizzes.';
+            }
+        }
+
+        async function filterQuizzes(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            await loadPracticeQuizzes(cat);
+        }
+
+        // Logic Helpers
+        function logout() { localStorage.clear(); window.location.href = '/login'; }
+
+        async function startQuiz(id) {
+            const res = await fetch(`/api/quizzes/${id}/start/`, {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            if (data.success) window.location.assign(`/quiz/${data.data.attempt_id}`);
+            else showAppAlert(data.error.message, 'Error', 'error');
+        }
+
+        // Ad Logic
+        async function watchAd(id) {
+            const modal = document.getElementById('ad-modal');
+            const btn = document.getElementById('ad-continue-btn');
+            const timer = document.getElementById('ad-timer');
+
+            modal.style.display = 'flex';
+            btn.disabled = true;
+            btn.innerText = 'Watching...';
+            btn.style.background = '#374151';
+            let t = 5;
+            timer.innerText = t;
+
+            const interval = setInterval(() => {
+                t--;
+                timer.innerText = t;
+                if (t <= 0) {
+                    clearInterval(interval);
+                    timer.innerText = '✅';
+                    btn.disabled = false;
+                    btn.innerText = 'Claim Reward';
+                    btn.style.background = '#34d399';
+                    btn.style.color = '#fff';
+                    btn.onclick = async () => {
+                        try {
+                            // Fix: Disable button immediately to prevent double-claims
+                            btn.disabled = true;
+                            btn.innerText = 'Claiming...';
+
+                            const res = await fetch('/api/daily-quizzes/watch-ad/', {
+                                method: 'POST', body: JSON.stringify({ daily_quiz_id: id }),
+                                headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }
+                            });
+                            const d = await res.json();
+                            if (d.success) {
+                                modal.style.display = 'none';
+                                startCooldown(id);
+                                loadDailyQuizzes();
+                            } else {
+                                // Re-enable if failed (e.g. rate limited)
+                                btn.disabled = false;
+                                btn.innerText = 'Claim Reward';
+                                alert(d.error.message || "Failed to claim");
+                            }
+                        } catch (e) { }
+                    };
+                }
+            }, 1000);
+        }
+
+        function startCooldown(id) {
+            adCooldowns[id] = Date.now() + 10000;
+            runCooldown(id);
+        }
+
+        function runCooldown(id) {
+            const btn = document.getElementById(`btn-ad-${id}`);
+            if (!btn) return;
+
+            const intv = setInterval(() => {
+                const now = Date.now();
+                const end = adCooldowns[id];
+                if (now >= end) {
+                    clearInterval(intv);
+                    loadDailyQuizzes(); // Refresh to show button
+                } else {
+                    btn.innerText = `⏳ ${Math.ceil((end - now) / 1000)}s`;
+                    btn.disabled = true;
+                }
+            }, 1000);
+        }
+
+        async function unlockQuiz(id) {
+            const res = await fetch('/api/daily-quizzes/unlock/', {
+                method: 'POST', body: JSON.stringify({ daily_quiz_id: id }),
+                headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }
+            });
+            const d = await res.json();
+            if (d.success) loadDailyQuizzes();
+            else showAppAlert(d.error.message, 'Unlock Failed', 'error');
+        }
+    </script>
+    <script>
+        // Theme Toggle Logic
+        const logoLight = "{% static 'images/logos/logo-dark.jpg' %}"; // Forced to dark
+        const logoDark = "{% static 'images/logos/logo-dark.jpg' %}";
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Update Icon
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+
+            // Update Logo (Always Dark)
+            const logo = document.getElementById('nav-logo-img');
+            if (logo) logo.src = logoDark;
+        }
+
+        // Init Theme
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+
+            // Init Logo
+            const logo = document.getElementById('nav-logo-img');
+            if (logo) logo.src = savedTheme === 'dark' ? logoLight : logoDark;
+        })();
+        // Mobile Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // --- Navigation Force: Back Button -> Login ---
+        (function () {
+            // Push current state so there is a history entry to "pop"
+            window.history.pushState({ page: 'dashboard' }, "", window.location.href);
+
+            window.addEventListener('popstate', function (event) {
+                // When back is pressed, force redirect to Login
+                window.location.href = '/login';
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"If n is even, which is always even?",n²,n+1,n−1,2n+1,A,Even² = even
+Which is divisible by 8?,216,324,432,512,D,512 ÷ 8 = 64
+Find last digit of 17²⁰,1,7,9,3,B,Unit digit cycle of 7²
+Which number leaves remainder 1 when divided by 4?,18,21,24,28,B,21 = 4×5+1
+"Find smallest number divisible by 2,3,5",30,60,90,120,A,LCM = 30
+"If n is odd, n² is",odd,even,prime,composite,A,Odd×odd = odd
+Find number of factors of 16,3,4,5,6,B,"Factors: 1,2,4,8,16"
+Which is divisible by 6?,124,234,301,415,B,Divisible by 2 and 3
+Which is NOT prime?,29,31,33,37,C,33 = 3×11
+Find sum of first 20 natural numbers,190,200,210,220,C,n(n+1)/2

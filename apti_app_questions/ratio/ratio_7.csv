@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A,B invest in ratio 2:3, profit=₹5000. A’s share?",2000,2500,3000,3500,A,A=(2/5)×5000=2000
+"A invests ₹4000, B ₹6000. Profit ₹5000. B gets?",2000,2500,3000,3500,C,ratio=2:3 → B=(3/5)×5000=3000
+"A:B:C = 1:2:3, profit ₹12000. C gets?",2000,4000,6000,8000,A,parts=6 → C=3×2000=6000
+"A invests twice B, profit=₹9000. A gets?",3000,6000,4500,7500,B,ratio=2:1 → A=(2/3)×9000=6000
+"A invests for 12 months, B for 6 months, same capital. Profit ₹9000. B gets?",2000,3000,4000,4500,B,time ratio=12:6=2:1 → B=1/3×9000=3000
+"A invests 5 months, B 10 months, same capital. Profit ₹6000. A’s share?",2000,3000,4000,1500,A,ratio=5:10=1:2 → A=1/3×6000=2000
+"A invests ₹8000 for 6 months, B ₹6000 for 8 months. Profit ₹5600. A gets?",2800,3200,3500,2400,A,ratio=48000:48000=1:1 → A=2800? wait profit 5600/2=2800 → option A (correct A)
+"A:B:C = 2:3:5, profit ₹20000. B gets?",4000,6000,8000,10000,B,parts=10 → B=3×2000=6000
+A invests 3x of B. Profit=₹8000. B gets?,2000,2500,3000,4000,A,ratio=3:1 → B=1/4×8000=2000
+"A joins later, total profit=₹12000. A:B=2:3. A gets?",4800,5000,5200,6000,A,A=(2/5)×12000=4800

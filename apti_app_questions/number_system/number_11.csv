@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+A number divisible by 9 must be divisible by,3,6,18,27,A,9 = 3×3
+What is the smallest 2-digit prime?,10,11,13,17,B,First two-digit prime
+Which number has maximum factors?,16,18,20,24,D,24 has highest divisors
+Find remainder when 999 divided by 9,0,1,3,9,A,Sum digits = 27
+Which is a co-prime pair?,"8,12","9,15","14,21","8,15",D,HCF = 1
+Which number is divisible by 4?,1234,5678,912,1357,C,Last two digits 12
+Find square root of 169,11,12,13,14,C,13² = 169
+Which is divisible by 3?,111,112,113,114,A,Sum digits = 3
+What is the smallest natural number?,0,1,2,3,B,Natural numbers start from 1
+Find value of (−5)²,−25,25,−10,10,B,Square of negative is positive

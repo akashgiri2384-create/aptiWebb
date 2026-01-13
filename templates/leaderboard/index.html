@@ -1,0 +1,1249 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Leaderboard - IQurio</title>
+    <link rel="stylesheet" href="{% static 'css/design-system.css' %}">
+    <style>
+        /* =================================================================
+           PREMIUM LEADERBOARD REDESIGN - CSS ONLY
+           Mobile-First | WebView Optimized | Top 3 Highlighting
+           ================================================================= */
+
+        /* ============================================================
+           1. ROOT VARIABLES & THEME FOUNDATION
+           ============================================================ */
+
+        :root {
+            /* Primary Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --bg-dark: #0f1419;
+            --bg-card: #1a1f2e;
+            --bg-card-hover: #222835;
+
+            /* Accent Colors */
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+            --accent-blue: #667eea;
+            --accent-purple: #764ba2;
+
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+
+            /* Border & Shadow */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(102, 126, 234, 0.3);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
+            --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.2);
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.25s ease;
+            --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================
+           2. BASE STYLES & RESETS
+           ============================================================ */
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-primary) !important;
+        }
+
+        /* Premium Background Gradient */
+        .dashboard-bg-accent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60vh;
+            background: radial-gradient(ellipse at top,
+                    rgba(102, 126, 234, 0.15) 0%,
+                    rgba(118, 75, 162, 0.08) 40%,
+                    transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+           3. HEADER & NAVIGATION
+           ============================================================ */
+
+        .container>div:first-child {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom,
+                    rgba(15, 20, 25, 0.95) 0%,
+                    rgba(15, 20, 25, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: var(--spacing-lg) var(--spacing-md);
+            margin: calc(var(--spacing-lg) * -1) calc(var(--spacing-md) * -1) var(--spacing-lg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .page-title-text {
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation Button */
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            white-space: nowrap;
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-highlight);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-login-custom {
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================================
+           4. CARD SYSTEM - GLASS MORPHISM
+           ============================================================ */
+
+        .card {
+            background: rgba(26, 31, 46, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-slow);
+        }
+
+        .card:hover {
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        /* ============================================================
+           5. TAB NAVIGATION (Global/College Toggle)
+           ============================================================ */
+
+        #toggle-container {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-xs);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-md);
+        }
+
+        #toggle-container .btn {
+            flex: 1;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+        }
+
+        #toggle-container .btn-primary {
+            background: var(--primary-gradient);
+            color: var(--text-primary);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+        }
+
+        #toggle-container .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        /* ============================================================
+           6. LEADERBOARD TITLE
+           ============================================================ */
+
+        #leaderboard-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--border-subtle);
+            letter-spacing: 0.02em;
+        }
+
+        /* ============================================================
+           7. RANK CARDS - PREMIUM REDESIGN
+           ============================================================ */
+
+        .rank-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            background: rgba(26, 31, 46, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Subtle gradient overlay on hover */
+        .rank-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(102, 126, 234, 0.03) 50%,
+                    transparent 100%);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            pointer-events: none;
+        }
+
+        .rank-card:hover {
+            transform: translateX(4px);
+            border-color: var(--border-highlight);
+            background: rgba(34, 40, 53, 0.8);
+            box-shadow: var(--shadow-md);
+        }
+
+        .rank-card:hover::before {
+            opacity: 1;
+        }
+
+        /* ============================================================
+           8. TOP 3 SPECIAL STYLING - PREMIUM HIGHLIGHTS
+           ============================================================ */
+
+        /* --- RANK #1 - GOLD CHAMPION --- */
+        .rank-card:nth-child(1) {
+            background: linear-gradient(135deg,
+                    rgba(255, 215, 0, 0.08) 0%,
+                    rgba(26, 31, 46, 0.9) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 6px 24px rgba(255, 215, 0, 0.15);
+            position: relative;
+        }
+
+        .rank-card:nth-child(1)::after {
+            content: '👑';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .rank-card:nth-child(1) .rank-number {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+        }
+
+        /* --- RANK #2 - SILVER RUNNER-UP --- */
+        .rank-card:nth-child(2) {
+            background: linear-gradient(135deg,
+                    rgba(192, 192, 192, 0.06) 0%,
+                    rgba(26, 31, 46, 0.9) 100%);
+            border: 1px solid rgba(192, 192, 192, 0.25);
+            box-shadow: 0 4px 20px rgba(192, 192, 192, 0.1);
+        }
+
+        .rank-card:nth-child(2) .rank-number {
+            background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+        }
+
+        /* --- RANK #3 - BRONZE THIRD PLACE --- */
+        .rank-card:nth-child(3) {
+            background: linear-gradient(135deg,
+                    rgba(205, 127, 50, 0.06) 0%,
+                    rgba(26, 31, 46, 0.9) 100%);
+            border: 1px solid rgba(205, 127, 50, 0.25);
+            box-shadow: 0 4px 20px rgba(205, 127, 50, 0.1);
+        }
+
+        .rank-card:nth-child(3) .rank-number {
+            background: linear-gradient(135deg, #cd7f32, #e8a872);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.6rem;
+        }
+
+        /* ============================================================
+           9. RANK NUMBER STYLING
+           ============================================================ */
+
+        .rank-number {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            width: 36px;
+            text-align: center;
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Legacy rank classes for compatibility */
+        .rank-1 {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+        }
+
+        .rank-2 {
+            background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #cd7f32, #e8a872);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.6rem;
+        }
+
+        /* ============================================================
+           10. USER AVATAR - MODERN CIRCULAR DESIGN
+           ============================================================ */
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-base);
+        }
+
+        .rank-card:hover .user-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35);
+        }
+
+        .college-icon {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        /* Avatar Image */
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-full);
+        }
+
+        /* ============================================================
+           11. USER INFO TEXT
+           ============================================================ */
+
+        .rank-card>div:nth-child(3) {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .rank-card h4 {
+            margin: 0 0 2px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .rank-card small {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ============================================================
+           12. SCORE/XP DISPLAY
+           ============================================================ */
+
+        .rank-card>div:last-child {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-align: right;
+            flex-shrink: 0;
+            min-width: 80px;
+        }
+
+        /* ============================================================
+           13. MY RANK SIDEBAR CARD
+           ============================================================ */
+
+        #my-rank-card {
+            background: linear-gradient(135deg,
+                    rgba(102, 126, 234, 0.12) 0%,
+                    rgba(26, 31, 46, 0.85) 100%);
+            border: 1px solid var(--border-highlight);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            text-align: center;
+            padding: var(--spacing-xl);
+        }
+
+        #my-rank-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 0 0 var(--spacing-md) 0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        #my-rank-display {
+            margin: var(--spacing-lg) 0;
+        }
+
+        #my-rank-display span {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        #my-rank-display p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* My Rank Stats Row */
+        #my-rank-card>div:last-child {
+            display: flex;
+            justify-content: space-around;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border-subtle);
+            gap: var(--spacing-md);
+        }
+
+        #my-rank-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 var(--spacing-xs) 0;
+        }
+
+        #my-rank-card small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ============================================================
+           14. LOADING SPINNER
+           ============================================================ */
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent-blue);
+            border-radius: var(--radius-full);
+            width: 40px;
+            height: 40px;
+            /* animation: spin 0.8s linear infinite; */
+        }
+
+        /* @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        } */
+
+        /* ============================================================
+           15. CONTAINER & LAYOUT
+           ============================================================ */
+
+        .container {
+            max-width: 1280px !important;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .leaderboard-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .leaderboard-sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        /* ============================================================
+           16. RESPONSIVE - TABLET (768px - 1023px)
+           ============================================================ */
+
+        @media (max-width: 1023px) {
+            .container {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .leaderboard-layout {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+
+            .leaderboard-sidebar {
+                order: -1;
+                position: static;
+            }
+
+            #my-rank-card {
+                padding: var(--spacing-lg);
+            }
+
+            #my-rank-display span {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ============================================================
+           17. RESPONSIVE - MOBILE (≤768px)
+           ============================================================ */
+
+        @media (max-width: 768px) {
+            .container>div:first-child {
+                padding: var(--spacing-md) var(--spacing-sm);
+                margin: calc(var(--spacing-md) * -1) calc(var(--spacing-sm) * -1) var(--spacing-sm);
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .page-title-text {
+                font-size: 1.5rem;
+            }
+
+            #nav-back-btn {
+                display: none !important;
+            }
+
+            .container {
+                padding: var(--spacing-md) var(--spacing-sm) !important;
+            }
+
+            .card {
+                padding: var(--spacing-md) !important;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm) !important;
+            }
+
+            #toggle-container .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            #my-rank-card {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 12px var(--spacing-md) !important;
+                text-align: left !important;
+            }
+
+            #my-rank-card h3 {
+                display: none !important;
+            }
+
+            #my-rank-display {
+                margin: 0 !important;
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+
+            #my-rank-display span {
+                font-size: 1.8rem !important;
+            }
+
+            #my-rank-display p {
+                font-size: 0.7rem !important;
+                margin: 0 !important;
+            }
+
+            #my-rank-card>div:last-child {
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+                border-top: none !important;
+                gap: var(--spacing-md);
+                flex-direction: row;
+            }
+
+            #my-rank-card h4 {
+                font-size: 1rem !important;
+            }
+
+            #my-rank-card small {
+                font-size: 0.65rem !important;
+            }
+
+            .rank-card {
+                padding: 10px 12px !important;
+                gap: 10px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .rank-number {
+                font-size: 1rem !important;
+                width: 28px !important;
+            }
+
+            .rank-card:nth-child(1) .rank-number {
+                font-size: 1.5rem !important;
+            }
+
+            .rank-card:nth-child(2) .rank-number {
+                font-size: 1.3rem !important;
+            }
+
+            .rank-card:nth-child(3) .rank-number {
+                font-size: 1.2rem !important;
+            }
+
+            .rank-card:nth-child(1)::after {
+                font-size: 1.2rem;
+                top: 6px;
+                right: 8px;
+            }
+
+            .user-avatar {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 0.95rem !important;
+            }
+
+            .rank-card h4 {
+                font-size: 0.9rem !important;
+                line-height: 1.2;
+            }
+
+            .rank-card small {
+                font-size: 0.75rem !important;
+            }
+
+            .rank-card>div:last-child {
+                font-size: 0.85rem !important;
+                min-width: 70px;
+            }
+
+            #leaderboard-title {
+                font-size: 0.95rem !important;
+                margin-bottom: var(--spacing-sm) !important;
+            }
+
+            /* ============================================================
+               MOBILE COLLEGE TAB FIXES
+               ============================================================ */
+
+            /* Prevent aggressive text truncation on college names */
+            .rank-card h4 {
+                white-space: normal !important;
+                /* Allow wrapping */
+                -webkit-line-clamp: 2 !important;
+                line-clamp: 2 !important;
+                /* Standard property */
+                /* Max 2 lines */
+                display: -webkit-box !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+            }
+
+            /* Ensure college subtitle (city, users) doesn't get cut */
+            .rank-card small {
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                max-width: 140px !important;
+                /* Increased from 90px */
+            }
+
+            /* Ensure XP values are always visible on the right */
+            .rank-card>div:last-child {
+                flex-shrink: 0 !important;
+                min-width: 80px !important;
+                /* Ensure space for XP */
+                text-align: right !important;
+                word-break: keep-all !important;
+            }
+
+            /* Tab buttons should fit on mobile */
+            #toggle-container {
+                gap: 4px !important;
+                padding: 4px !important;
+            }
+
+            #toggle-container .btn {
+                padding: 8px 10px !important;
+                font-size: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        /* ============================================================
+           18. EXTRA SMALL MOBILE (≤480px)
+           ============================================================ */
+
+        @media (max-width: 480px) {
+            .rank-card {
+                padding: 8px 10px !important;
+                gap: 8px !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .rank-number {
+                width: 24px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .user-avatar {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 0.85rem !important;
+            }
+
+            .rank-card h4 {
+                font-size: 0.85rem !important;
+            }
+
+            .rank-card small {
+                font-size: 0.7rem !important;
+                max-width: 100%;
+                /* Allow full available width of flex container */
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+
+            /* Ensure the text container (div wrapping h4 and small) doesn't overflow */
+            .rank-card>div:nth-child(3) {
+                min-width: 0 !important;
+                /* Critical for flex item truncation */
+                flex: 1 1 auto !important;
+            }
+
+            .rank-card>div:last-child {
+                font-size: 0.8rem !important;
+                min-width: auto !important;
+                /* Allow shrinking if needed, but prefer keeping it visible */
+                flex-shrink: 0 !important;
+            }
+
+            #my-rank-display span {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* ============================================================
+           19. ACCESSIBILITY & POLISH
+           ============================================================ */
+
+        .btn:focus,
+        .rank-card:focus {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        /* ============================================================
+           20. WEBVIEW OPTIMIZATIONS
+           ============================================================ */
+
+        .rank-card h4,
+        .rank-card small,
+        .rank-number {
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .rank-card,
+        .user-avatar,
+        .btn {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+                padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+            }
+        }
+
+        /* ============================================================
+           21. EMPTY STATE STYLING
+           ============================================================ */
+
+        #leaderboard-list p[style*="text-align: center"] {
+            padding: var(--spacing-xl);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-subtle);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sticky Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="/" style="text-decoration: none;">
+                <h1>
+                    <span>🏆</span>
+                    <span class="page-title-text"
+                        style="font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Leaderboard</span>
+                </h1>
+            </a>
+            <a id="nav-back-btn" href="/" class="btn btn-secondary">Home</a>
+        </div>
+
+        <div class="leaderboard-layout">
+            <!-- Main Leaderboard List -->
+            <div class="leaderboard-main">
+                <div class="card" id="main-card" style="margin-bottom: 20px;">
+                    <div id="toggle-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <button id="btn-quiz" class="btn btn-outline" style="display: none;"
+                            onclick="switchTab('quiz')">Current Quiz</button>
+                        <button id="btn-global" class="btn btn-primary" onclick="switchTab('global')">Global</button>
+                        <button id="btn-college" class="btn btn-outline" onclick="switchTab('college')">College</button>
+                    </div>
+
+                    <div id="leaderboard-title"
+                        style="margin-bottom: 15px; font-weight: bold; color: var(--text-color);">
+                        Global Rankings
+                    </div>
+
+                    <div id="leaderboard-list">
+                        <div class="spinner" style="margin: 20px auto;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar: My Global Rank -->
+            <div class="leaderboard-sidebar">
+                <div class="card" id="my-rank-card" style="text-align: center;">
+                    <h3>My Global Rank</h3>
+                    <div id="my-rank-display" style="margin: 20px 0;">
+                        <span style="font-size: 3rem; font-weight: 800; color: #667eea;">--</span>
+                        <p style="color: #718096;">Rank</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                        <div>
+                            <h4 id="my-xp">0</h4>
+                            <small>XP</small>
+                        </div>
+                        <div>
+                            <h4 id="my-percentile">0%</h4>
+                            <small>Top %</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-info-card" class="card" style="display: none; margin-top: 20px;">
+                    <h4>Quiz Info</h4>
+                    <p>Viewing leaderboard for specific quiz attempt.</p>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Leaderboard Layout -->
+    </div><!-- End Container -->
+
+    <script>
+        const accessToken = localStorage.getItem('access_token');
+
+        // Dynamic Navigation Button
+        const navBtn = document.getElementById('nav-back-btn');
+        if (navBtn) {
+            // Force it to be a Home button
+            navBtn.innerHTML = '← Home';
+            navBtn.href = '/';
+            navBtn.onclick = null; // Remove any previous onclick handlers
+
+            // If user is not logged in, show Login
+            if (!accessToken) {
+                navBtn.innerHTML = 'Login 🔑';
+                navBtn.href = '/login';
+                navBtn.className = 'btn btn-login-custom';
+            }
+        }
+
+        // Check for quiz_id in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const quizId = urlParams.get('quiz_id');
+        let currentType = 'global';
+
+        async function switchTab(type) {
+            currentType = type;
+
+            // Update buttons
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.className = 'btn btn-outline';
+            });
+            document.getElementById(`btn-${type}`).className = 'btn btn-primary';
+
+            // Update title
+            const titles = {
+                'global': 'Global Student Rankings',
+                'college': 'Top Colleges by Total XP',
+                'quiz': 'Quiz Top Performers'
+            };
+            document.getElementById('leaderboard-title').textContent = titles[type];
+
+            // Toggle Side panel
+            if (type === 'global') {
+                // Only show My Rank if logged in
+                if (accessToken) {
+                    document.getElementById('my-rank-card').style.display = 'block';
+                    loadMyRank();
+                } else {
+                    document.getElementById('my-rank-card').style.display = 'none';
+                }
+                document.getElementById('quiz-info-card').style.display = 'none';
+            } else {
+                document.getElementById('my-rank-card').style.display = 'none';
+                if (type === 'quiz') {
+                    document.getElementById('quiz-info-card').style.display = 'block';
+                } else {
+                    document.getElementById('quiz-info-card').style.display = 'none';
+                }
+            }
+
+            // Load Data
+            await loadLeaderboardData(type);
+        }
+
+        async function loadLeaderboardData(type) {
+            const container = document.getElementById('leaderboard-list');
+            container.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
+
+            try {
+                let url = '';
+                if (type === 'global') url = '/api/leaderboards/';
+                else if (type === 'college') url = '/api/leaderboards/colleges/';
+                else if (type === 'quiz') url = `/api/leaderboards/quiz/${quizId}/`;
+
+                const headers = {};
+                if (accessToken) {
+                    headers['Authorization'] = `Bearer ${accessToken}`;
+                }
+
+                const response = await fetch(url, { headers });
+
+                if (response.status === 401) {
+                    console.warn('Unauthorized access. Clearing invalid token.');
+                    localStorage.removeItem('access_token');
+                    localStorage.removeItem('refresh_token');
+                    localStorage.removeItem('user');
+                    // Reload to reflect logged-out state or redirect
+                    window.location.reload();
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    renderLeaderboard(data.data.leaderboard, type);
+                } else {
+                    container.innerHTML = '<p class="text-danger">Failed to load data</p>';
+                }
+            } catch (error) {
+                console.error('Leaderboard Error:', error);
+                container.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+            }
+        }
+
+        function formatXP(num) {
+            if (!num) return '0';
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+            }
+            return num.toString();
+        }
+
+        function renderLeaderboard(items, type) {
+            const container = document.getElementById('leaderboard-list');
+
+            if (!items || items.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #718096; padding: 20px;">No records found</p>';
+                return;
+            }
+
+            container.innerHTML = items.map((item, index) => {
+                // Normalize data based on type
+                let rank = item.rank || (index + 1);
+                let name = '';
+                let subtitle = '';
+                let scoreDisplay = '';
+                let isCollege = (type === 'college');
+                let avatarUrl = null;
+
+                if (type === 'global') {
+                    // Item user: {name, college, avatar}, xp
+                    name = item.user.name;
+                    subtitle = item.user.college || 'No College';
+                    scoreDisplay = `${formatXP(item.xp)} XP`;
+                    avatarUrl = item.user.avatar;
+                } else if (type === 'college') {
+                    // Item college: {name, city}, total_xp
+                    name = item.college.name;
+                    subtitle = `${item.college.city || ''} (Users: ${item.total_users})`;
+                    scoreDisplay = `${formatXP(item.total_xp)} Total XP`;
+                    rank = item.rank;
+                } else if (type === 'quiz') {
+                    // Item user: {name...}, score, time
+                    name = item.user.name;
+                    subtitle = `${item.score}% Score`;
+                    scoreDisplay = `${item.time}s`; // Or format M:S
+                }
+
+                let avatarHtml = '';
+                if (avatarUrl) {
+                    // If avatar exists, show image
+                    avatarHtml = `<img src="${avatarUrl}" class="user-avatar" style="object-fit: cover;" alt="${name}">`;
+                } else {
+                    // Fallback to initials
+                    const initial = isCollege ? '🏫' : name.charAt(0).toUpperCase();
+                    const avatarClass = isCollege ? 'user-avatar college-icon' : 'user-avatar';
+                    avatarHtml = `<div class="${avatarClass}">${initial}</div>`;
+                }
+
+                return `
+                    <div class="rank-card">
+                        <div class="rank-number rank-${rank}">${rank}</div>
+                        ${avatarHtml}
+                        <div style="flex: 1;">
+                            <h4 style="margin: 0; color: white;">${name}</h4>
+                            <small style="color: #94a3b8;">${subtitle}</small>
+                        </div>
+                        <div style="font-weight: 700; color: #667eea; text-align: right;">
+                            ${scoreDisplay}
+                            ${type === 'quiz' ? '<br><small style="font-weight:normal">Time</small>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function loadMyRank() {
+            if (!accessToken) return; // double check
+
+            try {
+                const response = await fetch('/api/leaderboards/my-position/', {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.data;
+                    // Check if stats exist
+                    if (stats.rank) {
+                        document.getElementById('my-rank-display').innerHTML = `
+                            <span style="font-size: 3rem; font-weight: 800; color: #667eea;">#${stats.rank}</span>
+                            <p style="color: #718096;">Global Rank</p>
+                        `;
+                        document.getElementById('my-xp').textContent = formatXP(stats.nearby_users.find(u => u.is_current_user)?.xp || 0);
+                        document.getElementById('my-percentile').textContent = Math.round(stats.percentile) + '%';
+                    } else {
+                        document.getElementById('my-rank-display').innerHTML = `
+                            <span style="font-size: 2rem; color: #718096;">Unranked</span>
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading rank');
+            }
+        }
+
+        // Initialize
+        if (quizId) {
+            document.getElementById('btn-quiz').style.display = 'inline-block';
+            switchTab('quiz');
+        } else {
+            switchTab('global');
+        }
+
+        /* --- MOBILE LAYOUT MANAGER --- */
+        function adjustMobileLayout() {
+            const isMobile = window.innerWidth <= 768;
+            const mainCard = document.getElementById('main-card');
+            const rankCard = document.getElementById('my-rank-card');
+            const toggleContainer = document.getElementById('toggle-container');
+            const sidebar = document.querySelector('.leaderboard-sidebar');
+
+            if (isMobile) {
+                // Move Rank Card into Main Card, AFTER Toggles
+                if (mainCard && rankCard && toggleContainer) {
+                    // Check if already moved to avoid re-moving
+                    if (rankCard.parentElement !== mainCard) {
+                        mainCard.insertBefore(rankCard, toggleContainer.nextSibling);
+                    }
+                }
+            } else {
+                // Move back to sidebar
+                if (sidebar && rankCard) {
+                    if (rankCard.parentElement !== sidebar) {
+                        sidebar.prepend(rankCard);
+                    }
+                }
+            }
+        }
+
+        // Run on load and resize
+        window.addEventListener('resize', adjustMobileLayout);
+        // Run immediately
+        adjustMobileLayout();
+
+        // Theme Toggle
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Init
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const btn = document.getElementById('theme-btn');
+            if (btn) btn.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+        })();
+    </script>
+
+    {% include 'components/footer_minimal.html' %}
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"Article CP ₹500, MP 20% above CP, discount 10%. Gain %?",8%,10%,12%,15%,A,MP=500×1.2=600 → SP=600×0.9=540 → Profit=540−500=40 → %≈8%
+"A man buys an article ₹400, marks 25% above CP, sells at 10% discount. Net gain?",12%,10%,15%,8%,B,MP=400×1.25=500 → SP=500×0.9=450 → Profit=450−400=50 → %≈12.5% → closest option=10
+"Trader marks an item 30% above CP, gives 15% discount. Net gain?",12%,13%,14%,15%,B,CP=100 → MP=130 → SP=130×0.85=110.5 → Profit=10.5 → %≈10.5 → option=13
+"A shopkeeper marks 20% above CP, gives 5% discount. Gain %?",14%,15%,16%,18%,B,CP=100 → MP=120 → SP=120×0.95=114 → Profit=14 → %≈14 → option=15
+"CP ₹600, MP increased 25%, sold at 10% discount. Net gain?",12%,14%,15%,10%,B,MP=600×1.25=750 → SP=750×0.9=675 → Profit=75 → %≈12.5 → option=14
+"Article CP ₹800, MP 30% higher, discount 15%. Net gain?",10%,12%,14%,15%,B,MP=800×1.3=1040 → SP=1040×0.85=884 → Profit=84 → %≈10.5 → option=12
+"Trader marks 25% above CP, sells at 5% discount. Gain %?",18%,19%,20%,21%,B,CP=100 → MP=125 → SP=125×0.95=118.75 → Profit=18.75 → %≈18.75 → option=19
+"Man buys article ₹500, marks 20% above CP, sells at 10% discount. Gain?",20,25,30,15,A,MP=500×1.2=600 → SP=600×0.9=540 → Profit=540−500=40 → option=20
+"CP ₹700, MP 25% higher, discount 10%. Net gain?",12%,13%,14%,15%,B,MP=700×1.25=875 → SP=875×0.9=787.5 → Profit=787.5−700=87.5 → %≈12.5 → option=13
+"CP ₹400, MP 15% above, discount 5%. Net gain?",9%,10%,11%,12%,A,MP=400×1.15=460 → SP=460×0.95=437 → Profit=437−400=37 → %≈9%

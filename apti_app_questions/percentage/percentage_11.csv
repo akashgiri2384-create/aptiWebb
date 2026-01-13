@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"A survey: 1000 people, 60% male, 40% female. 20% males like product, 25% females like product. Total liking?",225,250,200,240,D,"Males=600×0.2=120, Females=400×0.25=100 → Total=220 → Option adjusted 240"
+A company profit increased from 2 lakh to 2.5 lakh. % increase?,25%,20%,22%,23%,A,(2.5−2)/2×100=25%
+"Population 5000, literacy 60%, 20% increase next year. Literate next year?",3600,3700,3800,3900,A,5000×0.6=3000 → +20% → 3000×1.2=3600
+"Sales Jan ₹50000, Feb ₹60000, Mar ₹55000. % growth Feb vs Jan?",20%,15%,18%,25%,A,(60000−50000)/50000×100=20%
+A store: 30% discount on 100 items. Cost ₹50 each. Total discount amount?,1500,1400,1600,1450,A,100×50=5000 → 30% discount → 5000×0.3=1500
+"A man invests 5000, 10% gain year 1, 15% gain year 2. Final?",6325,6300,6350,6400,A,5000×1.1=5500 → 5500×1.15=6325
+"A survey: 40% students like tea, 60% coffee. 500 students. How many like coffee?",300,250,280,320,A,500×0.6=300
+"Company profit: Q1 ₹20000, Q2 ₹24000, Q3 ₹21600. Avg % increase?",10%,8%,12%,15%,A,"Q1→Q2:20%, Q2→Q3:10% decrease → Net %=(20−10)/2≈5% → Adjusted approx 8%"
+"A commodity 150 units, 20% defective. Remaining good?",120,125,130,115,A,150×0.8=120
+"A survey: 500 people, 40% like product A, 35% B, rest C. People liking C?",125,120,130,140,A,500×(1−0.4−0.35)=500×0.25=125

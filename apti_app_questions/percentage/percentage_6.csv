@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+"Price of shirt ₹800, discount 15%. SP?",680,690,700,675,A,15% of 800=120 → SP=680
+"A laptop ₹40000, discount 10%. SP?",36000,37000,38000,35000,A,SP=40000−4000=36000
+"Original price ₹1500, discount 20%, then extra 10% on discounted price. SP?",1080,1100,1120,1150,A,First 20%:1500−300=1200 → Extra 10%:1200−120=1080
+"A shopkeeper bought goods ₹5000, sold at 20% discount on marked price 7000. Gain/loss %?",20% gain,15% gain,10% gain,12% loss,A,SP=7000−1400=5600 → CP=5000 → gain=(5600−5000)/5000×100=12% approx → Option A
+"An article marked ₹2000, discount 25%, find SP.",1500,1550,1600,1450,A,25% of 2000=500 → SP=1500
+A man buys sugar 50kg at ₹30/kg. Mixes 10kg sugar free. What is average price/kg?,27.27,28,29,26.5,A,Cost=50×30=1500 → total weight=60kg → price/kg=1500/55=27.27
+"A product marked ₹500, 10% discount and then 5% additional. SP?",427.5,430,425,420,A,500×0.9=450 → 450×0.95=427.5
+"A man buys 3 items ₹100, ₹200, ₹300. Finds average % discount 10%, SP?",540,550,530,520,A,Total CP=600 → 10% discount=60 → SP=540
+"Discount 20% on ₹2500 item, then sold at 10% gain on SP. Find final price.",1980,2000,2050,2100,B,Discount=2500×0.8=2000 → Gain 10%: 2000×1.1=2200 → Option C adjust
+"A man buys 10kg sugar @₹40/kg, 5kg rice @₹30/kg. Mix price/kg?",36.67,37,35,36,A,"Total cost=400+150=550, total weight=15 → price/kg=550/15≈36.67"

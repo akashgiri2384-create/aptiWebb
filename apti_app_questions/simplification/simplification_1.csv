@@ -1,0 +1,11 @@
+﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
+Evaluate: 25 + 36 ÷ 6,31,35,30,32,A,36÷6=6 → 25+6=31
+Simplify: 50 − 12 × 2,76,26,74,25,B,12×2=24 → 50−24=26
+Compute: 15 + 30 ÷ 5,21,20,25,18,A,30÷5=6 → 15+6=21
+Evaluate: 100 ÷ 4 + 10,35,25,30,40,A,100÷4=25 → 25+10=35 → correction → Option A=35
+Simplify: 9 × 5 − 15,30,25,35,40,A,9×5=45 → 45−15=30
+Approximate: 198 ÷ 6,30,33,32,31,B,198/6=33
+Evaluate: 12 + 48 ÷ 8,18,20,15,22,A,48÷8=6 → 12+6=18
+Simplify: 7 × 8 − 10,45,46,50,48,B,7×8=56 → 56−10=46 → correction → Option B=46
+Compute: 72 ÷ 9 + 5,12,13,15,14,B,72÷9=8 → 8+5=13 → correction → Option B=13
+Simplify: 36 + 24 ÷ 6,38,40,42,36,B,24÷6=4 → 36+4=40
