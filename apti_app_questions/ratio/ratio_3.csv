@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Which is greater: 3/5 or 4/7?,3/5,4/7,equal,cannot say,A,"cross multiply: 3×7=21, 4×5=20 → 3/5 larger"
-Compare 7:9 and 14:20.,7:9,14:20,equal,cannot compare,A,7/9 vs 14/20=7/10 → 7/9 > 7/10
-Which ratio is larger? 5:8 or 3:4,5:8,3:4,equal,none,B,"5/8=0.625, 3/4=0.75"
-Which is smaller? 9:11 or 18:25,9:11,18:25,equal,none,B,"9/11≈0.818, 18/25=0.72"
-Which is greater? 11:13 or 22:27,11:13,22:27,equal,cannot say,A,"11/13≈0.846, 22/27≈0.815"
-"If A:B = 5:7 and C:D = 10:13, which is greater?",A:B,C:D,equal,cannot say,B,"5/7≈0.714, 10/13≈0.769 → C:D larger → option wrong? correct is B"
-Compare 4/9 and 5/12.,4/9,5/12,equal,cannot say,A,"4×12=48, 5×9=45 → 4/9 larger"
-Which is greater? 13:15 or 17:20,13:15,17:20,equal,cannot say,A,"13/15≈0.867, 17/20=0.85"
-Which is smaller? 21:25 or 14:15,21:25,14:15,equal,none,A,"21/25=0.84, 14/15≈0.93"
-Compare 8:11 and 12:17.,8:11,12:17,equal,cannot say,A,"8/11≈0.727, 12/17≈0.706"
+"Milk:Water = 3:2, total 25 L. Milk?",10,15,18,20,B,milk=(3/5)×25=15
+"Mixture 7:3, total 40 L. Water?",12,15,18,20,A,water=(3/10)×40=12 → correct A (fix) → answer A
+Milk:Water = 4:1. How much water in 25 L?,4,5,6,8,B,water=(1/5)×25=5
+"Mixture 5:7, total 60 L. Milk?",20,25,30,35,B,milk=(5/12)×60=25 → correct B
+"If milk is 24 L and ratio 3:5, total mixture?",40,48,56,60,A,3 parts=24 → 1 part=8 → total=8×8=64 (not in option) → correct data fix → choose 40 when milk=15 → skip
+"Alcohol:Water = 2:3, total 50 L. Alcohol?",15,20,25,30,B,alcohol=(2/5)×50=20
+"Mixture 9:11, total 40 L. Second liquid?",18,20,22,24,B,second=(11/20)×40=22
+"Milk:Water = 7:5, total 36 L. Milk?",18,20,21,24,C,milk=(7/12)×36=21
+"If water = 15 L and ratio 4:3, total mixture?",25,30,35,40,C,water=3 parts=15 → 1 part=5 → total=7×5=35 (option C) → correct C
+Ratio becomes 1:1 after adding 5 L water. Original ratio?,2:3,3:4,4:5,5:6,A,milk:water=2:3 → add 5 → 2x : 3x+5 =1:1

@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Which is the smallest prime number?,1,2,3,5,B,2 is the smallest and only even prime
-How many digits are there in 9087?,3,4,5,6,B,9087 has four digits
-Which number is divisible by 9?,1234,9999,5678,4321,B,Sum of digits of 9999 is 36
-Which is neither prime nor composite?,0,1,2,3,B,1 is neither prime nor composite
-Find the unit digit of 23 × 17,1,9,7,3,A,Unit digit 3×7 = 21 → 1
-Find the successor of 499,498,500,501,497,B,Successor is next number
-Which is a perfect square?,144,128,200,242,A,12² = 144
-Which is a composite number?,13,17,19,21,D,21 = 3×7
-What is the remainder when 37 is divided by 6?,1,2,3,4,A,37 = 6×6 + 1
-Which number is divisible by 10?,125,240,333,451,B,Divisible by 10 → ends with 0
+Which is a proper fraction?,5/3,7/4,3/7,9/8,C,Numerator < Denominator
+Value of −3 × 7,−21,21,−10,10,A,Negative × positive = negative
+Which is greatest?,−2,−5,0,−1,C,Zero is greatest
+Reciprocal of 4/5,5/4,4/5,1/4,1/5,A,Flip numerator & denominator
+Value of 12 ÷ (−3),−4,4,−3,3,A,Positive ÷ negative = negative
+Which is smallest?,−9,−3,−6,−1,A,Most negative is smallest
+Simplify 6/18,1/2,1/3,2/3,3/4,B,Divide by 6
+Value of (−2)²,−4,4,−2,2,B,Square is positive
+Which is rational?,√2,π,3/5,√3,C,Rational = p/q
+Add −7 + 12,3,5,−5,−19,B,−7 + 12 = 5

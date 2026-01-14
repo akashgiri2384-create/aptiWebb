@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"If a:b = 4:5, then a:b:c = 4:5:10, find c when a = 8.",10,15,20,25,A,a=4k=8 ⇒ k=2 ⇒ c=10k=20
-"If x:y = 3:7, then x:y = 9:21 after multiplying by?",2,3,4,5,B,multiply both by 3
-"If a:b = 5:6 and b:c = 3:4, find a:c.",5:4,15:24,10:9,5:8,D,"a:b=5:6, b:c=3:4 → LCM of b=6 → a:b=5:6, b:c=6:8 → a:c=5:8"
-"If 2a = 3b, find a:b.",3:2,2:3,4:3,3:4,A,2a=3b ⇒ a/b = 3/2
-"If a:b = 7:9 and b:c = 3:5, find a:c.",7:15,21:45,3:5,9:5,A,(7/9)×(3/5)=21/45=7/15
-"If a:b = 2:3 and b:c = 4:5, find a:b:c.",2:3:5,8:12:15,4:6:5,6:9:10,B,"scale b to 12 → a:b=8:12, b:c=12:15"
-"If x:y = 5:7 and y:z = 14:9, find x:z.",5:9,10:9,7:9,14:9,B,"x:y=5:7→10:14, y:z=14:9 → x:z=10:9"
-"If 3x:5y = 6:10, find x:y.",1:1,2:3,3:5,5:3,A,both reduce to same ratio ⇒ x=y
-"If a:b = 4:5 and b:c = 10:9, find a:b:c.",8:10:9,4:10:9,8:5:9,4:5:9,A,"scale b=10 → a:b=8:10, b:c=10:9"
-"If m:n = 7:11 and n:p = 22:15, find m:p.",7:15,14:15,21:15,28:15,B,"scale n=22 → m:n=14:22, n:p=22:15 → m:p=14:15"
+"A,B invest in ratio 2:3, profit=₹5000. A’s share?",2000,2500,3000,3500,A,A=(2/5)×5000=2000
+"A invests ₹4000, B ₹6000. Profit ₹5000. B gets?",2000,2500,3000,3500,C,ratio=2:3 → B=(3/5)×5000=3000
+"A:B:C = 1:2:3, profit ₹12000. C gets?",2000,4000,6000,8000,A,parts=6 → C=3×2000=6000
+"A invests twice B, profit=₹9000. A gets?",3000,6000,4500,7500,B,ratio=2:1 → A=(2/3)×9000=6000
+"A invests for 12 months, B for 6 months, same capital. Profit ₹9000. B gets?",2000,3000,4000,4500,B,time ratio=12:6=2:1 → B=1/3×9000=3000
+"A invests 5 months, B 10 months, same capital. Profit ₹6000. A’s share?",2000,3000,4000,1500,A,ratio=5:10=1:2 → A=1/3×6000=2000
+"A invests ₹8000 for 6 months, B ₹6000 for 8 months. Profit ₹5600. A gets?",2800,3200,3500,2400,A,ratio=48000:48000=1:1 → A=2800? wait profit 5600/2=2800 → option A (correct A)
+"A:B:C = 2:3:5, profit ₹20000. B gets?",4000,6000,8000,10000,B,parts=10 → B=3×2000=6000
+A invests 3x of B. Profit=₹8000. B gets?,2000,2500,3000,4000,A,ratio=3:1 → B=1/4×8000=2000
+"A joins later, total profit=₹12000. A:B=2:3. A gets?",4800,5000,5200,6000,A,A=(2/5)×12000=4800

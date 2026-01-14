@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Find the remainder when 58 is divided by 7,1,2,3,4,B,58 = 7×8 + 2 → correction: remainder = 2 → Option B
-Find the unit digit of 7⁴,1,3,9,7,A,7⁴ = 2401
-Find the remainder when 2²⁰ is divided by 3,0,1,2,3,B,Powers of 2 mod 3 cycle → remainder 1
-What is the unit digit of 9⁷,1,9,7,3,B,Power of 9 always ends with 9
-Find remainder when 45² is divided by 4,0,1,2,3,B,Any odd square mod 4 = 1 → correction: remainder = 1 → Option B
-Find unit digit of 12⁵,2,4,6,8,A,Unit digit depends on 2⁵ → 2
-Remainder when 1001 divided by 9,1,2,3,4,B,Sum digits = 2
-Unit digit of 6⁹⁹,6,4,8,2,A,Power of 6 always ends in 6
-Remainder when 121 divided by 11,0,1,2,10,B,11×11 = 121
-Unit digit of 5⁵⁰,0,5,1,6,B,Power of 5 always ends with 5
+Simplify 6 + 18 ÷ 3,8,10,12,14,A,BODMAS → 18÷3=6 → 6+6
+Simplify (5+3)²,16,64,32,25,B,8² = 64
+Simplify 24 ÷ 6 × 2,2,4,6,8,A,Left to right → 4×2
+Simplify 7 + 3 × 4,19,28,40,21,A,Multiply first → 7+12
+Simplify 100 − 20² ÷ 10,60,80,40,20,C,20²=400 → 400÷10=40 → 100−40
+Simplify 15 ÷ (3×5),1,3,5,15,A,15/15=1
+Simplify (18 ÷ 3)²,6,12,36,9,A,6² = 36
+Simplify 8 + 16 ÷ 4 × 2,16,24,32,40,A,16÷4=4×2=8 → 8+8
+Simplify 50 − 5³,75,−75,25,−25,C,5³=125 → 50−125
+Simplify 2³ + 3²,13,17,11,19,B,8+9=17 correction → Option B

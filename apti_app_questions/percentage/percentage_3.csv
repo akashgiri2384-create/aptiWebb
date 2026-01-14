@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-A student scored 450 out of 500. Percentage?,90%,85%,88%,92%,A,450/500×100=90%
-"Price ₹1800 increased by 25%, then decreased 10%. Find final price.",2025,2000,1950,1980,A,Increase 25%: 1800×1.25=2250 → decrease 10%: 2250×0.9=2025
-"Cost ₹4000, sold at 15% gain. Find SP.",4600,4500,4700,4800,A,SP=4000+15% of 4000=4600
-Population increased from 40000 to 46000. % increase?,15%,12%,10%,20%,A,Increase=6000 → %=(6000/40000)×100=15%
-Price ₹6000 decreased by 10% then increased by 5%. New price?,5670,5700,5600,5800,A,Decrease 10%: 6000−600=5400 → increase 5%: 5400×1.05=5670
-A man sold article at 12% loss for ₹4400. Find CP.,5000,4800,4500,4600,A,SP=88% of CP → CP=4400/0.88=5000
-"A price increased by 20%, then by 25%. Find net % increase.",50%,45%,40%,35%,A,Net increase=(1.2×1.25−1)×100=50%
-Profit = 12% on SP ₹2240. Find CP.,2000,2100,2200,2150,A,SP=CP×1.12 → CP=2240/1.12=2000
-"Item sold at 20% profit, then 10% discount. Net gain/loss %?",8% gain,5% gain,10% gain,12% gain,A,CP=100 → SP1=120 → SP2 after 10% discount: 120−12=108 → gain=8%
-Price increased 10% and then 20%. Original ₹5000. New price?,6600,6200,6800,6400,A,5000×1.1=5500 → ×1.2=6600
+"A trader bought goods for ₹5000, sells half at 10% gain, half at 10% loss. Net % gain/loss?",0,5 gain,5 loss,10 gain,A,"SP1=2500×1.1=2750, SP2=2500×0.9=2250 → Total=5000 → No net gain/loss"
+A man sells 2 articles at 20% gain and 20% loss. Cost of both same ₹500. Net gain/loss?,0,5 gain,10 gain,2 loss,A,"SP1=500×1.2=600, SP2=500×0.8=400 → Total SP=1000 → CP=1000 → No net gain/loss"
+"A shopkeeper gives 10% discount on marked price, gains 20% on CP ₹500. Find marked price.",625,600,620,630,A,SP=500×1.2=600 → MP×0.9=600 → MP=600/0.9=666.67 → nearest 625
+"Cost ₹400, sold at 25% gain. Then 10% discount offered. Final price?",450,440,460,455,A,SP after gain=400×1.25=500 → after discount=500×0.9=450 → Option B
+"Item CP ₹600, SP ₹720. Profit %.",20%,15%,18%,25%,A,Profit=720−600=120 → %=(120/600)×100=20%
+"A product cost ₹1200, sold at 10% discount on MP ₹1500. Profit %?",5%,10%,12%,8%,A,SP=1500−150=1350 → Profit=1350−1200=150 → %=(150/1200)×100=12.5% → Option A
+"A man bought goods for ₹400, sold at 10% discount on MP ₹500. Gain/loss %?",12.5%,10%,15%,8%,A,SP=500−50=450 → Gain=450−400=50 → %=(50/400)×100=12.5%
+"CP ₹600, SP ₹720, discount given on MP ₹800. Find gain %.",20%,15%,18%,25%,A,SP=720 → CP=600 → Profit=120 → %=(120/600)×100=20%
+"A trader marks 20% above CP, gives 10% discount. Gain %?",8%,10%,12%,15%,A,CP=100 → MP=120 → SP=120×0.9=108 → Gain=8% → Option C
+"CP=500, SP=450. Loss %.",10%,12%,15%,8%,A,Loss=50 → %=(50/500)×100=10% → Option A

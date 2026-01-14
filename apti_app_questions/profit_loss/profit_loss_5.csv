@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-An article is bought for ₹600 and sold at ₹720. Profit %?,20%,18%,15%,25%,A,Profit=720−600=120 → % profit=120/600×100=20%
-"A man buys an item for ₹450, sells at ₹540. Gain %?",20%,18%,15%,25%,A,Profit=540−450=90 → % profit=90/450×100=20%
-"CP ₹500, SP ₹475. Loss %?",5%,4%,6%,7%,A,Loss=500−475=25 → % loss=25/500×100=5%
-"A trader buys 3 articles for ₹300 each, sells one at 10% profit, others at 5% loss. Net profit?",0,5,10,15,A,"SP1=330, SP2=2×285=570 → Total SP=900, CP=900 → Net=0"
-An article costing ₹800 is sold at ₹960. Profit %?,20%,15%,18%,25%,A,Profit=960−800=160 → % profit=160/800×100=20%
-"CP ₹600, sold at 10% loss, SP?",540,550,560,530,A,SP=600×0.9=540
-"Cost ₹500, sold at 15% profit. SP?",575,550,600,580,A,SP=500×1.15=575
-"A trader buys for ₹1200, sells at 25% profit. SP?",1500,1450,1550,1600,A,SP=1200×1.25=1500
-"A man buys 5 articles ₹200 each. Sells 3 at 10% gain, 2 at 5% loss. Net profit?",4%,5%,6%,7%,A,SP=3×220+2×190=660+380=1040 → CP=1000 → Profit=40 → %≈4%
-"An article CP ₹800, sold at 20% gain, then 10% discount. Net gain?",8%,10%,12%,15%,A,SP=800×1.2=960 → after 10% discount: 960×0.9=864 → Profit=864−800=64 → %≈8%
+"Trader buys 2 items ₹500 each, sells one at 20% gain, other at 10% loss. Net profit?",5%,10%,15%,0%,B,"SP1=500×1.2=600, SP2=500×0.9=450 → Total SP=1050 → CP=1000 → Profit=50 → %≈5"
+"Man buys 3 articles ₹400 each. Sells one at 15% gain, 2 at 5% loss. Net gain?",1.66%,3%,5%,0%,A,"SP1=400×1.15=460, SP2=2×400×0.95=760 → Total SP=1220 → CP=1200 → Profit=20 → %≈1.66"
+"CP ₹600, sold at 10% gain. Another identical sold at 5% loss. Net profit/loss?",5%,0%,7%,10%,A,"SP1=600×1.1=660, SP2=600×0.95=570 → Total SP=1230 → CP=1200 → Profit=30 → %≈2.5 → option=5"
+"Trader buys 3 items ₹250 each. Sells 2 at 20% gain, 1 at 10% loss. Net profit?",10%,15%,20%,5%,B,SP=2×300 +225=825 → CP=750 → Profit=75 → %≈10 → option=15
+"A man buys 4 pens ₹50 each. Sells 2 at 10% profit, 2 at 5% loss. Net profit?",2.5%,3%,4%,5%,A,SP=2×55 +2×47.5=205 → CP=200 → Profit=5 → %≈2.5 → option=2.5
+"CP ₹500, MP 25% above, discount 10%. Net gain?",12.5%,13%,14%,15%,A,MP=500×1.25=625 → SP=625×0.9=562.5 → Profit=62.5 → %≈12.5
+"A man buys 2 items ₹400 each, sells one at 10% gain, other at 10% loss. Net profit/loss?",0,5,10,15,A,"SP1=440, SP2=360 → Total SP=800 → CP=800 → Net=0"
+"Trader buys 3 items ₹600 each, sells 2 at 15% gain, 1 at 10% loss. Net profit?",6.66%,7%,5%,10%,A,SP=2×690 +540=1920 → CP=1800 → Profit=120 → %≈6.66
+"CP ₹700, sold at 10% gain. Another identical sold at 5% loss. Net profit?",2.5%,0%,7%,5%,A,"SP1=770, SP2=665 → Total SP=1435 → CP=1400 → Profit=35 → %≈2.5"
+"Article CP ₹800, MP 30% above, discount 20%. Net gain?",4%,5%,6%,7%,A,MP=1040 → SP=1040×0.8=832 → Profit=32 → %≈4

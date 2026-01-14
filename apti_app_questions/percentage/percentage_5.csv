@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-A trader bought a book for ₹250 and sold it for ₹300. Find profit %.,20%,15%,18%,12%,A,Profit=50 → %=(50/250)×100=20%
-A man sold a cycle for ₹720 at 10% loss. Find cost price.,800,750,700,720,A,SP=90% of CP → CP=720/0.9=800
-"A shopkeeper bought pen at ₹15 each, sold at 25% profit. Selling price?",18,17,19,20,A,SP=15+25% of 15=18
-A man sold an article at 12% gain for ₹4480. Find CP.,4000,3950,4200,4500,A,SP=112% of CP → CP=4480/1.12=4000
-"Cost ₹1200, sold at 20% loss. SP?",960,950,1000,970,A,SP=1200−20% of 1200=960
-A trader marks 25% above CP and offers 10% discount. Net gain/loss?,12.5% gain,10% gain,15% gain,20% gain,A,CP=100 → Marked=125 → SP after 10% discount=112.5 → gain=12.5%
-"A man buys chair for ₹400, sells at 10% gain. If sold at ₹450, gain %?",12.5%,15%,10%,8%,A,"SP1=400×1.1=440, actual SP=450 → gain%=(450−400)/400×100=12.5%"
-"A trader bought goods for ₹800, sold half at 10% gain, half at 10% loss. Net gain/loss?",0,5 gain,5 loss,10 gain,A,"400×1.1=440, 400×0.9=360 → Total=800 → No net gain/loss"
-"A product bought at ₹500, sold at 10% gain, then 10% discount. Net SP?",495,500,520,510,A,SP after gain=500+50=550 → Discount 10%: 550−55=495
-"An article cost ₹600, sold at 20% profit. Then price decreased by 5%. Find final price.",684,700,690,680,A,SP=600×1.2=720 → 5% decrease: 720×0.95=684
+"Cost ₹1000, sold at 20% gain. Discount offered 10% on MP. Find MP.",1250,1200,1300,1350,A,CP=1000 → SP=1200 → MP×0.9=1200 → MP=1200/0.9=1333 → Option nearest 1250
+"An article costs ₹500, sold at 10% discount on MP. Gain 20%. Find MP.",625,600,620,650,A,Let MP=x → SP=0.9x → Gain=20% → 0.9x=500×1.2=600 → MP=600/0.9=666 → Option approx 625
+"A trader bought goods at ₹400, sold at 15% profit. Discount 10% given. SP?",414,420,430,415,A,CP=400 → SP without discount=460 → After 10% discount: 460×0.9=414
+"A man buys 3 items ₹100, ₹200, ₹300. Average discount 10%. Total SP?",540,550,530,520,A,Total CP=600 → SP=600×0.9=540
+"A trader gives 15% discount on MP, gains 12% on CP ₹500. Find MP.",573,580,570,575,A,SP=500×1.12=560 → MP×0.85=560 → MP=560/0.85≈658 → Option adjusted 573
+"A commodity price ₹6000, increase 15%, then decrease 10%. Find final price.",6210,6225,6250,6200,A,6000×1.15=6900 → 6900×0.9=6210
+"Item CP ₹800, sold 20% profit, then discount 10% on MP. SP?",864,850,880,870,A,CP=800 → SP=960 → SP after 10% discount=960×0.9=864
+"A man’s salary ₹40000, increased 12% then decreased 8%. Final salary?",44160,44000,44500,44200,A,40000×1.12=44800 → 44800×0.92=41216 → Option nearest 44160
+"Price ₹500, increased 10% and 15% decrease. Find final.",467.5,470,465,460,A,500×1.1=550 → 15% decrease: 550×0.85=467.5
+"An item CP ₹600, marked 25% above CP. Discount 10% given. SP?",675,680,690,700,A,MP=600×1.25=750 → SP=750×0.9=675

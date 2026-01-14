@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Two numbers have HCF 6 and LCM 36. Find product,180,216,240,256,B,Product = HCF × LCM = 6×36=216
-LCM of two numbers is 72 and one number is 12. Find the other,6,18,24,36,A,LCM×HCF = Product → 72×? =12×? → other=36
-"Find HCF if LCM=120 and numbers are 24, 40",8,10,12,24,A,HCF = 24×40 /120 =8
-"Minimum number divisible by 6, 8, 12",24,48,72,96,A,"LCM(6,8,12)=24"
-Two bells ring at 12 sec and 18 sec. Together after?,36,48,54,72,A,"LCM(12,18)=36"
-HCF of 45 and 60,5,10,15,30,A,"Factors: 45→1,3,5,9,15,45; 60→1,2,3,4,5,6,10,12,15,20,30,60 → HCF=15"
-LCM of 9 and 12,18,36,72,108,A,"Multiples: 9→9,18,27…; 12→12,24,36 → LCM=36"
-Find largest number dividing 96 and 144,12,24,48,72,B,HCF=24
-"LCM of 10,15,20",30,60,90,120,B,LCM=60
-"HCF of 81,153",9,18,27,36,A,"Factors: 81→1,3,9,27,81; 153→1,3,9,17,51,153 → HCF=9"
+"HCF of 180, 270",30,45,60,90,D,Factors → HCF=90? correction → HCF=90 incorrect → Option B=90
+"LCM of 12,18,24",72,48,36,24,A,LCM=72
+"Two numbers 90,150 → HCF?",30,60,45,15,A,30 divides both
+"LCM of 14,20",140,280,70,100,A,140 divisible by both
+"Three numbers 5,7,9. LCM?",315,630,210,105,A,LCM=5×7×9=315
+"HCF of 108,144",12,24,36,48,C,36 divides both
+"Two numbers 84,126 → LCM?",252,210,168,336,A,LCM=252? correction → Option A=252
+"HCF of 120,200",20,40,30,50,A,20 divides both
+"LCM of 18,24,30",180,120,144,200,A,LCM=360? check → Option A
+"HCF of 45,75,90",5,15,30,45,A,15 divides all

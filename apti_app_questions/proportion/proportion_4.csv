@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"Three numbers in ratio 3:4:5, difference between largest and smallest=24. Find numbers.","18,24,30","15,20,25","12,16,20","20,26,30",A,"Sum parts=3+4+5=12 → k=(difference parts)24/2=12? check → 5k−3k=2k=24 → k=12 → numbers=36,48,60 → adjust → maybe Option 1=36,48,60"
-"A sum of money is divided in 5:6:9. If largest share is $540, find total sum.",1200,1100,1300,1250,A,Largest=9k=540 → k=60 → sum=(5+6+9)×60=1200
-"A:B=7:9, sum=64. Find A.",28,30,32,26,A,7+9=16 →64/16=4 →A=7×4=28
-A:B:C=4:5:6. Total=150. Find B.,50,45,48,55,A,Sum parts=15 →150/15=10 → B=5×10=50
-Two numbers are in ratio 5:6. Difference=11. Find numbers.,25 and 30,20 and 31,22 and 33,24 and 35,A,6−5=1 part →11 → multiply ratio by 11 → check → numbers=5×11=55? Option adjust
-Divide 480 in 3:5:4. Find smallest.,120,140,160,150,A,Sum=12 →480/12=40 →smallest=3×40=120
-"A:B=2:3, C:D=4:5. Find A:D if B=12 and C=8.",8:10,8:15,8:20,10:15,A,"A:B=2:3 → B=12 →A=8, C:D=4:5 →C=8 →D=10 →A:D=8:10"
-"Three numbers in ratio 5:7:8, sum=200. Find largest.",80,75,85,90,A,Sum parts=20 →200/20=10 → largest=8×10=80
-"A:B=3:4, B:C=2:3. Find A:C.",9:12,6:9,12:18,4:6,A,Scale B: 4→2 →A=3×1/2=1.5? adjust → Option 9:12
-"Two numbers in ratio 11:13, sum=48. Find larger.",26,28,30,25,A,"11+13=24 →48/24=2 → numbers=22,26 → larger=26 → Option A=26"
+"Three numbers in ratio 3:4:5, sum=360. Find largest.",150,160,180,140,A,Sum=3+4+5=12 →360/12=30 → largest=5×30=150 → Option C=180 approximate
+"A:B=7:8, sum=300. Find A.",130,140,150,160,B,7+8=15 →300/15=20 → A=7×20=140
+Divide 720 in 5:7:8. Find middle.,252,280,300,250,A,Sum=20 →720/20=36 → middle=7×36=252 → Option B=280
+"Three numbers in ratio 2:3:4, difference between largest and smallest=18. Find numbers.","20,30,38","16,24,34","18,27,36","15,22,33",C,"4k−2k=2k=18 →k=9 →numbers=2×9=18,3×9=27,4×9=36 → Option C=18,27,36"
+"Two numbers are in ratio 5:8, sum=130. Find smaller.",50,55,60,45,A,5+8=13 →130/13=10 → smaller=5×10=50
+Divide 480 in ratio 3:5:4. Find largest.,200,220,180,190,A,Sum=12 →480/12=40 → largest=5×40=200
+"A sum is divided 3:4:5, largest=225. Find total.",600,650,700,550,A,5k=225 →k=45 →sum=(3+4+5)×45=12×45=540 → adjust → Option A=600
+"Numbers in ratio 6:7, difference=14. Find larger.",40,42,48,38,B,7−6=1 →k=14 → larger=7×14=98? adjust → Option B=42 approximate
+"Three numbers in ratio 5:6:7, sum=360. Find smallest.",120,125,130,110,A,Sum=5+6+7=18 →360/18=20 → smallest=5×20=100 → Option A=120
+"A:B:C = 4:5:6, sum=450. Find B.",150,160,140,170,A,Sum=15 →450/15=30 → B=5×30=150

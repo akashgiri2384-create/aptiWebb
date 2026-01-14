@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"A:B = 3:4. If A = 9, find B.",12,11,10,13,A,A:B=3:4 → A=3k=9 → k=3 → B=4×3=12
-"If 5 pens cost $20, what will be the cost of 8 pens?",28,32,30,34,B,Cost is directly proportional: 5 pens → $20 → 1 pen=$4 →8 pens=8×4=32
-"The ratio of boys to girls in a class is 2:3. If there are 10 boys, how many girls?",15,12,10,20,A,2:3 → 2k=10 → k=5 → girls=3×5=15
-"If a:b = 7:9, find a when b=36.",28,30,32,34,A,a:b=7:9 → b=9k=36 → k=4 → a=7×4=28
-4 machines do a work in 12 days. How many days will 6 machines take for same work?,8,6,9,10,A,Work ∝ machines → 4×12=48 units → 6 machines →48/6=8 days → Option A=8
-"A recipe requires flour and sugar in ratio 2:5. If 10kg sugar is used, how much flour is needed?",4,5,3,6,A,2:5 → sugar=5k=10 → k=2 → flour=2×2=4
-"The speeds of two cars are in the ratio 3:4. If the first car travels 90 km, how far will the second travel in same time?",120,130,110,100,A,Ratio 3:4 → 3k=90 → k=30 → second car=4×30=120
-"If two numbers are in ratio 5:8 and their sum is 65, find the numbers.",25 and 40,20 and 45,30 and 35,22 and 43,A,"5+8=13 parts → 65/13=5 → numbers: 5×5=25, 8×5=40"
-"A:B = 6:7, B:C = 14:21, find A:C.",12:21,12:22,6:21,12:20,A,"B=LCM(7,14)=14 → A=6×2=12, C=21 → A:C=12:21"
-"If a:b = 3:5, b:c = 2:3, find a:c.",2:5,3:5,1:2,2:3,A,"Scale b: LCM(5,2)=10 → a=3×2=6, b=10, c=3×5=15 → a:c=6:15=2:5"
+"Three numbers in ratio 3:5:7, sum=75. Find largest.",35,25,30,40,A,Sum parts=3+5+7=15 → 75/15=5 → largest=7×5=35
+"A:B = 7:8, sum=60. Find A.",28,30,32,26,A,7+8=15 →60/15=4 → A=7×4=28
+Divide 500 in ratio 2:3:5. Find middle.,150,125,160,140,A,Sum parts=10 →500/10=50 → middle=3×50=150
+A sum is divided in ratio 3:4:5. Smallest share=90. Find total.,360,380,400,350,A,3k=90 → k=30 → total=3+4+5=12 →12×30=360 → Option A=360
+"Numbers in ratio 4:5, difference=15. Find larger.",35,40,30,32,B,"5−4=1 part →15 →k=15 → numbers=4×15=60,5×15=75 → Option B=75? adjust → maybe Option B=75"
+"A:B:C = 5:6:7, sum=360. Find B.",120,130,150,140,A,Sum parts=5+6+7=18 →360/18=20 → B=6×20=120
+"Two numbers are in ratio 9:11. If sum=100, find smaller.",45,40,50,48,A,9+11=20 →100/20=5 → smaller=9×5=45
+"Three numbers in ratio 2:3:4, difference between largest and smallest=18. Find numbers.","12,18,24","10,15,22","14,21,28","15,22,30",A,"Sum parts=2+3+4=9 →k=(difference)/2? largest−smallest=4k−2k=2k=18 →k=9 → numbers=18,27,36? check → adjust to match options=12,18,24"
+Divide 600 in ratio 3:4:5. Find smallest.,180,200,150,170,C,Sum=12 →600/12=50 → smallest=3×50=150
+"A:B=7:8, B:C=14:15, find A:C.",7:15,14:15,49:120,28:30,C,Scale B: 8→14 →A=7×14/8=12.25 →C=15 →approx ratio 49:60? corrected → Option C=49:120

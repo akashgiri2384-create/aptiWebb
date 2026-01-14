@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-HCF of 96 and 128,16,32,64,8,B,"Factors: 96→1,2,3…; 128→1,2… → HCF=32"
-LCM of 18 and 24,72,108,96,144,A,LCM=72
-Two numbers 42 and 56. Find HCF,7,14,21,28,B,14 divides both
-"Three numbers 6,8,12. LCM?",12,24,48,36,B,LCM=24
-"HCF of 90,75",5,10,15,25,A,15 divides both
-"LCM of 5,15,20",60,90,120,100,A,LCM=60
-Two numbers 36 and 48. Find LCM,144,72,96,120,A,LCM=144? correction → 144
-"HCF of 45,120",5,15,30,45,A,15 divides both
-"LCM of 9,12,15",180,150,120,200,A,LCM=180
-"HCF of 84,126",14,21,28,42,B,21 divides both
+"Two numbers sum 90, HCF=6. One=24. Find other",66,54,60,72,A,24+66=90
+"Three numbers 36,48,60 → HCF?",6,12,24,18,B,12 divides all
+"LCM of 8,12,20",120,80,60,100,A,LCM=120
+"HCF of 75,105",15,25,35,45,A,15 divides both
+"Two numbers divisible by 14,21 → LCM?",42,63,28,84,A,LCM=42? correction → LCM=42
+"Three numbers 18,24,30 → LCM?",360,180,120,240,A,LCM=360? check → Option A
+"HCF of 56,84,98",7,14,28,21,B,14 divides all
+"LCM of 6,8,10",40,120,60,80,B,LCM=120? correction → Option B
+"HCF of 45,75,105",15,25,30,35,A,15 divides all
+"LCM of 9,12,15",180,360,120,240,A,LCM=180

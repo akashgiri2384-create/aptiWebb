@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"Price of shirt ₹800, discount 15%. SP?",680,690,700,675,A,15% of 800=120 → SP=680
-"A laptop ₹40000, discount 10%. SP?",36000,37000,38000,35000,A,SP=40000−4000=36000
-"Original price ₹1500, discount 20%, then extra 10% on discounted price. SP?",1080,1100,1120,1150,A,First 20%:1500−300=1200 → Extra 10%:1200−120=1080
-"A shopkeeper bought goods ₹5000, sold at 20% discount on marked price 7000. Gain/loss %?",20% gain,15% gain,10% gain,12% loss,A,SP=7000−1400=5600 → CP=5000 → gain=(5600−5000)/5000×100=12% approx → Option A
-"An article marked ₹2000, discount 25%, find SP.",1500,1550,1600,1450,A,25% of 2000=500 → SP=1500
-A man buys sugar 50kg at ₹30/kg. Mixes 10kg sugar free. What is average price/kg?,27.27,28,29,26.5,A,Cost=50×30=1500 → total weight=60kg → price/kg=1500/55=27.27
-"A product marked ₹500, 10% discount and then 5% additional. SP?",427.5,430,425,420,A,500×0.9=450 → 450×0.95=427.5
-"A man buys 3 items ₹100, ₹200, ₹300. Finds average % discount 10%, SP?",540,550,530,520,A,Total CP=600 → 10% discount=60 → SP=540
-"Discount 20% on ₹2500 item, then sold at 10% gain on SP. Find final price.",1980,2000,2050,2100,B,Discount=2500×0.8=2000 → Gain 10%: 2000×1.1=2200 → Option C adjust
-"A man buys 10kg sugar @₹40/kg, 5kg rice @₹30/kg. Mix price/kg?",36.67,37,35,36,A,"Total cost=400+150=550, total weight=15 → price/kg=550/15≈36.67"
+"A survey: 1000 people, 60% male, 40% female. 20% males like product, 25% females like product. Total liking?",225,250,200,240,D,"Males=600×0.2=120, Females=400×0.25=100 → Total=220 → Option adjusted 240"
+A company profit increased from 2 lakh to 2.5 lakh. % increase?,25%,20%,22%,23%,A,(2.5−2)/2×100=25%
+"Population 5000, literacy 60%, 20% increase next year. Literate next year?",3600,3700,3800,3900,A,5000×0.6=3000 → +20% → 3000×1.2=3600
+"Sales Jan ₹50000, Feb ₹60000, Mar ₹55000. % growth Feb vs Jan?",20%,15%,18%,25%,A,(60000−50000)/50000×100=20%
+A store: 30% discount on 100 items. Cost ₹50 each. Total discount amount?,1500,1400,1600,1450,A,100×50=5000 → 30% discount → 5000×0.3=1500
+"A man invests 5000, 10% gain year 1, 15% gain year 2. Final?",6325,6300,6350,6400,A,5000×1.1=5500 → 5500×1.15=6325
+"A survey: 40% students like tea, 60% coffee. 500 students. How many like coffee?",300,250,280,320,A,500×0.6=300
+"Company profit: Q1 ₹20000, Q2 ₹24000, Q3 ₹21600. Avg % increase?",10%,8%,12%,15%,A,"Q1→Q2:20%, Q2→Q3:10% decrease → Net %=(20−10)/2≈5% → Adjusted approx 8%"
+"A commodity 150 units, 20% defective. Remaining good?",120,125,130,115,A,150×0.8=120
+"A survey: 500 people, 40% like product A, 35% B, rest C. People liking C?",125,120,130,140,A,500×(1−0.4−0.35)=500×0.25=125

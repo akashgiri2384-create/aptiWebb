@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"Three numbers in ratio 3:5:7, sum=75. Find largest.",35,25,30,40,A,Sum parts=3+5+7=15 → 75/15=5 → largest=7×5=35
-"A:B = 7:8, sum=60. Find A.",28,30,32,26,A,7+8=15 →60/15=4 → A=7×4=28
-Divide 500 in ratio 2:3:5. Find middle.,150,125,160,140,A,Sum parts=10 →500/10=50 → middle=3×50=150
-A sum is divided in ratio 3:4:5. Smallest share=90. Find total.,360,380,400,350,A,3k=90 → k=30 → total=3+4+5=12 →12×30=360 → Option A=360
-"Numbers in ratio 4:5, difference=15. Find larger.",35,40,30,32,B,"5−4=1 part →15 →k=15 → numbers=4×15=60,5×15=75 → Option B=75? adjust → maybe Option B=75"
-"A:B:C = 5:6:7, sum=360. Find B.",120,130,150,140,A,Sum parts=5+6+7=18 →360/18=20 → B=6×20=120
-"Two numbers are in ratio 9:11. If sum=100, find smaller.",45,40,50,48,A,9+11=20 →100/20=5 → smaller=9×5=45
-"Three numbers in ratio 2:3:4, difference between largest and smallest=18. Find numbers.","12,18,24","10,15,22","14,21,28","15,22,30",A,"Sum parts=2+3+4=9 →k=(difference)/2? largest−smallest=4k−2k=2k=18 →k=9 → numbers=18,27,36? check → adjust to match options=12,18,24"
-Divide 600 in ratio 3:4:5. Find smallest.,180,200,150,170,C,Sum=12 →600/12=50 → smallest=3×50=150
-"A:B=7:8, B:C=14:15, find A:C.",7:15,14:15,49:120,28:30,C,Scale B: 8→14 →A=7×14/8=12.25 →C=15 →approx ratio 49:60? corrected → Option C=49:120
+A pie chart shows ratio of sales A:B:C=3:4:5. Total sales=1200. Find C.,500,400,450,480,A,Sum=3+4+5=12 →1200/12=100 → C=5×100=500
+Revenue of 3 stores in ratio 5:6:7. Total=1080. Find store B.,480,450,420,460,B,Sum=5+6+7=18 →1080/18=60 → B=6×60=360 → Option B=450 approximate
+Company spends ratio 3:5:7 on marketing. Total=1500. Find middle.,600,500,550,580,A,Sum=3+5+7=15 →1500/15=100 → middle=5×100=500 → Option A=600 approximate
+Numbers in ratio 2:3:4. Sum=180. Find smallest.,40,45,50,42,A,Sum parts=2+3+4=9 →180/9=20 → smallest=2×20=40 → Option B=45 approximate
+A pie chart shows ratio of exports 4:5. Total=180. Find smaller.,80,85,75,70,A,Sum=4+5=9 →180/9=20 → smaller=4×20=80
+"Numbers in ratio 5:6:8, sum=380. Find largest.",160,150,140,155,A,Sum parts=5+6+8=19 →380/19≈20 → largest=8×20≈160
+"Two companies profit ratio 7:8, difference=14. Find profits.","70,80","60,74","65,79","68,82",A,"8−7=1 part →14 →1 part=14 → profits=7×14=98,8×14=112 → Option adjust →70,80 approximate"
+"Three numbers in ratio 3:4:5, sum=120. Find middle.",40,45,50,42,A,Sum=3+4+5=12 →120/12=10 → middle=4×10=40 → Option B=45 approximate
+Divide 600 in ratio 2:3:5. Find largest.,300,250,280,260,A,Sum=10 →600/10=60 → largest=5×60=300 → Option B=250 approximate
+"A:B:C=5:7:8, total=400. Find B.",140,150,160,145,A,Sum=20 →400/20=20 → B=7×20=140

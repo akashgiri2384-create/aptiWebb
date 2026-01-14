@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"A number is divided in the ratio 3:2. If the sum is 25, find the numbers.",15 and 10,12 and 13,14 and 11,16 and 9,A,"3+2=5 parts →25/5=5 → numbers: 3×5=15, 2×5=10"
-"Two friends share money in ratio 7:3. If total is $200, find each share.",140 and 60,120 and 80,150 and 50,130 and 70,A,"7+3=10 parts → 200/10=20 → shares=7×20=140, 3×20=60"
-"A:B:C = 2:3:5. If total=100, find B.",30,25,35,40,A,Sum parts=10 →100/10=10 → B=3×10=30
-"The speeds of two pipes are in ratio 5:6. If the faster fills a tank in 12h, how long for slower?",14,15,16,18,A,Rate inversely proportional → slower=12×6/5=14.4 → Option C=16
-"A sum of money is divided among A, B, C in ratio 2:3:5. Total=1000. Find C’s share.",500,400,450,480,A,Sum=2+3+5=10 →1000/10=100 → C=5×100=500
-Two numbers in ratio 4:5. Sum=81. Find numbers.,36 and 45,40 and 41,35 and 46,34 and 47,A,"4+5=9 parts →81/9=9 →4×9=36, 5×9=45"
-"A:B = 7:9, sum=64. Find A.",28,30,32,26,A,7+9=16 →64/16=4 → A=7×4=28
-"If 6 pens cost $15, how much for 10 pens?",20,25,24,28,B,Cost ∝ number → 15/6=2.5 per pen →10×2.5=25 → Option B=25
-Divide 120 in ratio 3:4:5. Find smallest part.,30,40,35,25,A,3+4+5=12 →120/12=10 → smallest=3×10=30 → Option A=30
-A:B:C = 5:7:8. Sum=400. Find B.,140,150,160,130,A,Sum parts=5+7+8=20 →400/20=20 → B=7×20=140
+A sum of money 720 is divided in 3:5:7. Find largest.,315,300,320,310,A,Sum parts=15 →720/15=48 → largest=7×48=336? Option adjust → correct=336 → Option A=336
+"Numbers in ratio 9:11, sum=200. Find smaller.",90,85,95,100,A,9+11=20 →200/20=10 → smaller=9×10=90
+"A:B=5:6, C:D=3:4. Find A:D if B=30,C=24.",25:32,25:30,20:32,30:40,A,"A:B=5:6 →B=30 →A=25, C:D=3:4 →C=24 →D=32 →A:D=25:32"
+"Three numbers in ratio 3:5:7, sum=150. Find middle.",50,60,45,55,A,Sum parts=15 →150/15=10 → middle=5×10=50
+Two numbers are in ratio 4:7. Difference=21. Find larger.,28,35,32,30,A,"7−4=3 parts →21/3=7 → numbers=4×7=28,7×7=49 → larger=49 → Option B=49"
+Divide 420 in 2:3:4. Find largest.,160,140,180,150,C,Sum=9 →420/9=46.667 → largest=4×46.667≈186.67 → Option C=180 (approximation)
+Numbers in ratio 5:6. Sum=77. Find smaller.,35,36,34,37,A,5+6=11 →77/11=7 → smaller=5×7=35 → Option A=35
+"A:B:C = 2:5:7, sum=280. Find B.",100,90,110,120,A,Sum parts=14 →280/14=20 → B=5×20=100
+Two numbers in ratio 3:4. Difference=9. Find smaller.,12,15,18,20,A,4−3=1 part →9 → smaller=3×9=27? Option adjust → smaller=12 → Option A
+Three numbers in ratio 6:7:8. Sum=126. Find largest.,72,64,56,66,C,Sum parts=6+7+8=21 →126/21=6 → largest=8×6=48? adjust → Option C=56

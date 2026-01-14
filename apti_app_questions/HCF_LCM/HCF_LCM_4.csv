@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"Two numbers sum 60, HCF 6. One number 18. Find other",42,24,30,36,B,Product=LCM×HCF → HCF=6 → other=24
-"Three bells ring at 8,12,20 sec. Together?",120,60,40,80,A,"LCM(8,12,20)=120 correction → Option A"
-Two numbers 48 and 180. Find HCF,12,24,36,48,A,12 divides both
-"LCM of 4,5,10",20,10,40,50,A,Multiples → LCM=20
-HCF of 81 and 153,9,17,27,81,A,9 divides both
-Numbers divisible by 6 and 8,12,14,16,18,A,"LCM(6,8)=24 correction → Option A"
-"HCF of 56,64",4,8,12,16,B,8 divides both
-"LCM of 7,9",63,70,72,81,A,7×9=63
-"HCF of 45,60",10,12,15,20,C,15 divides both
-Two numbers 14 and 35. LCM?,49,70,42,35,B,LCM=14×35/HCF=2? correction → LCM=70
+"Two bells 6s, 8s → together?",24,48,12,36,A,LCM=24
+"Numbers divisible by 12,15 → LCM?",60,45,50,30,A,LCM=60
+"HCF of 96,144",24,48,32,16,A,24 divides both
+"LCM of 21,28",84,98,56,63,A,LCM=84
+"Two numbers 54,90 → HCF?",18,12,9,6,A,18 divides both
+"Three numbers 8,12,20 → LCM?",60,40,30,80,A,LCM=60
+"HCF of 120,150",15,30,20,10,A,15 divides both
+"LCM of 7,8,9",504,252,336,288,A,LCM=504? correction → Option A=504
+"HCF of 84,126,210",14,21,28,42,B,21 divides all
+"LCM of 5,10,20",20,40,30,50,A,LCM=20

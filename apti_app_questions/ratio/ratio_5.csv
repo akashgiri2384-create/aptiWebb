@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-₹360 divided in ratio 3:5. Larger share?,135,180,225,240,C,parts=8 → 360/8=45 → larger=5×45=225
-₹540 divided in ratio 4:5:9. Middle share?,120,150,180,210,B,parts=18 → 540/18=30 → middle=5×30=150
-₹720 divided in ratio 7:5. Smaller part?,300,420,360,280,A,parts=12 → 60 → smaller=5×60=300
-Two persons share ₹840 in 5:7. Larger gets?,490,350,420,560,A,parts=12 → 70 → larger=7×70=490
-"Divide ₹900 among A,B,C in 2:3:4. B gets?",200,300,400,250,B,parts=9 → 100 → B=3×100=300
-₹1080 divided in 4:5:7. Largest share?,420,540,360,480,D,parts=16 → 1080/16=67.5 → 7×67.5=472.5 ≈480 (nearest)
-₹660 divided among 1:2:3. Smallest?,110,220,330,165,A,parts=6 → 110 each → smallest=110
-Divide 450 in 3:4:8. Difference of largest & smallest?,120,150,180,200,B,parts=15 → 30 → diff=(8−3)×30=150
-"Two numbers in ratio 7:9, sum=320. Larger?",140,160,180,200,C,parts=16 → 20 → larger=9×20=180
-Divide 1000 in ratio 2:3:5. Middle part?,200,300,400,500,B,parts=10 → 100 → middle=3×100=300
+"Speeds in ratio 3:5, total distance 80 km. Faster covers?",30,40,50,60,C,faster=(5/8)×80=50
+"Two cars cover same time, speed ratio 4:7. Distance ratio?",4:7,7:4,16:49,1:1,A,distance ∝ speed
+"Distances ratio 5:9, same speed. Time ratio?",5:9,9:5,25:81,1:1,A,time ∝ distance
+"Speed ratio 2:3, total time 10 hr. Faster time?",4,5,6,7,A,time inverse → faster=(2/5)×10=4
+Two cyclists in ratio 7:11 cover 180 km. Slower covers?,70,80,90,100,A,slower=(7/18)×180=70 → option A
+"Speed ratio 3:4, same distance. Time difference 2 hr. Slower time?",6,8,10,12,B,let times 4x & 3x → diff=x=2 → slower=8
+Trains in ratio 5:8 cross bridge. Time ratio?,5:8,8:5,25:64,1:1,B,time ∝ 1/speed
+"Distance split 2:3, speed same. Longer time?",40%,50%,60%,70%,C,longer=(3/5)=60%
+"Speed ratio 4:9, total distance 130. Faster?",50,60,70,90,D,faster=(9/13)×130=90
+"A takes 3x time of B, same distance. Speed ratio?",1:3,3:1,1:9,9:1,B,speed inverse → 3:1

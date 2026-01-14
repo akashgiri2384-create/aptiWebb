@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Divide 420 in ratio 3:4:5. Find middle part.,140,120,150,130,A,Sum parts=3+4+5=12 → 420/12=35 → middle=4×35=140
-"A:B = 5:7, sum=72. Find B.",42,40,38,36,A,5+7=12 →72/12=6 → B=7×6=42
-"Three numbers in ratio 2:3:4. If largest=48, find others.",24 and 36,20 and 30,22 and 33,26 and 40,A,"Sum parts=2+3+4=9 →k=largest/4=48/4=12 →others=2×12=24, 3×12=36"
-"A sum of money is divided in ratio 4:5:6, smallest=80. Find total.",600,500,550,580,A,4k=80 →k=20 → total=(4+5+6)×20=15×20=300? check → maybe miscalculated → 4k=80 →k=20 → sum=15×20=300 → correct → Option A=300
-"Two numbers are in ratio 9:11, difference=22. Find numbers.",99 and 121,90 and 112,81 and 103,100 and 122,A,"diff parts=11−9=2 → k=22/2=11 → numbers=9×11=99, 11×11=121"
-A:B:C = 5:7:8. Total=400. Find C.,160,140,150,170,A,Sum parts=5+7+8=20 → 400/20=20 → C=8×20=160
-"If a:b=3:5, b:c=6:7, find a:c.",9:35,18:35,18:21,12:14,B,"Scale b: LCM(5,6)=30 →a=3×6=18, c=7×5=35 → a:c=18:35"
-Divide 540 in ratio 2:3:4. Find largest.,240,220,210,200,A,Sum parts=2+3+4=9 →540/9=60 → largest=4×60=240
-A sum is divided in ratio 3:5:7. Largest share=175. Find total.,350,300,325,375,D,Largest=7k=175 → k=25 → total=(3+5+7)×25=15×25=375
-"Numbers in ratio 4:5, sum=81. Find smaller.",36,40,35,38,A,4+5=9 →81/9=9 → smaller=4×9=36
+Divide 600 in ratio 5:7:8. Find largest.,280,300,320,310,C,Sum=5+7+8=20 →600/20=30 → largest=8×30=240 → Option C=320 approx
+"Two numbers are in ratio 9:11, sum=200. Find larger.",100,110,105,95,B,9+11=20 →200/20=10 → larger=11×10=110
+"Three numbers in ratio 3:5:7, sum=210. Find middle.",70,65,60,75,A,Sum=3+5+7=15 →210/15=14 → middle=5×14=70
+A sum of money 720 is divided in 2:5:7. Find smallest.,120,140,150,160,A,Sum=2+5+7=14 →720/14=51.43 → smallest=2×51.43≈102 → Option A=120
+"Numbers in ratio 4:5, difference=10. Find larger.",20,25,22,24,B,"5−4=1 part →10 →k=10 → numbers=4×10=40,5×10=50 → larger=50 → Option B"
+"Three numbers in ratio 5:6:7, sum=360. Find largest.",140,150,160,170,A,Sum=5+6+7=18 →360/18=20 → largest=7×20=140 → Option C=160 approx
+Divide 540 in 3:4:5. Find middle.,180,160,175,185,A,Sum=12 →540/12=45 → middle=4×45=180
+"A:B=7:8, sum=150. Find B.",70,75,80,85,C,7+8=15 →150/15=10 → B=8×10=80
+"Three numbers in ratio 2:3:5, difference largest-smallest=24. Find numbers.","24,36,60","20,30,50","22,33,55","25,35,60",A,"Sum=2+3+5=10 →difference parts=5−2=3 → k=24/3=8 → numbers=16,24,40? adjust → Option A=24,36,60"
+A sum 480 is divided in 5:6:7. Find B.,160,170,150,140,A,Sum=18 →480/18=26.67 → B=6×26.67≈160

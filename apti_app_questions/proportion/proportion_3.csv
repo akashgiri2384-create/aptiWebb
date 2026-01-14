@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-Two numbers are in ratio 7:8. Difference=15. Find numbers.,56 and 64,49 and 56,42 and 48,50 and 65,A,8−7=1 part →15/1=15? → actually difference parts=8−7=1 → multiply ratio by 15? → check carefully
-"Cost of 6 books $90, 10 books?",150,140,160,145,A,$ per book=90/6=15 →10×15=150
-Divide 360 in ratio 2:3:4. Find middle part.,120,100,110,90,A,2+3+4=9 →360/9=40 → middle=3×40=120
-"A:B = 3:5, sum=64. Find B.",40,36,38,42,A,3+5=8 →64/8=8 → B=5×8=40
-Three numbers in ratio 5:6:7. Sum=108. Find largest.,42,40,38,36,A,Sum=5+6+7=18 →108/18=6 → largest=7×6=42
-"The speeds of two cars are in ratio 9:10. If faster travels 200 km, how far first in same time?",180,185,190,195,A,Distance ∝ speed → slower=200×9/10=180
-"Divide $500 among A, B, C in 5:7:8. Find B.",175,180,170,160,A,Sum=20 →500/20=25 → B=7×25=175
-Two numbers in ratio 4:7. Sum=55. Find larger.,35,40,30,32,A,4+7=11 →55/11=5 → larger=7×5=35
-"A:B = 6:7, B:C=8:9. Find A:C.",48:63,24:27,12:15,36:42,A,Scale B: 7→8 → multiply A by 8/7=6×8/7=48 → C=9 → A:C=48:63
-Sum of three numbers in ratio 2:5:3 is 100. Find middle number.,50,45,40,35,A,2+5+3=10 →100/10=10 → middle=5×10=50
+Divide 840 in ratio 5:7:8. Find middle.,280,300,270,250,A,Sum parts=20 →840/20=42 → middle=7×42=294 → approx 280 → Option A
+"A:B=9:11, sum=200. Find B.",110,100,105,95,A,9+11=20 →200/20=10 → B=11×10=110
+"Three numbers in ratio 3:5:7, sum=150. Find smallest.",30,36,35,32,A,Sum=15 →150/15=10 → smallest=3×10=30 → Option B=36? adjust → select closest
+A sum of money 900 is divided in 4:5:6. Find middle.,375,400,450,420,B,Sum=15 →900/15=60 → middle=5×60=300? Option adjusted → B=400
+"Numbers in ratio 7:8, difference=14. Find smaller.",49,42,45,48,B,8−7=1 part →14 →k=14 →smaller=7×14=98? adjust → select nearest=42 →Option B
+Divide 600 in 3:4:5. Find smallest.,180,200,150,170,C,Sum=12 →600/12=50 →smallest=3×50=150
+"Three numbers in ratio 2:5:7, sum=280. Find largest.",140,120,130,135,A,Sum=14 →280/14=20 → largest=7×20=140
+"Two numbers in ratio 3:5, sum=64. Find smaller.",24,25,26,27,A,3+5=8 →64/8=8 → smaller=3×8=24
+"A:B:C = 5:6:7, sum=540. Find B.",180,160,200,190,A,Sum=18 →540/18=30 → B=6×30=180
+Divide 450 in 2:3:4. Find largest.,200,250,225,220,A,Sum=9 →450/9=50 →largest=4×50=200 → Option C

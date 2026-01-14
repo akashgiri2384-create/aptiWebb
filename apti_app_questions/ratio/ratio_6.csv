@@ -1,11 +1,11 @@
 ﻿question,option_a,option_b,option_c,option_d,correct_answer,explanation
-"A:B = 3:5. If A = 18, B’s age?",20,25,30,35,C,B=(18×5)/3=30
-"Father:Son = 5:2. If father is 40, son?",12,14,16,18,C,son=(40×2)/5=16
-"Present age ratio 4:7, sum=44. Younger?",16,20,24,28,A,parts=11 → 44/11=4 → younger=4×4=16
-"After 6 years, ratio 5:6. Present ratio?",4:5,5:6,7:8,9:10,A,subtract 6 → (5x−6):(6x−6)=4:5
-"A:B = 2:3, after 10 years = 3:4. A’s present age?",20,30,40,50,B,solve (2x+10)/(3x+10)=3/4 → x=15 → A=30
-"Ten years ago ratio 3:4, now sum=70. Older?",40,42,44,46,B,solve (3x+10)+(4x+10)=70 → x=8 → older=4×8+10=42
-"Present ratio 5:7, after 5 yrs = 3:4. Present sum?",60,70,80,90,C,"solve → ages=30,42 → sum=72 ≈80 nearest"
-"Ratio 6:11, difference 25. Present ages?","30,55","36,66","24,49","18,43",A,parts=5 → 25/5=5 → 30 & 55
-"If A is 10 yrs older, ratio 4:5. After 10 yrs ratio 1:1. Ages?","20,30","25,35","30,40","35,45",A,"A=20,B=30 fits both"
-"Present ratio 7:9, after 8 yrs sum=88. Younger?",28,30,32,34,A,"solve → present ages=28,36"
+"In class A:B:C = 2:3:5, total 200 students. C?",80,90,100,110,C,parts=10 → C=5×20=100
+"Sales ratio of X:Y = 7:9, total ₹64000. X?",28000,30000,32000,35000,A,X=(7/16)×64000=28000
+"Production of P:Q:R = 3:4:5, total 240 units. Q?",80,90,96,100,A,Q=4/12×240=80 → option A (fix)
+"Boys:Girls=5:7, total 72. Girls?",35,40,42,45,C,girls=(7/12)×72=42
+"Expenses A:B:C=1:2:3, total ₹6000. A?",1000,1200,1500,2000,A,A=1/6×6000=1000
+"Profit ratio 4:5, total ₹18000. Difference?",1000,1500,2000,2500,C,diff=(1/9)×18000=2000
+"Population ratio 7:11, total 36000. Larger city?",14000,18000,22000,24000,C,larger=(11/18)×36000=22000
+"Marks ratio 3:5, total 64. Smaller?",20,24,28,32,B,smaller=(3/8)×64=24
+"Investment ratio 2:3:5, total ₹100000. Middle?",20000,30000,40000,50000,B,middle=3/10×100000=30000
+"Staff ratio 9:11, total 200. Smaller?",80,90,100,110,B,smaller=(9/20)×200=90
