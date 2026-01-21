@@ -30,7 +30,19 @@ class XPConfigAdmin(admin.ModelAdmin):
 class UserStatsAdmin(admin.ModelAdmin):
     list_display = ['user', 'level', 'total_xp', 'current_streak', 'badges_earned']
     search_fields = ['user__email']
-    readonly_fields = ['user', 'total_xp', 'level']
+    readonly_fields = ['user', 'level']
+
+    def save_model(self, request, obj, form, change):
+        if change and 'total_xp' in form.changed_data:
+            # Recalculate level based on new XP
+            from .services import XPService
+            obj.level = XPService.calculate_level(obj.total_xp)
+            
+            # Invalidate leaderboard cache
+            from leaderboards.services import LeaderboardService
+            LeaderboardService.invalidate_leaderboard_cache()
+            
+        super().save_model(request, obj, form, change)
 
 @admin.register(Badge)
 class BadgeAdmin(admin.ModelAdmin):
