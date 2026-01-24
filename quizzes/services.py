@@ -39,24 +39,20 @@ class QuizService:
             ).select_related('category').annotate(
                 active_question_count=Count('questions', filter=Q(questions__is_active=True))
             )
-        # Exclude Daily Challenges from general practice (unless explicit)
-        if category != 'daily-challenge':
-            quizzes_qs = quizzes_qs.exclude(category__slug='daily-challenge')
             
-            # Handle Daily Quiz Archival
-            # Rule:
-            # 1. Hide OLD daily quizzes (before Feature Start Date: 2026-01-24)
-            # 2. Hide ACTIVE/FUTURE daily quizzes (date >= today)
-            # 3. Show COMPLETED daily quizzes (Feature Start <= date < today)
-            
-            from datetime import date
-            today = timezone.localtime(timezone.now()).date()
-            feature_start_date = date(2026, 1, 24) # Cutoff for auto-archival
-            
-            quizzes_qs = quizzes_qs.exclude(
-                Q(daily_assignments__date__lt=feature_start_date) | 
-                Q(daily_assignments__date__gte=today)
-            )
+            # Exclude Daily Challenges from general practice (unless explicit)
+            if category != 'daily-challenge':
+                quizzes_qs = quizzes_qs.exclude(category__slug='daily-challenge')
+                
+                # Handle Daily Quiz Archival
+                from datetime import date
+                today_local = timezone.localtime(timezone.now()).date()
+                feature_start_date = date(2026, 1, 24) # Cutoff for auto-archival
+                
+                quizzes_qs = quizzes_qs.exclude(
+                    Q(daily_assignments__date__lt=feature_start_date) | 
+                    Q(daily_assignments__date__gte=today_local)
+                )
             
             if category:
                 quizzes_qs = quizzes_qs.filter(category__slug=category)
