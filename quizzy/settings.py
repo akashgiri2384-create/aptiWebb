@@ -67,6 +67,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -120,7 +121,8 @@ try:
     
     if database_url:
         # Parse the URL string directly
-        db_config = dj_database_url.parse(database_url, conn_max_age=600)
+        # Fix: detailed 'MaxClientsInSessionMode' error. Set conn_max_age=0 to close connections immediately.
+        db_config = dj_database_url.parse(database_url, conn_max_age=0)
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
@@ -179,7 +181,7 @@ LOGOUT_REDIRECT_URL = '/login/'
 # JWT configuration
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=365),  # 1 Year (Persistent Login)
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
@@ -271,6 +273,10 @@ SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 X_FRAME_OPTIONS = 'DENY'
+
+# Persistent Login Settings (User Request: "Stay logged in forever")
+SESSION_COOKIE_AGE = 315360000  # 10 Years (in seconds)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Logging configuration
 LOGGING = {

@@ -79,6 +79,35 @@ class DashboardService:
                 logger.warning(f"Failed to calculate rank for {user.email}: {e}")
                 current_rank = 'N/A'
 
+        # Calculate Daily Quiz Progress
+        today = timezone.now().date()
+        
+        try:
+            from daily_quizzes.models import DailyQuiz
+            from quizzes.models import QuizAttempt
+            
+            # Find active daily quizzes for today
+            today_daily_quizzes = DailyQuiz.objects.filter(date=today, is_active=True)
+            total_available = today_daily_quizzes.count()
+            today_dq_quiz_ids = today_daily_quizzes.values_list('quiz_id', flat=True)
+            
+            completed_count = QuizAttempt.objects.filter(
+                user=user,
+                quiz_id__in=today_dq_quiz_ids, 
+                status='graded',
+                submitted_at__date=today
+            ).count()
+            
+            daily_progress = {
+                'current': completed_count,
+                'target': 3,
+                'total_available': total_available,
+                'is_complete': completed_count >= 3
+            }
+        except Exception as e:
+            logger.error(f"Error checking daily progress: {e}")
+            daily_progress = {'current': 0, 'target': 3, 'total_available': 0, 'is_complete': False}
+
         stats = {
             'total_xp': profile.total_xp,
             'full_name': user.full_name,
@@ -91,6 +120,7 @@ class DashboardService:
             'weekly_rank': weekly_rank,
             'practice_streak': profile.practice_streak,
             'avatar': profile.avatar if profile.avatar else None,
+            'daily_progress': daily_progress, # New field
         }
         
         if use_cache:

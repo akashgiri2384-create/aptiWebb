@@ -38023,3 +38023,1650 @@ INFO 2026-01-13 22:20:26 basehttp 29472 17292 "POST /admin/accounts/customuser/ 
 INFO 2026-01-13 22:20:28 basehttp 29472 17292 "POST /admin/accounts/customuser/ HTTP/1.1" 302 0
 INFO 2026-01-13 22:20:29 basehttp 29472 17292 "GET /admin/accounts/customuser/ HTTP/1.1" 200 44410
 INFO 2026-01-13 22:20:29 basehttp 29472 17292 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 19:52:32 autoreload 33552 3192 Watching for file changes with StatReloader
+INFO 2026-01-24 19:52:37 basehttp 33552 1188 "GET / HTTP/1.1" 200 36858
+WARNING 2026-01-24 19:52:38 log 33552 1188 Not Found: /favicon.ico
+WARNING 2026-01-24 19:52:38 basehttp 33552 1188 "GET /favicon.ico HTTP/1.1" 404 6080
+WARNING 2026-01-24 19:52:41 services 33552 1188 Failed login attempt for: akashgiri2384@gmail.com
+WARNING 2026-01-24 19:52:41 log 33552 1188 Unauthorized: /api/accounts/login/
+WARNING 2026-01-24 19:52:41 basehttp 33552 1188 "POST /api/accounts/login/ HTTP/1.1" 401 65
+INFO 2026-01-24 19:53:12 services 33552 1188 User logged in successfully: akash.giri@indirauniversity.edu.in from 127.0.0.1
+INFO 2026-01-24 19:53:12 basehttp 33552 1188 "POST /api/accounts/login/ HTTP/1.1" 200 852
+INFO 2026-01-24 19:53:13 basehttp 33552 1188 "GET /dashboard/ HTTP/1.1" 200 51167
+INFO 2026-01-24 19:53:13 basehttp 33552 1188 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:53:13 basehttp 33552 33364 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 19:53:13 services 33552 19884 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-24 19:53:13 basehttp 33552 33076 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:53:13 basehttp 33552 19884 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:53:26 basehttp 33552 19884 "GET /leaderboard/ HTTP/1.1" 200 47692
+INFO 2026-01-24 19:53:26 basehttp 33552 33076 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 19:53:26 basehttp 33552 19884 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 441
+INFO 2026-01-24 19:53:40 basehttp 33552 19884 "GET /api/leaderboards/colleges/ HTTP/1.1" 200 248
+INFO 2026-01-24 19:53:44 basehttp 33552 33076 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 19:53:45 basehttp 33552 19884 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 441
+INFO 2026-01-24 19:53:59 basehttp 33552 19884 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 19:53:59 basehttp 33552 19884 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:53:59 basehttp 33552 33076 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 19:53:59 basehttp 33552 33364 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:53:59 basehttp 33552 1188 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:54:13 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=system-design-basics HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:16 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=clocks-and-calender HTTP/1.1" 200 491
+INFO 2026-01-24 19:54:17 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=coding-decoding HTTP/1.1" 200 479
+INFO 2026-01-24 19:54:18 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=communication HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:19 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=coding-decoding HTTP/1.1" 200 479
+INFO 2026-01-24 19:54:20 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=clocks-and-calender HTTP/1.1" 200 491
+INFO 2026-01-24 19:54:21 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=coding-decoding HTTP/1.1" 200 479
+INFO 2026-01-24 19:54:23 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=communication HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:24 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=hcf_lcm HTTP/1.1" 200 5539
+INFO 2026-01-24 19:54:24 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=logical-resoning HTTP/1.1" 200 471
+INFO 2026-01-24 19:54:25 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=number_system HTTP/1.1" 200 4835
+INFO 2026-01-24 19:54:26 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=percentage HTTP/1.1" 200 6486
+INFO 2026-01-24 19:54:27 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=profit_loss HTTP/1.1" 200 4862
+INFO 2026-01-24 19:54:34 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=simple-interest HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:35 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=compound-interest HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:36 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=time-work HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:37 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=pipes-cisterns HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:38 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=time-speed-distance HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:39 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=problems-on-trains HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:46 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=algebra-linear-equations HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:47 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=permutations-combinations HTTP/1.1" 200 509
+INFO 2026-01-24 19:54:51 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=probability HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:52 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=mensuration-2d HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:53 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=mensuration-3d HTTP/1.1" 200 48
+INFO 2026-01-24 19:54:53 basehttp 33552 1188 "GET /api/quizzes/?limit=200&category=geometry-basics HTTP/1.1" 200 48
+INFO 2026-01-24 19:55:11 basehttp 33552 1188 "GET /leaderboard/ HTTP/1.1" 200 47692
+INFO 2026-01-24 19:55:11 basehttp 33552 33076 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 19:55:11 basehttp 33552 1188 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 441
+INFO 2026-01-24 19:55:26 basehttp 33552 1188 "GET /api/leaderboards/colleges/ HTTP/1.1" 200 248
+INFO 2026-01-24 19:55:27 basehttp 33552 33076 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 19:55:27 basehttp 33552 1188 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 441
+INFO 2026-01-24 19:55:45 basehttp 33552 1188 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 19:55:45 basehttp 33552 33364 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:55:45 basehttp 33552 1188 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:55:45 basehttp 33552 33076 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 19:55:45 basehttp 33552 19884 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:55:54 basehttp 33552 19884 "GET /profile/ HTTP/1.1" 200 38593
+INFO 2026-01-24 19:55:54 basehttp 33552 19884 "GET /api/accounts/profile/ HTTP/1.1" 200 899
+INFO 2026-01-24 19:55:54 basehttp 33552 33076 "GET /api/xp/badges/ HTTP/1.1" 200 2147
+INFO 2026-01-24 19:55:54 basehttp 33552 19884 "GET /static/images/badges/5_bronze-5.png HTTP/1.1" 200 65218
+INFO 2026-01-24 19:55:54 basehttp 33552 33364 "GET /static/images/badges/2_bronze-2.png HTTP/1.1" 200 62602
+INFO 2026-01-24 19:55:54 basehttp 33552 33076 "GET /static/images/badges/4_bronze-4.png HTTP/1.1" 200 61004
+INFO 2026-01-24 19:55:54 basehttp 33552 1188 "GET /static/images/badges/3_bronze-3.png HTTP/1.1" 200 46962
+INFO 2026-01-24 19:55:54 basehttp 33552 5192 "GET /static/images/badges/1_bronze-1.png HTTP/1.1" 200 46380
+INFO 2026-01-24 19:56:04 basehttp 33552 5192 "GET /dashboard/ HTTP/1.1" 200 51167
+INFO 2026-01-24 19:56:04 basehttp 33552 5192 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:56:04 basehttp 33552 33076 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:56:04 basehttp 33552 1188 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 19:56:04 basehttp 33552 33364 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:56:13 basehttp 33552 11128 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 19:56:14 basehttp 33552 11128 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:56:14 basehttp 33552 26648 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:56:14 basehttp 33552 15392 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+WARNING 2026-01-24 19:56:14 log 33552 15392 Not Found: /favicon.ico
+WARNING 2026-01-24 19:56:14 basehttp 33552 15392 "GET /favicon.ico HTTP/1.1" 404 6080
+INFO 2026-01-24 19:56:14 basehttp 33552 27992 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:56:25 basehttp 33552 15392 "GET /leaderboard/ HTTP/1.1" 200 47692
+INFO 2026-01-24 19:56:25 basehttp 33552 27992 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 19:56:25 basehttp 33552 15392 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 441
+INFO 2026-01-24 19:57:47 basehttp 33552 15392 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 19:57:47 basehttp 33552 26648 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 19:57:47 basehttp 33552 15392 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 19:57:47 basehttp 33552 27992 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 19:57:47 basehttp 33552 11128 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40556
+INFO 2026-01-24 19:58:05 basehttp 33552 11128 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-01-24 19:58:05 basehttp 33552 11128 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3712
+INFO 2026-01-24 19:58:05 basehttp 33552 27992 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 15392 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 26648 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 11128 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 14496 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 3908 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:05 basehttp 33552 3908 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:08 basehttp 33552 3908 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3895
+INFO 2026-01-24 19:58:18 basehttp 33552 3908 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-01-24 19:58:18 basehttp 33552 3908 "GET /admin/ HTTP/1.1" 200 37233
+INFO 2026-01-24 19:58:18 basehttp 33552 3908 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:18 basehttp 33552 3908 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:18 basehttp 33552 14496 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 14496 "GET /admin/accounts/customuser/ HTTP/1.1" 200 89927
+INFO 2026-01-24 19:58:38 basehttp 33552 27992 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 26648 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 15392 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 14496 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 27992 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 26648 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 15392 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 14496 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 19:58:38 basehttp 33552 3908 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:58:38 basehttp 33552 11128 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:15 basehttp 33552 11128 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43689
+INFO 2026-01-24 19:59:15 basehttp 33552 11128 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 19:59:36 basehttp 33552 11128 "GET /admin/xp_system/userstats/496df727-04b6-4535-bfa1-bb0aaac7b21f/change/ HTTP/1.1" 200 39491
+INFO 2026-01-24 19:59:36 basehttp 33552 11128 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 26648 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 15392 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 14496 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 11128 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 11128 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:36 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 19:59:36 basehttp 33552 3908 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2026-01-24 19:59:54 basehttp 33552 3908 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43689
+INFO 2026-01-24 20:00:02 basehttp 33552 3908 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43689
+INFO 2026-01-24 20:00:02 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:00:10 basehttp 33552 3908 "GET /admin/xp_system/xplog/ HTTP/1.1" 200 95212
+INFO 2026-01-24 20:00:10 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:00:46 basehttp 33552 3908 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 107902
+INFO 2026-01-24 20:00:46 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:01:20 basehttp 33552 3908 "POST /admin/quizzes/quiz/ HTTP/1.1" 200 47424
+INFO 2026-01-24 20:01:20 basehttp 33552 3908 "GET /static/admin/js/cancel.js HTTP/1.1" 304 0
+INFO 2026-01-24 20:01:28 basehttp 33552 3908 "POST /admin/quizzes/quiz/ HTTP/1.1" 302 0
+INFO 2026-01-24 20:01:29 basehttp 33552 3908 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 108029
+INFO 2026-01-24 20:01:29 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:01:37 basehttp 33552 3908 "GET /admin/quizzes/quiz/?all= HTTP/1.1" 200 119200
+INFO 2026-01-24 20:01:37 basehttp 33552 3908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:02:45 basehttp 33552 10508 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43689
+INFO 2026-01-24 20:02:45 basehttp 33552 10508 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:03:07 basehttp 33552 10508 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 20:03:07 basehttp 33552 10508 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+ERROR 2026-01-24 20:03:07 middleware 33552 5228 Unhandled exception: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:07 middleware 33552 21180 Unhandled exception: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:07 middleware 33552 30232 Unhandled exception: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:09 log 33552 21180 Internal Server Error: /api/daily-quizzes/today/
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 199, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 362, in process_exception_by_middleware
+    response = middleware_method(request, exception)
+  File "D:\aptiWeb\core\middleware.py", line 34, in process_exception
+    'error': str(exception) if request.user.is_staff else None
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:09 log 33552 5228 Internal Server Error: /api/quizzes/categories/
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 199, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 362, in process_exception_by_middleware
+    response = middleware_method(request, exception)
+  File "D:\aptiWeb\core\middleware.py", line 34, in process_exception
+    'error': str(exception) if request.user.is_staff else None
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:09 log 33552 30232 Internal Server Error: /api/quizzes/
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 503, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 420, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\views.py", line 330, in perform_authentication
+    request.user
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 232, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework\request.py", line 385, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 132, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 199, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 362, in process_exception_by_middleware
+    response = middleware_method(request, exception)
+  File "D:\aptiWeb\core\middleware.py", line 34, in process_exception
+    'error': str(exception) if request.user.is_staff else None
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:09 basehttp 33552 21180 "GET /api/daily-quizzes/today/ HTTP/1.1" 500 407385
+ERROR 2026-01-24 20:03:09 basehttp 33552 5228 "GET /api/quizzes/categories/ HTTP/1.1" 500 407300
+ERROR 2026-01-24 20:03:09 basehttp 33552 30232 "GET /api/quizzes/?limit=200 HTTP/1.1" 500 407545
+ERROR 2026-01-24 20:03:19 middleware 33552 30232 Unhandled exception: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\core\frontend_views.py", line 79, in home_page
+    if request.user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:20 log 33552 30232 Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\aptiWeb\core\frontend_views.py", line 79, in home_page
+    if request.user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 199, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\core\handlers\base.py", line 362, in process_exception_by_middleware
+    response = middleware_method(request, exception)
+  File "D:\aptiWeb\core\middleware.py", line 34, in process_exception
+    'error': str(exception) if request.user.is_staff else None
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\auth\__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "D:\aptiWeb\myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "D:\aptiWeb\myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+connection to server at "aws-1-ap-south-1.pooler.supabase.com" (13.200.110.68), port 5432 failed: FATAL:  MaxClientsInSessionMode: max clients reached - in Session mode max clients are limited to pool_size
+
+ERROR 2026-01-24 20:03:20 basehttp 33552 30232 "GET / HTTP/1.1" 500 399263
+INFO 2026-01-24 20:06:28 autoreload 33552 3192 D:\aptiWeb\quizzy\settings.py changed, reloading.
+INFO 2026-01-24 20:06:30 autoreload 5356 33724 Watching for file changes with StatReloader
+INFO 2026-01-24 20:06:52 basehttp 5356 10264 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43689
+INFO 2026-01-24 20:06:52 basehttp 5356 10264 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:07:02 basehttp 5356 10264 "GET /admin/xp_system/userstats/496df727-04b6-4535-bfa1-bb0aaac7b21f/change/ HTTP/1.1" 200 39491
+INFO 2026-01-24 20:07:02 basehttp 5356 10264 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:07:33 basehttp 5356 10264 "POST /admin/xp_system/userstats/496df727-04b6-4535-bfa1-bb0aaac7b21f/change/ HTTP/1.1" 302 0
+INFO 2026-01-24 20:07:33 basehttp 5356 10264 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43975
+INFO 2026-01-24 20:07:33 basehttp 5356 10264 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:10:51 autoreload 5356 33724 D:\aptiWeb\quizzes\services.py changed, reloading.
+INFO 2026-01-24 20:10:53 autoreload 9552 2684 Watching for file changes with StatReloader
+INFO 2026-01-24 20:11:20 autoreload 9552 2684 D:\aptiWeb\daily_quizzes\services.py changed, reloading.
+INFO 2026-01-24 20:11:22 autoreload 16460 11048 Watching for file changes with StatReloader
+INFO 2026-01-24 20:11:38 autoreload 16460 11048 D:\aptiWeb\daily_quizzes\views.py changed, reloading.
+INFO 2026-01-24 20:11:39 autoreload 12668 5784 Watching for file changes with StatReloader
+INFO 2026-01-24 20:13:13 autoreload 16164 14868 Watching for file changes with StatReloader
+INFO 2026-01-24 20:13:18 basehttp 16164 11148 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 20:13:18 basehttp 16164 30024 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 20:13:18 basehttp 16164 23488 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:13:18 basehttp 16164 28324 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40135
+INFO 2026-01-24 20:13:18 services 16164 11148 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-24 20:13:18 basehttp 16164 11148 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 20:13:28 services 16164 11148 Quiz attempt started: ad69b0e9-2435-49ca-9d16-668aae509819 for user akash.giri@indirauniversity.edu.in
+INFO 2026-01-24 20:13:28 basehttp 16164 11148 "POST /api/quizzes/301ae504-2428-420f-bdd5-9e4afd3fb44c/start/ HTTP/1.1" 201 2736
+INFO 2026-01-24 20:13:28 basehttp 16164 11148 "GET /quiz/ad69b0e9-2435-49ca-9d16-668aae509819 HTTP/1.1" 301 0
+INFO 2026-01-24 20:13:28 basehttp 16164 28324 "GET /quiz/ad69b0e9-2435-49ca-9d16-668aae509819/ HTTP/1.1" 200 39293
+INFO 2026-01-24 20:13:28 basehttp 16164 28324 "GET /api/quizzes/attempts/ad69b0e9-2435-49ca-9d16-668aae509819/ HTTP/1.1" 200 2755
+INFO 2026-01-24 20:13:34 services 16164 28324 Awarded 5 XP to akash.giri@indirauniversity.edu.in: Quiz completed: profit_loss_4
+INFO 2026-01-24 20:13:34 services 16164 28324 Quiz submitted: ad69b0e9-2435-49ca-9d16-668aae509819, Score: 0.0%, XP: 5
+INFO 2026-01-24 20:13:34 basehttp 16164 28324 "POST /api/quizzes/attempts/ad69b0e9-2435-49ca-9d16-668aae509819/submit/ HTTP/1.1" 200 379
+INFO 2026-01-24 20:13:34 basehttp 16164 28324 "GET /quiz/ad69b0e9-2435-49ca-9d16-668aae509819/result HTTP/1.1" 301 0
+INFO 2026-01-24 20:13:34 basehttp 16164 23488 "GET /quiz/ad69b0e9-2435-49ca-9d16-668aae509819/result/ HTTP/1.1" 200 28579
+INFO 2026-01-24 20:13:34 basehttp 16164 30024 "GET /static/videos/desktop_laptop/1_bronze-1.mp4 HTTP/1.1" 304 0
+INFO 2026-01-24 20:13:35 basehttp 16164 23488 "GET /api/quizzes/attempts/ad69b0e9-2435-49ca-9d16-668aae509819/ HTTP/1.1" 200 4119
+INFO 2026-01-24 20:13:39 basehttp 16164 23488 "GET /dashboard/ HTTP/1.1" 200 51167
+INFO 2026-01-24 20:13:39 basehttp 16164 23488 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 20:13:39 basehttp 16164 25532 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:13:39 basehttp 16164 1328 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40132
+INFO 2026-01-24 20:13:39 basehttp 16164 30024 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 20:13:41 basehttp 16164 30024 "GET /leaderboard/ HTTP/1.1" 200 47692
+INFO 2026-01-24 20:13:41 basehttp 16164 25532 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 20:13:41 basehttp 16164 30024 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 442
+INFO 2026-01-24 20:14:15 basehttp 16164 30024 "GET /api/leaderboards/colleges/ HTTP/1.1" 200 248
+INFO 2026-01-24 20:14:17 basehttp 16164 25532 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 20:14:17 basehttp 16164 30024 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 442
+INFO 2026-01-24 20:14:18 basehttp 16164 30024 "GET /api/leaderboards/colleges/ HTTP/1.1" 200 248
+INFO 2026-01-24 20:14:20 basehttp 16164 25532 "GET /api/leaderboards/ HTTP/1.1" 200 5690
+INFO 2026-01-24 20:14:20 basehttp 16164 30024 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 442
+INFO 2026-01-24 20:14:22 basehttp 16164 30024 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 20:14:22 basehttp 16164 30024 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 20:14:22 basehttp 16164 25532 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 20:14:22 basehttp 16164 1328 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:14:22 basehttp 16164 23488 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40132
+INFO 2026-01-24 20:14:26 basehttp 16164 1328 "GET /api/quizzes/?limit=200&category=clocks-and-calender HTTP/1.1" 200 491
+INFO 2026-01-24 20:14:28 basehttp 16164 1328 "GET /api/quizzes/?limit=200&category=coding-decoding HTTP/1.1" 200 479
+INFO 2026-01-24 20:14:29 basehttp 16164 1328 "GET /api/quizzes/?limit=200&category=communication HTTP/1.1" 200 48
+INFO 2026-01-24 20:14:30 basehttp 16164 1328 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40132
+INFO 2026-01-24 20:14:43 basehttp 16164 1328 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 20:14:43 basehttp 16164 1328 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 20:14:43 basehttp 16164 25532 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:14:43 basehttp 16164 30024 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40132
+INFO 2026-01-24 20:14:43 basehttp 16164 23488 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 20:14:46 basehttp 16164 23488 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-24 20:14:46 basehttp 16164 23488 "GET /api/dashboard/stats/ HTTP/1.1" 200 258
+INFO 2026-01-24 20:14:46 basehttp 16164 25532 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:14:46 basehttp 16164 1328 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 40132
+INFO 2026-01-24 20:14:46 basehttp 16164 30024 "GET /api/quizzes/categories/ HTTP/1.1" 200 15538
+INFO 2026-01-24 20:14:52 basehttp 16164 30024 "GET /admin/xp_system/userstats/ HTTP/1.1" 200 43687
+INFO 2026-01-24 20:14:52 basehttp 16164 30024 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-24 20:16:46 autoreload 16164 14868 D:\aptiWeb\xp_system\models.py changed, reloading.
+INFO 2026-01-24 20:16:48 autoreload 14384 4448 Watching for file changes with StatReloader
+INFO 2026-01-24 20:17:01 autoreload 14384 4448 D:\aptiWeb\quizzy\settings.py changed, reloading.
+INFO 2026-01-24 20:17:03 autoreload 31496 24948 Watching for file changes with StatReloader
+INFO 2026-01-24 20:18:52 autoreload 33528 8392 Watching for file changes with StatReloader
+INFO 2026-01-24 20:30:13 autoreload 33528 8392 D:\aptiWeb\xp_system\services.py changed, reloading.
+INFO 2026-01-24 20:30:15 autoreload 4252 24220 Watching for file changes with StatReloader
+INFO 2026-01-24 20:30:51 autoreload 4252 24220 D:\aptiWeb\dashboard\services.py changed, reloading.
+INFO 2026-01-24 20:30:54 autoreload 15532 27884 Watching for file changes with StatReloader
+INFO 2026-01-24 20:31:32 autoreload 4056 24544 Watching for file changes with StatReloader
+INFO 2026-01-24 20:31:36 basehttp 4056 15448 "GET / HTTP/1.1" 200 10878
+INFO 2026-01-24 20:31:37 basehttp 4056 8764 "GET /api/quizzes/categories/ HTTP/1.1" 200 4443
+INFO 2026-01-24 20:31:37 basehttp 4056 14140 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:31:37 basehttp 4056 5624 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4893
+INFO 2026-01-24 20:31:37 services 4056 15448 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-24 20:31:37 basehttp 4056 15448 "GET /api/dashboard/stats/ HTTP/1.1" 200 277
+INFO 2026-01-24 20:31:40 basehttp 4056 15448 "GET / HTTP/1.1" 200 10824
+INFO 2026-01-24 20:31:40 basehttp 4056 15448 "GET /api/dashboard/stats/ HTTP/1.1" 200 289
+INFO 2026-01-24 20:31:40 basehttp 4056 8764 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4901
+INFO 2026-01-24 20:31:40 basehttp 4056 14140 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:31:40 basehttp 4056 5624 "GET /api/quizzes/categories/ HTTP/1.1" 200 4424
+INFO 2026-01-24 20:31:53 basehttp 4056 5624 "GET / HTTP/1.1" 200 10876
+INFO 2026-01-24 20:31:53 basehttp 4056 5624 "GET /api/dashboard/stats/ HTTP/1.1" 200 312
+INFO 2026-01-24 20:31:53 basehttp 4056 14140 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:31:53 basehttp 4056 15448 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4906
+INFO 2026-01-24 20:31:53 basehttp 4056 8764 "GET /api/quizzes/categories/ HTTP/1.1" 200 4443
+INFO 2026-01-24 20:32:00 basehttp 4056 15448 "GET / HTTP/1.1" 200 10844
+INFO 2026-01-24 20:32:00 basehttp 4056 15448 "GET /api/dashboard/stats/ HTTP/1.1" 200 341
+INFO 2026-01-24 20:32:00 basehttp 4056 14140 "GET /api/quizzes/categories/ HTTP/1.1" 200 4415
+INFO 2026-01-24 20:32:00 basehttp 4056 8764 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:32:00 basehttp 4056 5624 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4864
+INFO 2026-01-24 20:32:06 basehttp 4056 5624 "GET / HTTP/1.1" 200 10872
+INFO 2026-01-24 20:32:07 basehttp 4056 5624 "GET /api/dashboard/stats/ HTTP/1.1" 200 316
+INFO 2026-01-24 20:32:07 basehttp 4056 15448 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4847
+INFO 2026-01-24 20:32:07 basehttp 4056 14140 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:32:07 basehttp 4056 8764 "GET /api/quizzes/categories/ HTTP/1.1" 200 4445
+INFO 2026-01-24 20:32:15 basehttp 4056 8764 "GET / HTTP/1.1" 200 10822
+INFO 2026-01-24 20:32:15 basehttp 4056 8764 "GET /api/dashboard/stats/ HTTP/1.1" 200 340
+INFO 2026-01-24 20:32:15 basehttp 4056 5624 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 4883
+INFO 2026-01-24 20:32:15 basehttp 4056 15448 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:32:15 basehttp 4056 14140 "GET /api/quizzes/categories/ HTTP/1.1" 200 4447
+INFO 2026-01-24 20:32:54 basehttp 4056 14140 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 13589
+INFO 2026-01-24 20:32:54 basehttp 4056 14140 "GET /admin/jsi18n/ HTTP/1.1" 200 997
+INFO 2026-01-24 20:33:48 basehttp 4056 14140 "POST /admin/quizzes/quiz/ HTTP/1.1" 200 17056
+INFO 2026-01-24 20:34:13 basehttp 4056 14140 "POST /admin/quizzes/quiz/ HTTP/1.1" 302 0
+INFO 2026-01-24 20:34:14 basehttp 4056 14140 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 13341
+INFO 2026-01-24 20:34:15 basehttp 4056 14140 "GET /admin/jsi18n/ HTTP/1.1" 200 993
+INFO 2026-01-24 20:34:33 basehttp 4056 14140 "GET /admin/quizzes/quiz/import-csv/ HTTP/1.1" 200 5376
+WARNING 2026-01-24 20:34:33 basehttp 4056 14140 "GET /static/%20admin/css/forms.css HTTP/1.1" 404 1989
+INFO 2026-01-24 20:34:33 basehttp 4056 15448 "GET /admin/jsi18n/ HTTP/1.1" 200 1061
+INFO 2026-01-24 20:42:46 autoreload 4056 24544 D:\aptiWeb\quizzes\services.py changed, reloading.
+INFO 2026-01-24 20:42:48 autoreload 28204 22080 Watching for file changes with StatReloader
+INFO 2026-01-24 20:44:10 autoreload 3272 16896 Watching for file changes with StatReloader
+INFO 2026-01-24 20:44:17 basehttp 3272 20512 "GET / HTTP/1.1" 200 10867
+ERROR 2026-01-24 20:44:17 views 3272 20300 Error listing quizzes: cannot access local variable 'quizzes_qs' where it is not associated with a value
+ERROR 2026-01-24 20:44:17 log 3272 20300 Internal Server Error: /api/quizzes/
+ERROR 2026-01-24 20:44:17 basehttp 3272 20300 "GET /api/quizzes/?limit=200 HTTP/1.1" 500 62
+INFO 2026-01-24 20:44:17 basehttp 3272 6420 "GET /api/quizzes/categories/ HTTP/1.1" 200 4484
+INFO 2026-01-24 20:44:17 basehttp 3272 25772 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 38
+INFO 2026-01-24 20:44:17 services 3272 20512 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-24 20:44:17 basehttp 3272 20512 "GET /api/dashboard/stats/ HTTP/1.1" 200 336
+INFO 2026-01-24 20:44:20 basehttp 3272 20512 "GET /admin/quizzes/quiz/import-csv/ HTTP/1.1" 200 5367
+WARNING 2026-01-24 20:44:20 basehttp 3272 20512 "GET /static/%20admin/css/forms.css HTTP/1.1" 404 1989
+INFO 2026-01-24 20:44:21 basehttp 3272 25772 "GET /admin/jsi18n/ HTTP/1.1" 200 1045
+INFO 2026-01-24 20:44:24 basehttp 3272 25772 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 13349
+INFO 2026-01-24 20:44:27 basehttp 3272 25772 "GET /admin/quizzes/quiz/ HTTP/1.1" 200 13306
+INFO 2026-01-24 20:44:27 basehttp 3272 25772 "GET /admin/jsi18n/ HTTP/1.1" 200 1024
+INFO 2026-01-24 20:44:56 autoreload 33176 10216 Watching for file changes with StatReloader

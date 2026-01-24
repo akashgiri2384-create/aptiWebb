@@ -182,6 +182,11 @@ class UserStats(models.Model):
         db_table = 'xp_system_userstats'
         verbose_name = 'User XP Stats'
         verbose_name_plural = 'User XP Stats'
+        indexes = [
+            models.Index(fields=['-total_xp']),
+            models.Index(fields=['-season_xp']),
+            models.Index(fields=['-current_streak']),
+        ]
     
     def __str__(self):
         return f"{self.user.email} - Level {self.level} ({self.total_xp} XP)"

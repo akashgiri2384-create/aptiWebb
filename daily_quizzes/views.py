@@ -27,9 +27,39 @@ def today_quizzes(request):
     slot_order = {'morning': 1, 'evening': 2, 'night': 3}
     daily_quizzes.sort(key=lambda x: slot_order.get(x.slot, 99))
     
+    # Batch Optimized: Fetch Unlocks & Attempts
+    dq_ids = [dq.id for dq in daily_quizzes]
+    quiz_ids = [dq.quiz_id for dq in daily_quizzes if dq.quiz_id]
+    
+    # Map Unlocks
+    from .models import DailyQuizUnlock
+    unlocks_map = {}
+    if request.user.is_authenticated:
+        unlocks = DailyQuizUnlock.objects.filter(
+            user=request.user, 
+            daily_quiz_id__in=dq_ids
+        )
+        for u in unlocks:
+            unlocks_map[u.daily_quiz_id] = u
+
+    # Map Completed Quizzes
+    completed_quiz_ids = set()
+    if request.user.is_authenticated and quiz_ids:
+        from quizzes.models import QuizAttempt
+        completed = QuizAttempt.objects.filter(
+            user=request.user,
+            quiz_id__in=quiz_ids
+        ).values_list('quiz_id', flat=True)
+        completed_quiz_ids = set(completed)
+
     data = []
     for dq in daily_quizzes:
-        is_unlocked, unlock_record = DailyQuizService.check_unlock_status(request.user, dq)
+        # Use map instead of query
+        unlock_record = unlocks_map.get(dq.id)
+        is_unlocked = unlock_record.is_unlocked if unlock_record else False
+        
+        # Use map instead of query
+        is_completed = dq.quiz_id in completed_quiz_ids
         
         data.append({
             'id': str(dq.id),
@@ -40,11 +70,11 @@ def today_quizzes(request):
             'slot_display': dq.get_slot_display(),
             'difficulty': dq.difficulty,
             'keys_required': dq.keys_required,
-            'keys_earned': unlock_record.keys_earned if unlock_record else 0, # NEW: Send local progress
+            'keys_earned': unlock_record.keys_earned if unlock_record else 0,
             'xp_multiplier': dq.xp_multiplier,
             'is_unlocked': is_unlocked,
-            'is_completed': dq.quiz.attempts.filter(user=request.user).exists() if dq.quiz else False,
-            'total_questions': dq.quiz.questions.count() if dq.quiz else 0, # NEW: Dynamic Question Count
+            'is_completed': is_completed,
+            'total_questions': dq.question_count if dq.quiz else 0, # Use annotation
         })
     
     return Response({

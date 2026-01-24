@@ -203,13 +203,10 @@ class XPService:
     @staticmethod
     def update_streak(user):
         """
-        Update user's practice streak.
-        
-        Args:
-            user: CustomUser instance
-            
-        Returns:
-            tuple: (streak_count, is_new_day, milestone_reached)
+        Update user's practice streak with new rules:
+        1. Only DAILY QUIZZES count.
+        2. Must complete 3 Daily Quizzes to increment/maintain.
+        3. Admin Safeguard: If < 3 quizzes existed yesterday, streak continues.
         """
         try:
             stats, _ = UserStats.objects.get_or_create(user=user)
@@ -217,60 +214,91 @@ class XPService:
             return 0, False, None
         
         today = timezone.now().date()
+        yesterday = today - timedelta(days=1)
         
-        # Get last practice date from UserStats
+        # 1. Count Completed DAILY Quizzes for Today
+        # We rely on DailyQuizUnlock tracking or QuizAttempt linked to DailyQuiz
+        from daily_quizzes.models import DailyQuiz
+        from quizzes.models import QuizAttempt
+        
+        # Find attempts for today's daily quizzes
+        # We look for Quizzes that are currently active daily quizzes
+        today_daily_quizzes = DailyQuiz.objects.filter(date=today, is_active=True)
+        today_dq_quiz_ids = today_daily_quizzes.values_list('quiz_id', flat=True)
+        
+        completed_today_count = QuizAttempt.objects.filter(
+            user=user,
+            quiz_id__in=today_dq_quiz_ids, # Only Daily Quizzes
+            status='graded', # Completed
+            submitted_at__date=today
+        ).count()
+        
+        # Rule: Must complete at least 3
+        if completed_today_count < 3:
+            # Haven't reached daily goal yet.
+            # We do NOT update the streak date yet.
+            # We do NOT reset yet (they have until midnight).
+            return stats.current_streak, False, None
+
+        # Rule Met: >= 3 Quizzes Done Today.
+        
+        # Check integrity of previous streak
         last_active = stats.last_activity_date
         
-        try:
-            from quizzes.models import QuizAttempt
-            # Count quizzes completed today
-            today_quizzes = QuizAttempt.objects.filter(
-                user=user, 
-                submitted_at__date=today
-            ).count()
-            
-            # STRICT RULE: Must complete 3 quizzes to maintain/increment streak (logic kept as is)
-            if today_quizzes < 3:
-                # If they haven't done 3 yet, we don't update the date
-                return stats.current_streak, False, None
-                
-        except ImportError:
-            pass
-        except Exception as e:
-            logger.error(f"Error checking quiz count for streak: {e}")
-
-        # First activity (that meets the threshold)
+        # If already updated today, ignore
+        if last_active == today:
+             return stats.current_streak, False, None
+             
+        # If first time ever
         if not last_active:
             stats.current_streak = 1
             stats.longest_streak = 1
             stats.last_activity_date = today
             stats.save()
             return 1, True, None
+
+        # Calculate Gap
+        delta = (today - last_active).days
         
-        # Same day - no change
-        if last_active == today:
-            return stats.current_streak, False, None
-        
-        # Consecutive day
-        yesterday = today - timedelta(days=1)
-        if last_active == yesterday:
+        if delta == 1:
+            # Perfect streak (Yesterday was active)
             stats.current_streak += 1
-            if stats.current_streak > stats.longest_streak:
-                stats.longest_streak = stats.current_streak
-            stats.last_activity_date = today
-            stats.save()
+        else:
+            # Missed days exists. Check if they are forgivable.
+            # Gap of 2 means missed Yesterday. Gap of 3 means missed Yest and DayBefore.
+            # We iterate from last_active + 1 up to Yesterday.
+            streak_broken = False
             
-            # Check milestones
-            milestone = XPService.check_streak_milestone(stats.current_streak)
+            # Check every missed day
+            check_date = last_active + timedelta(days=1)
+            while check_date < today:
+                # Check if Admin provided >= 3 quizzes on this day
+                available_quizzes = DailyQuiz.objects.filter(date=check_date, is_active=True).count()
+                
+                if available_quizzes >= 3:
+                    # Admin did their job. User missed it.
+                    streak_broken = True
+                    break
+                # Else: Admin forgot. We forgive this day.
+                
+                check_date += timedelta(days=1)
             
-            return stats.current_streak, True, milestone
-        
-        # Streak broken (last active was before yesterday)
-        stats.current_streak = 1
+            if streak_broken:
+                stats.current_streak = 1 # Reset
+            else:
+                stats.current_streak += 1 # Continued (Forgiven)
+
+        # Update Longest
+        if stats.current_streak > stats.longest_streak:
+            stats.longest_streak = stats.current_streak
+            
         stats.last_activity_date = today
         stats.save()
         
-        return 1, True, None
+        # Check milestones
+        milestone = XPService.check_streak_milestone(stats.current_streak)
+        
+        return stats.current_streak, True, milestone
     
     @staticmethod
     def check_streak_milestone(streak):

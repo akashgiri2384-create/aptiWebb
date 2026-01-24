@@ -26,7 +26,9 @@ class DailyQuizService:
         """
         # Use local date (e.g., IST) instead of UTC date
         today = timezone.localtime(timezone.now()).date()
-        return DailyQuiz.objects.filter(date=today, is_active=True).select_related('quiz')
+        return DailyQuiz.objects.filter(date=today, is_active=True).select_related('quiz', 'quiz__category').annotate(
+            question_count=Count('quiz__questions', filter=Q(quiz__questions__is_active=True))
+        )
     
     @staticmethod
     def check_unlock_status(user, daily_quiz):

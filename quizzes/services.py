@@ -26,94 +26,115 @@ class QuizService:
     @staticmethod
     def get_quizzes_list(category=None, difficulty=None, user=None, limit=20, offset=0):
         """
-        Get filtered list of quizzes.
-        
-        Optimized to prevent N+1 queries.
+        Get filtered list of quizzes with caching.
         """
-        # Annotate with active question count to avoid query in loop
-        quizzes = Quiz.objects.filter(
-            is_published=True,
-            is_active=True
-        ).select_related('category').annotate(
-            active_question_count=Count('questions', filter=Q(questions__is_active=True))
-        )
+        # 1. Try to get base list from cache
+        cache_key = f'quizzes_list:{category}:{difficulty}:{limit}:{offset}'
         
+        # Helper function to build base list
+        def build_quiz_list():
+            quizzes_qs = Quiz.objects.filter(
+                is_published=True,
+                is_active=True
+            ).select_related('category').annotate(
+                active_question_count=Count('questions', filter=Q(questions__is_active=True))
+            )
         # Exclude Daily Challenges from general practice (unless explicit)
         if category != 'daily-challenge':
-            quizzes = quizzes.exclude(category__slug='daily-challenge')
-            # Also exclude quizzes that are linked to DailyQuiz model
-            quizzes = quizzes.filter(daily_assignments__isnull=True)
-        
-        # Apply filters
-        if category:
-            quizzes = quizzes.filter(category__slug=category)
-        if difficulty:
-            quizzes = quizzes.filter(difficulty=difficulty)
-        
-        # Get total count before pagination
-        total_count = quizzes.count()
-        
-        # Paginate
-        quizzes = list(quizzes[offset:offset + limit])  # Evaluate queryset
-        
-        # Batch fetch User Data (if logged in)
-        user_attempts_map = {}
-        if user and quizzes:
-            # Fetch all graded attempts for these quizzes in ONE query
+            quizzes_qs = quizzes_qs.exclude(category__slug='daily-challenge')
+            
+            # Handle Daily Quiz Archival
+            # Rule:
+            # 1. Hide OLD daily quizzes (before Feature Start Date: 2026-01-24)
+            # 2. Hide ACTIVE/FUTURE daily quizzes (date >= today)
+            # 3. Show COMPLETED daily quizzes (Feature Start <= date < today)
+            
+            from datetime import date
+            today = timezone.localtime(timezone.now()).date()
+            feature_start_date = date(2026, 1, 24) # Cutoff for auto-archival
+            
+            quizzes_qs = quizzes_qs.exclude(
+                Q(daily_assignments__date__lt=feature_start_date) | 
+                Q(daily_assignments__date__gte=today)
+            )
+            
+            if category:
+                quizzes_qs = quizzes_qs.filter(category__slug=category)
+            if difficulty:
+                quizzes_qs = quizzes_qs.filter(difficulty=difficulty)
+                
+            total = quizzes_qs.count()
+            quizzes_page = list(quizzes_qs[offset:offset + limit])
+            
+            serialized_list = []
+            for quiz in quizzes_page:
+                serialized_list.append({
+                    'id': str(quiz.id),
+                    'title': quiz.title,
+                    'description': quiz.description,
+                    'category': {
+                        'name': quiz.category.name,
+                        'slug': quiz.category.slug,
+                        'color': quiz.category.color,
+                        'emoji': quiz.category.emoji,
+                    },
+                    'difficulty': quiz.difficulty,
+                    'duration_minutes': quiz.duration_minutes,
+                    'total_questions': quiz.active_question_count,
+                    'passing_percentage': quiz.passing_percentage,
+                    'xp_per_correct': quiz.xp_per_correct,
+                    'average_score': quiz.average_score,
+                    'total_attempts': quiz.total_attempts,
+                    'created_at': quiz.created_at.isoformat(),
+                })
+            return {'count': total, 'results': serialized_list}
+
+        # Retrieve or set cache
+        data = cache.get(cache_key)
+        if not data:
+            data = build_quiz_list()
+            cache.set(cache_key, data, 900) # 15 minutes TTL
+
+        # 2. Attach User Data (if logged in)
+        if user and data['results']:
+            quiz_ids = [q['id'] for q in data['results']]
+            
+            # Fetch attempts
+            attempts_map = {}
             attempts_data = QuizAttempt.objects.filter(
                 user=user,
-                quiz__in=quizzes,
+                quiz_id__in=quiz_ids,
                 status='graded'
             ).values('quiz_id', 'percentage_score')
             
-            # Process in memory
             for item in attempts_data:
                 qid = str(item['quiz_id'])
-                if qid not in user_attempts_map:
-                    user_attempts_map[qid] = {'count': 0, 'best': 0}
-                
-                user_attempts_map[qid]['count'] += 1
-                # Track best score
-                if item['percentage_score'] > user_attempts_map[qid]['best']:
-                    user_attempts_map[qid]['best'] = item['percentage_score']
-
-        # Format quiz data
-        quiz_list = []
-        for quiz in quizzes:
-            quiz_id_str = str(quiz.id)
+                if qid not in attempts_map:
+                    attempts_map[qid] = {'count': 0, 'best': 0}
+                attempts_map[qid]['count'] += 1
+                if item['percentage_score'] > attempts_map[qid]['best']:
+                    attempts_map[qid]['best'] = item['percentage_score']
             
-            quiz_data = {
-                'id': quiz_id_str,
-                'title': quiz.title,
-                'description': quiz.description,
-                'category': {
-                    'name': quiz.category.name,
-                    'slug': quiz.category.slug,
-                    'color': quiz.category.color,
-                    'emoji': quiz.category.emoji,
-                },
-                'difficulty': quiz.difficulty,
-                'duration_minutes': quiz.duration_minutes,
-                'total_questions': quiz.active_question_count, # Valid via annotation
-                'passing_percentage': quiz.passing_percentage,
-                'xp_per_correct': quiz.xp_per_correct,
-                'average_score': quiz.average_score,
-                'total_attempts': quiz.total_attempts,
-                'created_at': quiz.created_at.isoformat(),
+            # Merge into results (create copy to avoid mutating cached data)
+            # Actually, caching usually returns a copy/pickle, but let's be safe
+            # If we modify 'data', next cache.get might return modified data if using LocMemCache?
+            # Safe to modify valid dicts if we deep copy? List comprehension sufficient for top level.
+            
+            final_results = []
+            for quiz in data['results']:
+                # shallow copy
+                q_copy = quiz.copy()
+                u_data = attempts_map.get(q_copy['id'], {'count': 0, 'best': None})
+                q_copy['user_attempts'] = u_data['count']
+                q_copy['best_score'] = u_data['best']
+                final_results.append(q_copy)
+                
+            return {
+                'count': data['count'],
+                'results': final_results
             }
             
-            # Attach user-specific data from map
-            if user:
-                user_data = user_attempts_map.get(quiz_id_str, {'count': 0, 'best': None})
-                quiz_data['user_attempts'] = user_data['count']
-                quiz_data['best_score'] = user_data['best']
-            
-            quiz_list.append(quiz_data)
-        
-        return {
-            'count': total_count,
-            'results': quiz_list
-        }
+        return data
     
     @staticmethod
     def get_quiz_details(quiz_id, user=None):
