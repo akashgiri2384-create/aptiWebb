@@ -1,38 +1,38 @@
-"""
-Core views for error pages and general pages.
-"""
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from django.core.management import call_command
+from django.conf import settings
+from rest_framework import status
+import logging
 
-from django.shortcuts import render
+logger = logging.getLogger('django')
 
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def cleanup_logs_view(request):
+    """
+    Trigger database cleanup manually or via external cron.
+    Protected by a secret key in query param: ?key=YOUR_SECRET_KEY
+    """
+    secret_key = request.GET.get('key')
+    
+    # Simple protection mechanism
+    # In production, use a strong random string stored in env
+    expected_key = getattr(settings, 'CLEANUP_SECRET_KEY', 'default-cleanup-key-123')
+    
+    if secret_key != expected_key:
+        return Response({'error': 'Unauthorized'}, status=status.HTTP_403_FORBIDDEN)
+        
+    try:
+        call_command('cleanup_logs')
+        return Response({'success': True, 'message': 'Cleanup completed successfully.'})
+    except Exception as e:
+        logger.error(f"Cleanup failed: {e}")
+        return Response({'success': False, 'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-def error_404(request, exception=None):
-    """Custom 404 error page."""
-    return render(request, 'errors/404.html', status=404)
-
+def error_404(request, exception):
+    return Response({'error': 'Not Found'}, status=status.HTTP_404_NOT_FOUND)
 
 def error_500(request):
-    """Custom 500 error page."""
-    return render(request, 'errors/500.html', status=500)
-
-
-def home(request):
-    """Homepage (redirect to dashboard if logged in)."""
-    if request.user.is_authenticated:
-        from django.shortcuts import redirect
-        return redirect('dashboard:home')
-    return render(request, 'core/home.html')
-
-
-def terms(request):
-    """Terms of service page."""
-    return render(request, 'terms/terms.html')
-
-
-def privacy(request):
-    """Privacy policy page."""
-    return render(request, 'terms/privacy.html')
-
-
-def disclaimer(request):
-    """Disclaimer page."""
-    return render(request, 'terms/disclaimer.html')
+    return Response({'error': 'Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

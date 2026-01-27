@@ -12,4 +12,5 @@ urlpatterns = [
     path('terms/', views.terms, name='terms'),
     path('privacy/', views.privacy, name='privacy'),
     path('disclaimer/', views.disclaimer, name='disclaimer'),
+    path('system/cleanup/', views.cleanup_logs_view, name='cleanup_logs'),
 ]
