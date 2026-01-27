@@ -123,6 +123,19 @@ try:
         # Parse the URL string directly
         # Fix: detailed 'MaxClientsInSessionMode' error. Set conn_max_age=0 to close connections immediately.
         db_config = dj_database_url.parse(database_url, conn_max_age=0)
+        
+        # Enforce connection timeout and keepalives for stability
+        if 'OPTIONS' not in db_config:
+            db_config['OPTIONS'] = {}
+            
+        db_config['OPTIONS'].update({
+            'connect_timeout': 10,  # Wait up to 10s for connection
+            'keepalives': 1,        # Enable keepalives
+            'keepalives_idle': 30,  # Send keepalive after 30s idle
+            'keepalives_interval': 10, # Interval between keepalives
+            'keepalives_count': 5,  # Max failed keepalives before dropping
+        })
+        
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
