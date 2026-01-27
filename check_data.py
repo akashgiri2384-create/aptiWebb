@@ -7,6 +7,10 @@ import sys
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quizzy.settings')
 django.setup()
 
+# Ensure we can print unicode characters (Fix for Windows console)
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+
 from quizzes.models import Question
 
 def check():

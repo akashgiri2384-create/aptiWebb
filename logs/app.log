@@ -39675,3 +39675,16 @@ INFO 2026-01-24 21:02:15 autoreload 31020 22480 Watching for file changes with S
 INFO 2026-01-27 13:05:47 cleanup_logs 19728 10776 Cleanup: Deleted 286 UserActivityLog entries older than 2026-01-25 07:35:47.312298+00:00
 INFO 2026-01-27 13:05:48 cleanup_logs 19728 10776 Cleanup: Deleted 133 AdView entries older than 2026-01-25 07:35:47.312298+00:00
 INFO 2026-01-27 13:16:40 autoreload 18620 19260 Watching for file changes with StatReloader
+INFO 2026-01-27 22:52:42 autoreload 3608 4252 Watching for file changes with StatReloader
+ERROR 2026-01-27 22:53:58 log 16188 21876 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Roaming\Python\Python314\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\akash\AppData\Roaming\Python\Python314\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "C:\Users\akash\AppData\Roaming\Python\Python314\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+  File "C:\Users\akash\AppData\Roaming\Python\Python314\site-packages\django\http\request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+INFO 2026-01-27 22:54:26 services 15368 7904 User logged in successfully: testagent@example.com from 127.0.0.1
