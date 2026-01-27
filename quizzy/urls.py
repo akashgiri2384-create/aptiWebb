@@ -11,6 +11,7 @@ from core.frontend_views import (
     take_quiz_page, quiz_result_page, leaderboard_page, profile_page
 )
 from core.views_debug import debug_email_view
+from core.views import cleanup_logs_view
 from accounts import views as account_views
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     path('dashboard/', quiz_list_page, name='dashboard'),  # For now, same as quiz list
     path('test-apis/', lambda request: render(request, 'test_apis.html'), name='test-apis'),
     path('debug-email/', debug_email_view, name='debug-email'),
+    path('system/cleanup/', cleanup_logs_view, name='cleanup_logs'),
     
     # Admin
     path('admin/', admin.site.urls),

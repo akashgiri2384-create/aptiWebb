@@ -32,7 +32,9 @@ def cleanup_logs_view(request):
         return Response({'success': False, 'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def error_404(request, exception):
-    return Response({'error': 'Not Found'}, status=status.HTTP_404_NOT_FOUND)
+    from django.http import JsonResponse
+    return JsonResponse({'error': 'Not Found'}, status=404)
 
 def error_500(request):
-    return Response({'error': 'Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    from django.http import JsonResponse
+    return JsonResponse({'error': 'Server Error'}, status=500)

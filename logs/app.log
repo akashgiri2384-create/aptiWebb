@@ -39674,3 +39674,4 @@ INFO 2026-01-24 21:02:13 autoreload 33176 10216 D:\aptiWeb\quizzes\services.py c
 INFO 2026-01-24 21:02:15 autoreload 31020 22480 Watching for file changes with StatReloader
 INFO 2026-01-27 13:05:47 cleanup_logs 19728 10776 Cleanup: Deleted 286 UserActivityLog entries older than 2026-01-25 07:35:47.312298+00:00
 INFO 2026-01-27 13:05:48 cleanup_logs 19728 10776 Cleanup: Deleted 133 AdView entries older than 2026-01-25 07:35:47.312298+00:00
+INFO 2026-01-27 13:16:40 autoreload 18620 19260 Watching for file changes with StatReloader
