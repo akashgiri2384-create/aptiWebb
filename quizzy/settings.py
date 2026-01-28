@@ -121,11 +121,17 @@ try:
     database_url = config('DATABASE_URL', default=default_db_url)
     
     if database_url:
-        # Parse the URL string directly
-        # Standard Configuration: Use direct connection (Session Mode)
-        # conn_max_age=0 is REQUIRED for Supabase/Render to prevent "MaxClients" errors
-        # by ensuring connections are closed immediately after use.
-        db_config = dj_database_url.parse(database_url, conn_max_age=0)
+        # Optimization: Persistent connections (600s) for performance.
+        # This keeps the SSL connection open, fixing "Connection Timed Out" and slow page loads.
+        db_config = dj_database_url.parse(database_url, conn_max_age=600)
+        
+        # SUPABASE CONFIGURATION
+        # Use Transaction Port (6543) for high concurrency
+        if 'pooler.supabase.com' in str(db_config.get('HOST', '')):
+            db_config['PORT'] = '6543'
+            # CRITICAL: Disable server-side cursors to avoid 500 errors in Transaction Mode
+            db_config['DISABLE_SERVER_SIDE_CURSORS'] = True
+            
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
