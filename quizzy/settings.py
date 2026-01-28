@@ -122,16 +122,10 @@ try:
     
     if database_url:
         # Parse the URL string directly
-        # PERFORMANCE FIX: Use persistent connections (10m)
-        # This requires Transaction Mode (Port 6543) on Supabase
-        db_config = dj_database_url.parse(database_url, conn_max_age=600)
-        
-        # FIX: Supabase Transaction Mode Optimization
-        if 'pooler.supabase.com' in str(db_config.get('HOST', '')):
-            db_config['PORT'] = '6543'
-            # Transaction mode doesn't support server-side cursors well
-            db_config['DISABLE_SERVER_SIDE_CURSORS'] = True
-            
+        # Standard Configuration: Use direct connection (Session Mode)
+        # conn_max_age=0 is REQUIRED for Supabase/Render to prevent "MaxClients" errors
+        # by ensuring connections are closed immediately after use.
+        db_config = dj_database_url.parse(database_url, conn_max_age=0)
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
