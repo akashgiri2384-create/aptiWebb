@@ -116,18 +116,16 @@ DATABASES = {
 try:
     import dj_database_url
     # Use decouple to read from .env file directly
-    database_url = config('DATABASE_URL', default=None)
+    # VALIDATION: Default URL provided by user for Supabase
+    default_db_url = 'postgresql://postgres.cxwvxfhfilxgmpmanoys:Akash%40%23238419280983424477@aws-1-ap-south-1.pooler.supabase.com:5432/postgres'
+    database_url = config('DATABASE_URL', default=default_db_url)
     
     if database_url:
         # Parse the URL string directly
-        conn_age = 0 if DEBUG else 600
-        db_config = dj_database_url.parse(database_url, conn_max_age=conn_age)
-        
-        # FIX: Supabase Connection Pool Exhaustion
-        # If using Supabase pooler, force Port 6543 (Transaction Mode) to avoid "MaxClientsInSessionMode"
-        if 'pooler.supabase.com' in str(db_config.get('HOST', '')):
-            db_config['PORT'] = '6543'
-            
+        # CRITICAL: Always use conn_max_age=0 for Supabase Session Mode (Port 5432)
+        # This forces Django to close the connection after every request, preventing
+         # "MaxClientsInSessionMode" errors on Render/Supabase free tiers.
+        db_config = dj_database_url.parse(database_url, conn_max_age=0)
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
