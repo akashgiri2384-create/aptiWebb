@@ -32,7 +32,7 @@ ALLOWED_HOSTS = config(
     default='localhost,127.0.0.1,.onrender.com',
     cast=Csv()
 )
-SITE_URL = config('SITE_URL', default='http://127.0.0.1:8000')
+SITE_URL = config('SITE_URL', default='https://iquriooo.onrender.com')
 
 # Apps configuration
 INSTALLED_APPS = [
@@ -67,7 +67,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -121,21 +120,7 @@ try:
     
     if database_url:
         # Parse the URL string directly
-        # Fix: detailed 'MaxClientsInSessionMode' error. Set conn_max_age=0 to close connections immediately.
-        db_config = dj_database_url.parse(database_url, conn_max_age=0)
-        
-        # Enforce connection timeout and keepalives for stability
-        if 'OPTIONS' not in db_config:
-            db_config['OPTIONS'] = {}
-            
-        db_config['OPTIONS'].update({
-            'connect_timeout': 10,  # Wait up to 10s for connection
-            'keepalives': 1,        # Enable keepalives
-            'keepalives_idle': 30,  # Send keepalive after 30s idle
-            'keepalives_interval': 10, # Interval between keepalives
-            'keepalives_count': 5,  # Max failed keepalives before dropping
-        })
-        
+        db_config = dj_database_url.parse(database_url, conn_max_age=600)
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
@@ -149,8 +134,8 @@ CACHES = {
 }
 
 # Celery configuration
-CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='redis://localhost:6379/1')
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='rediss://default:AUZ3AAIncDFlOTExODMxMTI2MDk0YzVhYTIyZjI2OThjNGY3NDliZHAxMTgwMzk@legible-kitten-18039.upstash.io:6379/0')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND', default='rediss://default:AUZ3AAIncDFlOTExODMxMTI2MDk0YzVhYTIyZjI2OThjNGY3NDliZHAxMTgwMzk@legible-kitten-18039.upstash.io:6379/1')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -193,8 +178,8 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 # JWT configuration
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=365),  # 1 Year (Persistent Login)
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
@@ -238,7 +223,7 @@ REST_FRAMEWORK = {
 # CORS configuration
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://localhost:3000,http://localhost:8000',
+    default='http://localhost:3000,http://localhost:8000,https://iquriooo.onrender.com',
     cast=Csv()
 )
 CORS_ALLOW_CREDENTIALS = True
@@ -275,10 +260,12 @@ CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Strict'
+SESSION_COOKIE_AGE = 2592000  # 30 days
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 CSRF_COOKIE_SAMESITE = 'Strict'
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='http://localhost:3000,http://localhost:8000',
+    default='http://localhost:3000,http://localhost:8000,https://iquriooo.onrender.com',
     cast=Csv()
 )
 
@@ -286,10 +273,6 @@ SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 X_FRAME_OPTIONS = 'DENY'
-
-# Persistent Login Settings (User Request: "Stay logged in forever")
-SESSION_COOKIE_AGE = 315360000  # 10 Years (in seconds)
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Logging configuration
 LOGGING = {
@@ -378,7 +361,7 @@ ANYMAIL = {
 
 # Sender Identities (Must be verified in Brevo -> Senders)
 # We re-use the old Variable Names so you don't have to change your .env
-DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER', default=config('DEFAULT_FROM_EMAIL', default='noreply@quizzy.com'))
+DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER', default=config('DEFAULT_FROM_EMAIL', default='iqreports909@gmail.com'))
 SERVER_EMAIL = config('SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
 
 VERIFICATION_FROM_EMAIL = config('VERIFICATION_EMAIL_HOST_USER', default='iqemailverificatiooonn@gmail.com')

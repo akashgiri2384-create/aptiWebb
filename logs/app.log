@@ -39713,3 +39713,72 @@ INFO 2026-01-27 23:08:09 services 14240 11676 Dashboard stats calculated for: ak
 INFO 2026-01-27 23:08:09 basehttp 14240 11676 "GET /api/dashboard/stats/ HTTP/1.1" 200 277
 INFO 2026-01-27 23:15:03 autoreload 14240 11484 D:\aptiWeb\quizzy\settings.py changed, reloading.
 INFO 2026-01-27 23:15:05 autoreload 21400 6852 Watching for file changes with StatReloader
+INFO 2026-01-27 23:20:05 basehttp 21400 20580 "GET /dashboard/ HTTP/1.1" 200 10880
+INFO 2026-01-27 23:20:06 basehttp 21400 17272 "GET /api/quizzes/categories/ HTTP/1.1" 200 4548
+INFO 2026-01-27 23:20:06 basehttp 21400 22332 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 525
+INFO 2026-01-27 23:20:06 basehttp 21400 12036 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 5171
+INFO 2026-01-27 23:20:06 services 21400 20580 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-27 23:20:06 basehttp 21400 20580 "GET /api/dashboard/stats/ HTTP/1.1" 200 268
+INFO 2026-01-28 16:12:27 autoreload 7212 22924 Watching for file changes with StatReloader
+INFO 2026-01-28 16:12:34 basehttp 7212 20652 "GET / HTTP/1.1" 200 51167
+WARNING 2026-01-28 16:12:35 log 7212 20652 Unauthorized: /api/quizzes/
+WARNING 2026-01-28 16:12:35 log 7212 8184 Unauthorized: /api/daily-quizzes/today/
+WARNING 2026-01-28 16:12:35 log 7212 16776 Unauthorized: /api/quizzes/categories/
+WARNING 2026-01-28 16:12:35 log 7212 5564 Unauthorized: /api/dashboard/stats/
+WARNING 2026-01-28 16:12:35 log 7212 18672 Not Found: /favicon.ico
+WARNING 2026-01-28 16:12:35 basehttp 7212 20652 "GET /api/quizzes/?limit=200 HTTP/1.1" 401 172
+WARNING 2026-01-28 16:12:35 basehttp 7212 8184 "GET /api/daily-quizzes/today/ HTTP/1.1" 401 172
+WARNING 2026-01-28 16:12:35 basehttp 7212 16776 "GET /api/quizzes/categories/ HTTP/1.1" 401 172
+WARNING 2026-01-28 16:12:35 basehttp 7212 5564 "GET /api/dashboard/stats/ HTTP/1.1" 401 172
+WARNING 2026-01-28 16:12:35 basehttp 7212 18672 "GET /favicon.ico HTTP/1.1" 404 6259
+INFO 2026-01-28 16:12:35 basehttp 7212 18672 "GET /login/ HTTP/1.1" 200 36858
+INFO 2026-01-28 16:12:38 services 7212 18672 User logged in successfully: akash.giri@indirauniversity.edu.in from 127.0.0.1
+INFO 2026-01-28 16:12:38 basehttp 7212 18672 "POST /api/accounts/login/ HTTP/1.1" 200 852
+INFO 2026-01-28 16:12:40 basehttp 7212 18672 "GET /dashboard/ HTTP/1.1" 200 51167
+INFO 2026-01-28 16:12:40 basehttp 7212 5564 "GET /api/quizzes/categories/ HTTP/1.1" 200 15959
+INFO 2026-01-28 16:12:40 basehttp 7212 16776 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 1027
+INFO 2026-01-28 16:12:40 services 7212 18672 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-28 16:12:40 basehttp 7212 18672 "GET /api/dashboard/stats/ HTTP/1.1" 200 341
+INFO 2026-01-28 16:12:40 basehttp 7212 8184 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 43397
+INFO 2026-01-28 16:13:08 basehttp 7212 8184 "GET /leaderboard/ HTTP/1.1" 200 47692
+INFO 2026-01-28 16:13:08 basehttp 7212 18672 "GET /api/leaderboards/ HTTP/1.1" 200 6597
+INFO 2026-01-28 16:13:08 basehttp 7212 8184 "GET /api/leaderboards/my-position/ HTTP/1.1" 200 301
+INFO 2026-01-28 16:14:21 basehttp 7212 8184 "GET / HTTP/1.1" 200 51167
+INFO 2026-01-28 16:14:21 basehttp 7212 8184 "GET /api/dashboard/stats/ HTTP/1.1" 200 341
+INFO 2026-01-28 16:14:21 basehttp 7212 18672 "GET /api/quizzes/categories/ HTTP/1.1" 200 15959
+INFO 2026-01-28 16:14:21 basehttp 7212 5564 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 43397
+INFO 2026-01-28 16:14:21 basehttp 7212 16776 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 1027
+INFO 2026-01-28 16:14:23 services 7212 16776 User akash.giri@indirauniversity.edu.in unlocked daily quiz 25f4396d-6e41-4aa0-b0c2-c003b4a18f9f with 0 local keys
+INFO 2026-01-28 16:14:23 basehttp 7212 16776 "POST /api/daily-quizzes/unlock/ HTTP/1.1" 200 55
+INFO 2026-01-28 16:14:23 basehttp 7212 16776 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 1026
+INFO 2026-01-28 16:14:28 services 7212 16776 Quiz attempt started: a36d0e22-55f4-4b46-b462-e274fe5d87bd for user akash.giri@indirauniversity.edu.in
+INFO 2026-01-28 16:14:28 basehttp 7212 16776 "POST /api/quizzes/306b0fa7-74a5-4053-b97c-2efa55183775/start/ HTTP/1.1" 201 2209
+INFO 2026-01-28 16:14:28 basehttp 7212 16776 "GET /quiz/a36d0e22-55f4-4b46-b462-e274fe5d87bd HTTP/1.1" 301 0
+INFO 2026-01-28 16:14:29 basehttp 7212 5564 "GET /quiz/a36d0e22-55f4-4b46-b462-e274fe5d87bd/ HTTP/1.1" 200 39293
+INFO 2026-01-28 16:14:29 basehttp 7212 5564 "GET /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/ HTTP/1.1" 200 2228
+INFO 2026-01-28 16:15:15 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:15:45 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:17:47 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:18:17 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:18:29 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:19:38 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:20:54 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:22:57 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:23:15 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:24:24 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/answer/ HTTP/1.1" 200 91
+INFO 2026-01-28 16:24:29 services 7212 5564 User akash.giri@indirauniversity.edu.in leveled up: 6 -> 7
+INFO 2026-01-28 16:24:29 services 7212 5564 Level up bonus would be 10 XP for akash.giri@indirauniversity.edu.in
+INFO 2026-01-28 16:24:29 services 7212 5564 Activity logged: akash.giri@indirauniversity.edu.in - level_up
+INFO 2026-01-28 16:24:29 services 7212 5564 Awarded 510 XP to akash.giri@indirauniversity.edu.in: Quiz completed: number series easy
+INFO 2026-01-28 16:24:29 services 7212 5564 Quiz submitted: a36d0e22-55f4-4b46-b462-e274fe5d87bd, Score: 100.0%, XP: 510
+INFO 2026-01-28 16:24:29 basehttp 7212 5564 "POST /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/submit/ HTTP/1.1" 200 392
+INFO 2026-01-28 16:24:29 basehttp 7212 5564 "GET /quiz/a36d0e22-55f4-4b46-b462-e274fe5d87bd/result HTTP/1.1" 301 0
+INFO 2026-01-28 16:24:30 basehttp 7212 7708 "GET /quiz/a36d0e22-55f4-4b46-b462-e274fe5d87bd/result/ HTTP/1.1" 200 28579
+INFO 2026-01-28 16:24:30 basehttp 7212 19968 "GET /static/videos/desktop_laptop/1_bronze-1.mp4 HTTP/1.1" 304 0
+INFO 2026-01-28 16:24:30 basehttp 7212 7708 "GET /api/quizzes/attempts/a36d0e22-55f4-4b46-b462-e274fe5d87bd/ HTTP/1.1" 200 3869
+INFO 2026-01-28 16:24:54 basehttp 7212 7708 "GET /dashboard/ HTTP/1.1" 200 51167
+INFO 2026-01-28 16:24:54 basehttp 7212 19968 "GET /api/quizzes/categories/ HTTP/1.1" 200 15959
+INFO 2026-01-28 16:24:54 basehttp 7212 21340 "GET /api/quizzes/?limit=200 HTTP/1.1" 200 43397
+INFO 2026-01-28 16:24:55 basehttp 7212 21952 "GET /api/daily-quizzes/today/ HTTP/1.1" 200 1025
+INFO 2026-01-28 16:24:55 services 7212 7708 Dashboard stats calculated for: akash.giri@indirauniversity.edu.in
+INFO 2026-01-28 16:24:55 basehttp 7212 7708 "GET /api/dashboard/stats/ HTTP/1.1" 200 340
