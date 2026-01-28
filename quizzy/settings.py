@@ -246,7 +246,7 @@ USE_TZ = True
 # Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -273,6 +273,10 @@ CSRF_TRUSTED_ORIGINS = config(
     default='http://localhost:3000,http://localhost:8000,https://iquriooo.onrender.com',
     cast=Csv()
 )
+
+# RENDER FIX: Trust the proxy's X-Forwarded-Proto header to detect HTTPS
+# Without this, Django thinks requests are HTTP and blocks cookies/CSRF
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
