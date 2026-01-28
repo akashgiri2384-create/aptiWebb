@@ -122,10 +122,16 @@ try:
     
     if database_url:
         # Parse the URL string directly
-        # CRITICAL: Always use conn_max_age=0 for Supabase Session Mode (Port 5432)
-        # This forces Django to close the connection after every request, preventing
-         # "MaxClientsInSessionMode" errors on Render/Supabase free tiers.
-        db_config = dj_database_url.parse(database_url, conn_max_age=0)
+        # PERFORMANCE FIX: Use persistent connections (10m)
+        # This requires Transaction Mode (Port 6543) on Supabase
+        db_config = dj_database_url.parse(database_url, conn_max_age=600)
+        
+        # FIX: Supabase Transaction Mode Optimization
+        if 'pooler.supabase.com' in str(db_config.get('HOST', '')):
+            db_config['PORT'] = '6543'
+            # Transaction mode doesn't support server-side cursors well
+            db_config['DISABLE_SERVER_SIDE_CURSORS'] = True
+            
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
