@@ -120,7 +120,10 @@ try:
     
     if database_url:
         # Parse the URL string directly
-        db_config = dj_database_url.parse(database_url, conn_max_age=600)
+        # Use 0 for development (close connections immediately) to avoid pool exhaustion
+        # Use 600 for production (keep connections open for 10m) for performance
+        conn_age = 0 if DEBUG else 600
+        db_config = dj_database_url.parse(database_url, conn_max_age=conn_age)
         DATABASES['default'].update(db_config)
 except ImportError:
     pass
