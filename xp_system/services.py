@@ -222,25 +222,28 @@ class XPService:
         from quizzes.models import QuizAttempt
         
         # Find attempts for today's daily quizzes
-        # We look for Quizzes that are currently active daily quizzes
         today_daily_quizzes = DailyQuiz.objects.filter(date=today, is_active=True)
+        total_available = today_daily_quizzes.count()
         today_dq_quiz_ids = today_daily_quizzes.values_list('quiz_id', flat=True)
         
+        # Rule: If NO daily quizzes exist for today, streak is safely paused (not broken, not incremented).
+        if total_available == 0:
+            return stats.current_streak, False, None
+
         completed_today_count = QuizAttempt.objects.filter(
             user=user,
-            quiz_id__in=today_dq_quiz_ids, # Only Daily Quizzes
-            status='graded', # Completed
+            quiz_id__in=today_dq_quiz_ids, 
+            status='graded', 
             submitted_at__date=today
         ).count()
         
-        # Rule: Must complete at least 3
-        if completed_today_count < 3:
-            # Haven't reached daily goal yet.
-            # We do NOT update the streak date yet.
-            # We do NOT reset yet (they have until midnight).
+        # Rule: Must complete ALL available daily quizzes
+        if completed_today_count < total_available:
+            # Haven't reached goal yet.
+            # Streak matches yesterday's state (paused until completion)
             return stats.current_streak, False, None
 
-        # Rule Met: >= 3 Quizzes Done Today.
+        # Rule Met: All Quizzes Done Today.
         
         # Check integrity of previous streak
         last_active = stats.last_activity_date
@@ -265,21 +268,19 @@ class XPService:
             stats.current_streak += 1
         else:
             # Missed days exists. Check if they are forgivable.
-            # Gap of 2 means missed Yesterday. Gap of 3 means missed Yest and DayBefore.
-            # We iterate from last_active + 1 up to Yesterday.
             streak_broken = False
             
             # Check every missed day
             check_date = last_active + timedelta(days=1)
             while check_date < today:
-                # Check if Admin provided >= 3 quizzes on this day
-                available_quizzes = DailyQuiz.objects.filter(date=check_date, is_active=True).count()
+                # Check if there were quizzes on this day
+                past_available = DailyQuiz.objects.filter(date=check_date, is_active=True).count()
                 
-                if available_quizzes >= 3:
-                    # Admin did their job. User missed it.
+                if past_available > 0:
+                    # There were quizzes, and user missed them (since last_active < check_date)
                     streak_broken = True
                     break
-                # Else: Admin forgot. We forgive this day.
+                # If past_available == 0, we forgive this day (Admin didn't add quizzes)
                 
                 check_date += timedelta(days=1)
             

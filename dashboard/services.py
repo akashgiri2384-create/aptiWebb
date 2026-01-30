@@ -63,21 +63,29 @@ class DashboardService:
         weekly_rank = DashboardService.get_weekly_rank(user)
         
         # Calculate current rank dynamically (failsafe)
-        current_rank = profile.current_rank
-        if not current_rank:
+        # Calculate current rank dynamically (Always Real-time)
+        try:
+            from xp_system.models import UserStats
+            
+            # Get fresh XP from stats (or profile if stats missing, but stats should exist)
             try:
-                from xp_system.models import UserStats
+                user_stats = user.stats
+                user_xp = user_stats.total_xp
+            except:
                 user_xp = profile.total_xp
-                # Rank = count of users with more XP + 1
-                rank = UserStats.objects.filter(total_xp__gt=user_xp).count() + 1
-                current_rank = rank
                 
-                # Update profile
+            # Rank = count of users with more XP + 1
+            rank = UserStats.objects.filter(total_xp__gt=user_xp).count() + 1
+            current_rank = rank
+            
+            # Update profile for persistence (but we rely on calculation above for display)
+            if profile.current_rank != rank:
                 profile.current_rank = rank
                 profile.save(update_fields=['current_rank'])
-            except Exception as e:
-                logger.warning(f"Failed to calculate rank for {user.email}: {e}")
-                current_rank = 'N/A'
+                
+        except Exception as e:
+            logger.warning(f"Failed to calculate rank for {user.email}: {e}")
+            current_rank = profile.current_rank or 'N/A'
 
         # Calculate Daily Quiz Progress
         today = timezone.now().date()
