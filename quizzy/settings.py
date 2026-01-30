@@ -131,7 +131,11 @@ try:
             db_config['PORT'] = '6543'
             # CRITICAL: Disable server-side cursors to avoid 500 errors in Transaction Mode
             db_config['DISABLE_SERVER_SIDE_CURSORS'] = True
-            
+        """ # Parse the URL string directly
+        # Standard Configuration: Use direct connection (Session Mode)
+        # conn_max_age=0 is REQUIRED for Supabase/Render to prevent "MaxClients" errors
+        # by ensuring connections are closed immediately after use.
+        # db_config = dj_database_url.parse(database_url, conn_max_age=0)"""
         DATABASES['default'].update(db_config)
 except ImportError:
     pass

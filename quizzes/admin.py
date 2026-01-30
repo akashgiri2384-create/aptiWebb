@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django import forms
 from django.urls import path
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.utils import timezone
 import csv
@@ -35,6 +35,7 @@ class QuestionInline(admin.StackedInline):
 
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
+    change_form_template = "admin/quizzes/quiz/change_form.html"
     change_list_template = "admin/quizzes/quiz/change_list.html"
     list_display = ['title', 'category', 'difficulty', 'is_published', 'total_questions_display', 'total_attempts', 'pass_rate']
     list_filter = ['category', 'difficulty', 'is_published']
@@ -49,8 +50,36 @@ class QuizAdmin(admin.ModelAdmin):
         urls = super().get_urls()
         my_urls = [
             path('import-csv/', self.admin_site.admin_view(self.import_csv), name='quizzes_quiz_import_csv'),
+            path('<path:object_id>/export-csv/', self.admin_site.admin_view(self.export_csv), name='quizzes_quiz_export_csv'),
         ]
         return my_urls + urls
+
+    def export_csv(self, request, object_id):
+        """Export quiz questions as CSV."""
+        quiz = self.get_object(request, object_id)
+        if not quiz:
+            return redirect("..")
+            
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="{quiz.title}_questions.csv"'
+        response.write(u'\ufeff'.encode('utf8')) # BOM for Excel compatibility
+        
+        writer = csv.writer(response)
+        # Headers matching import format
+        writer.writerow(['question', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer', 'explanation'])
+        
+        for q in quiz.questions.filter(is_active=True).order_by('sequence'):
+            writer.writerow([
+                q.text,
+                q.option_a,
+                q.option_b,
+                q.option_c,
+                q.option_d,
+                q.correct_answer,
+                q.explanation
+            ])
+            
+        return response
 
     def import_csv(self, request):
         if request.method == "POST":

@@ -1,0 +1,9 @@
+{% extends "admin/change_form.html" %}
+
+{% block object-tools-items %}
+    {{ block.super }}
+    <li>
+        {% url 'admin:quizzes_quiz_export_csv' original.pk as export_url %}
+        <a href="{{ export_url }}" class="historylink" style="background-color: #447e9b; color: #fff;">Download Quiz as CSV</a>
+    </li>
+{% endblock %}
