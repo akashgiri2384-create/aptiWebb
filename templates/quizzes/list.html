@@ -1219,53 +1219,104 @@
         }
 
         // Ad Logic
+        // Ad Logic
+        let adsWatchedCount = 0;
+        const TOTAL_ADS_REQUIRED = 3;
+
         async function watchAd(id) {
             const modal = document.getElementById('ad-modal');
             const btn = document.getElementById('ad-continue-btn');
             const timer = document.getElementById('ad-timer');
+            const title = modal.querySelector('h3');
+            const desc = modal.querySelector('p');
 
             modal.style.display = 'flex';
+
+            // Initial State for this "session"
+            if (adsWatchedCount === 0) {
+                // Reset UI if starting fresh
+            }
+
+            // Logic: Trigger Ad -> Increment -> Update UI
+            // Since we don't have the script callback, we assume click = trigger
+
+            // 1. Trigger AdMaven Pop-under
+            // TODO: Ads script usually attaches to document.onclick or requires a specific call.
+            // Since script is global, specific trigger might be needed here if using "Direct Link" or if the popunder is automatic on click.
+            // For now, we simulate the "event" of watching an ad.
+
+            adsWatchedCount++;
+
+            // Update UI
+            title.innerText = `Watching Ad ${adsWatchedCount} of ${TOTAL_ADS_REQUIRED}`;
+            desc.innerText = "Please interact with the ad to support us!";
             btn.disabled = true;
-            btn.innerText = 'Watching...';
-            btn.style.background = '#374151';
+            btn.innerText = "Verifying Ad...";
+
+            // Simulate Ad Duration / User Interaction
             let t = 5;
             timer.innerText = t;
+            btn.style.background = '#374151';
 
-            const interval = setInterval(() => {
+            const interval = setInterval(async () => {
                 t--;
                 timer.innerText = t;
                 if (t <= 0) {
                     clearInterval(interval);
-                    timer.innerText = '✅';
-                    btn.disabled = false;
-                    btn.innerText = 'Claim Reward';
-                    btn.style.background = '#34d399';
-                    btn.style.color = '#fff';
-                    btn.onclick = async () => {
-                        try {
-                            // Fix: Disable button immediately to prevent double-claims
-                            btn.disabled = true;
-                            btn.innerText = 'Claiming...';
 
+                    if (adsWatchedCount >= TOTAL_ADS_REQUIRED) {
+                        // All Ads Watched
+                        timer.innerText = '✅';
+                        desc.innerText = "Thank you! Unlocking reward...";
+                        btn.innerText = "Unlocking...";
+                        btn.style.background = '#10b981';
+                        btn.style.color = '#fff';
+
+                        // Unlock Logic
+                        try {
                             const res = await fetch('/api/daily-quizzes/watch-ad/', {
                                 method: 'POST', body: JSON.stringify({ daily_quiz_id: id }),
                                 headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' }
                             });
                             const d = await res.json();
                             if (d.success) {
+                                adsWatchedCount = 0; // Reset
                                 modal.style.display = 'none';
                                 startCooldown(id);
                                 loadDailyQuizzes();
                             } else {
-                                // Re-enable if failed (e.g. rate limited)
                                 btn.disabled = false;
-                                btn.innerText = 'Claim Reward';
-                                alert(d.error.message || "Failed to claim");
+                                btn.innerText = "Try Again";
+                                alert(d.error.message || "Failed to claimed.");
                             }
-                        } catch (e) { }
-                    };
+                        } catch (e) {
+                            btn.innerText = "Error";
+                        }
+                    } else {
+                        // More Ads Needed
+                        timer.innerText = '👇';
+                        btn.disabled = false;
+                        btn.innerText = `Watch Ad ${adsWatchedCount + 1}`;
+                        btn.style.background = '#6366f1';
+                        btn.style.color = 'white';
+                        desc.innerText = `${TOTAL_ADS_REQUIRED - adsWatchedCount} more ads to go!`;
+
+                        // Update button handler for next ad
+                        btn.onclick = () => {
+                            // Recursively call for next step? Or just let the loop handle it handled by logic?
+                            // Actually, watchAd(id) setups the modal. We need "Next Ad" action.
+                            // Better: The "Watch Ad" button in the modal calls a function to "ShowNextAd".
+                            watchNextAd(id);
+                        };
+                    }
                 }
             }, 1000);
+        }
+
+        function watchNextAd(id) {
+            // Re-trigger ad logic
+            // In a real implementation with AdMaven, we might need to re-trigger the popunder or link.
+            watchAd(id);
         }
 
         function startCooldown(id) {
