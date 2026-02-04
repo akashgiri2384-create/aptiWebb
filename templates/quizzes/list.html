@@ -1090,8 +1090,9 @@
 
         function renderDailyCard(quiz) {
             const collected = quiz.keys_earned || 0;
-            // Default to 3 keys required if not specified
-            const needed = (quiz.keys_required !== undefined && quiz.keys_required !== null) ? quiz.keys_required : 3;
+            // Force 3 keys requirement if 0 or null to ensure Ad System is active
+            let needed = quiz.keys_required;
+            if (needed === undefined || needed === null || needed === 0) needed = 3;
 
             // STRICT LOCK: If you don't have enough keys, it IS locked.
             // We ignore quiz.is_unlocked from backend to ensure the Ad UI works for verification.
