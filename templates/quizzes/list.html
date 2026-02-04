@@ -1090,9 +1090,9 @@
 
         function renderDailyCard(quiz) {
             const collected = quiz.keys_earned || 0;
-            // Force 3 keys requirement if 0 or null to ensure Ad System is active
-            let needed = quiz.keys_required;
-            if (needed === undefined || needed === null || needed === 0) needed = 3;
+
+            // Fix: Respect server requirement. If 0, it's free.
+            let needed = (quiz.keys_required !== undefined && quiz.keys_required !== null) ? quiz.keys_required : 0;
 
             // STRICT LOCK: If you don't have enough keys, it IS locked.
             // We ignore quiz.is_unlocked from backend to ensure the Ad UI works for verification.
@@ -1107,20 +1107,21 @@
             } else if (locked) {
                 if (ready) {
                     if (needed === 0) {
-                        // Free Quiz - Use Primary Style
+                        // Should not happen with min 1 logic
                         actionBtn = `<button class="btn-quiz" style="background: var(--primary-accent); color: white;" onclick="unlockQuiz('${quiz.id}')">🚀 Start Now</button>`;
                     } else {
-                        // Unlocking with Keys - Use Yellow/Warning Style
                         actionBtn = `<button class="btn-quiz" style="background: #fbbf24; color: #111827; border: none;" onclick="unlockQuiz('${quiz.id}')">🔓 Unlock Now</button>`;
                     }
                 } else {
-                    // Check cooldown
                     const cd = adCooldowns[quiz.id];
                     if (cd && Date.now() < cd) {
                         actionBtn = `<button id="btn-ad-${quiz.id}" class="btn-quiz" disabled style="opacity: 0.5;">⏳ Wait...</button>`;
                         setTimeout(() => runCooldown(quiz.id), 0);
                     } else {
-                        actionBtn = `<button id="btn-ad-${quiz.id}" class="btn-quiz" onclick="watchAd('${quiz.id}')">📺 Watch Ad (+1 🔑)</button>`;
+                        // Persistence Check
+                        const prog = parseInt(localStorage.getItem(`ad_progress_${quiz.id}`) || '0');
+                        const adBtnText = prog > 0 ? `Continue Ads (${prog}/3)` : `📺 Watch Ads (+1 🔑)`;
+                        actionBtn = `<button id="btn-ad-${quiz.id}" class="btn-quiz" onclick="watchAd('${quiz.id}')">${adBtnText}</button>`;
                     }
                 }
             } else {
