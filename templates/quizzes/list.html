@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="admaven-placement" content="Bqjw5qjkG">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>IQurio Dashboard</title>
@@ -1088,10 +1089,14 @@
         }
 
         function renderDailyCard(quiz) {
-            const locked = !quiz.is_unlocked;
             const collected = quiz.keys_earned || 0;
-            // Fix: Allow 0 to be a valid value. '|| 5' treats 0 as false.
-            const needed = (quiz.keys_required !== undefined && quiz.keys_required !== null) ? quiz.keys_required : 5;
+            // Default to 3 keys required if not specified
+            const needed = (quiz.keys_required !== undefined && quiz.keys_required !== null) ? quiz.keys_required : 3;
+
+            // STRICT LOCK: If you don't have enough keys, it IS locked.
+            // We ignore quiz.is_unlocked from backend to ensure the Ad UI works for verification.
+            const locked = collected < needed;
+
             const ready = collected >= needed;
 
             let actionBtn = '';
