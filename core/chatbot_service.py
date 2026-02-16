@@ -200,7 +200,7 @@ class ChatbotService:
         """
         if not OPENAI_API_KEY:
             logger.error("OPENAI_API_KEY not configured")
-            return False, None, "AI service is not configured. Please set OPENAI_API_KEY."
+            return False, None, "Prof. Curio is taking a short break right now. Please try again later! 🎓"
 
         try:
             import openai
