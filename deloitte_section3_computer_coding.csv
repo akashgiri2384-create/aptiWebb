@@ -1,0 +1,29 @@
+question,option_a,option_b,option_c,option_d,correct_answer,explanation
+What is the main function of the Kernel in an Operating System?,To compile code,To manage hardware and resources,To browse the internet,To design graphics,B,Kernel manages resources and hardware.
+Which of the following is NOT a valid state of a process in an OS?,Running,Ready,Compiling,Waiting,C,Compiling is not a process state.
+What is a Deadlock in an Operating System?,A system crash,Processes blocking each other waiting for resources,A virus attack,A power failure,B,Deadlock: processes waiting for each other's resources.
+Which protocol is connection-oriented?,UDP,IP,TCP,HTTP,C,TCP is connection-oriented.
+What does SQL stand for?,Structured Query Language,Simple Query Logic,Standard Question List,System Query Link,A,Structured Query Language.
+"In DBMS, what is the 'Primary Key' used for?",To encrypt data,To uniquely identify each record,To link two tables,To delete a table,B,Uniquely identifies each record.
+Which OSI layer is responsible for routing?,Physical Layer,Data Link Layer,Network Layer,Transport Layer,C,Network Layer (Layer 3).
+What is the time complexity of Binary Search?,O(n),O(log n),O(n^2),O(1),B,O(log n).
+Which data structure uses the LIFO (Last In First Out) principle?,Queue,Stack,Tree,Graph,B,Stack.
+What is Polymorphism in Object-Oriented Programming?,Hiding data,Inheritance of classes,The ability to present the same interface for differerent data types,Encapsulating code,C,Presenting same interface for different types.
+What is the difference between 'malloc' and 'calloc' in C?,malloc initializes to zero,calloc initializes memory to zero,Both initialize to zero,Neither initializes,B,calloc initializes to zero.
+What is a 'Zombie Process'?,An indefinite loop,A completed process waiting for parent to read exit status,A virus,A background daemon,B,Completed process waiting for parent.
+What is Virtual Memory?,Physical RAM,Disk space used to simulate extra RAM,Cache memory,ROM,B,Disk space simulating RAM.
+Which of the following is a type of Join in SQL?,Inner Join,Outer Join,Left Join,All of the above,D,All are valid joins.
+What is the purpose of the 'volatile' keyword in C?,To optimize code,To prevent compiler optimization of a variable,To make it constant,To declare a pointer,B,Prevents optimization.
+What is the main difference between IPv4 and IPv6?,IPv4 is faster,IPv6 has a larger address space (128-bit),IPv4 is wireless,IPv6 is for LAN only,B,IPv6 has larger address space.
+Which scheduling algorithm may cause starvation?,Round Robin,FCFS,Priority Scheduling,None,C,Priority Scheduling.
+What is Encapsulation in Java?,Wrapping code and data into a single unit,Inheriting properties,Overloading methods,Using pointers,A,Wrapping code and data together.
+What is a 'Constructor'?,A destructor function,A method to initialize objects,A static block,An interface,B,Initializes objects.
+"In C++, which operator cannot be overloaded?",+,-,.,==,C,Dot operator (.)
+What is 'Normalization' in a database?,Increasing redundancy,Organizing data to reduce redundancy,Deleting tables,Backing up data,B,Reducing redundancy.
+What is the output of 5 & 3 in C (bitwise AND)?,1,3,5,7,A,1
+What will be the output of `print('Hello'[::-1])` in Python?,Hello,olleH,Error,H,B,olleH (Reverse).
+Which data structure is best for implementing a recursive algorithm?,Queue,Stack,Array,Linked List,B,Stack.
+"In C, what is the size of a pointer variable on a 64-bit system?",2 bytes,4 bytes,8 bytes,Depends on type,C,8 bytes.
+Identify the complexity of Quick Sort in the worst case.,O(n log n),O(n),O(n^2),O(log n),C,O(n^2).
+What does DNS stand for?,Domain Name System,Data Network Service,Digital Name Server,Disk Naming Standard,A,Domain Name System.
+Which of the following is NOT an Object Oriented concept?,Polymorphism,Encapsulation,Inheritance,Compilation,D,Compilation.
