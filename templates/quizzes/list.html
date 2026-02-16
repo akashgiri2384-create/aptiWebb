@@ -856,6 +856,10 @@
             <a href="/leaderboard" class="nav-link">
                 <span class="nav-icon">🏆</span> <span class="nav-text-desktop">Leaderboard</span>
             </a>
+            <a href="javascript:void(0)" class="nav-link" onclick="toggleChatbot()"
+                style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15)); border: 1px solid rgba(99,102,241,0.25); border-radius: 10px; padding: 6px 14px;">
+                <span class="nav-icon">🎓</span> <span class="nav-text-desktop">Prof. Curio</span>
+            </a>
 
             <div class="user-menu" onclick="toggleMenu()">
                 <div class="user-avatar" id="nav-avatar">U</div>
@@ -915,7 +919,219 @@
         <div id="daily-container" class="daily-grid">
             <div style="color: var(--text-muted); grid-column: 1/-1;">Loading challenges...</div>
         </div>
+
+        <!-- ═══════ AI RECOMMENDED FOR YOU ═══════ -->
+        <style>
+            .rec-section {
+                margin-bottom: 40px;
+            }
+
+            .rec-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+            }
+
+            .rec-header h2 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: white;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin: 0;
+            }
+
+            .rec-header h2::before {
+                content: '';
+                width: 4px;
+                height: 24px;
+                background: linear-gradient(180deg, #6366f1, #a855f7);
+                border-radius: 4px;
+            }
+
+            .ai-badge {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+                border-radius: 20px;
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+                color: #a78bfa;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                border: 1px solid rgba(168, 85, 247, 0.2);
+            }
+
+            .rec-grid {
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-bottom: 10px;
+            }
+
+            .rec-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .rec-card {
+                min-width: 290px;
+                max-width: 290px;
+                flex-shrink: 0;
+                background: linear-gradient(145deg, #1e293b, #111827);
+                border: 1px solid rgba(99, 102, 241, 0.15);
+                border-radius: 16px;
+                padding: 22px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .rec-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+            }
+
+            .rec-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 30px -8px rgba(99, 102, 241, 0.25);
+                border-color: rgba(99, 102, 241, 0.3);
+            }
+
+            .rec-tag {
+                display: inline-block;
+                font-size: 0.7rem;
+                padding: 3px 8px;
+                border-radius: 6px;
+                font-weight: 600;
+                margin-bottom: 12px;
+                width: fit-content;
+            }
+
+            .rec-tag.focus {
+                background: rgba(239, 68, 68, 0.12);
+                color: #f87171;
+            }
+
+            .rec-tag.new {
+                background: rgba(52, 211, 153, 0.12);
+                color: #34d399;
+            }
+
+            .rec-tag.challenge {
+                background: rgba(251, 191, 36, 0.12);
+                color: #fbbf24;
+            }
+
+            .rec-tag.popular {
+                background: rgba(249, 115, 22, 0.12);
+                color: #fb923c;
+            }
+
+            .rec-reason {
+                font-size: 0.8rem;
+                color: #94a3b8;
+                line-height: 1.5;
+                margin-bottom: 16px;
+                flex-grow: 1;
+            }
+
+            .rec-meta {
+                display: flex;
+                gap: 10px;
+                font-size: 0.8rem;
+                color: #64748b;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+            }
+
+            /* Insights strip */
+            .insights-strip {
+                display: flex;
+                gap: 10px;
+                overflow-x: auto;
+                padding: 4px 0 6px;
+                scrollbar-width: none;
+            }
+
+            .insights-strip::-webkit-scrollbar {
+                display: none;
+            }
+
+            .insight-chip {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 12px;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                font-size: 0.75rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .insight-chip .score {
+                font-weight: 700;
+                font-size: 0.8rem;
+            }
+
+            .insight-chip .score.weak {
+                color: #f87171;
+            }
+
+            .insight-chip .score.improving {
+                color: #fbbf24;
+            }
+
+            .insight-chip .score.strong {
+                color: #34d399;
+            }
+
+            @media (min-width: 768px) {
+                .rec-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+                    overflow-x: visible;
+                    padding-bottom: 0;
+                }
+
+                .rec-card {
+                    min-width: auto;
+                    max-width: none;
+                }
+
+                .rec-header h2 {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+
+        <section class="rec-section" id="rec-section" style="display: none;">
+            <div class="rec-header">
+                <h2>🧠 Recommended for You</h2>
+                <span class="ai-badge">✨ AI POWERED</span>
+            </div>
+            <!-- Category Insights Strip -->
+            <div class="insights-strip" id="insights-strip"></div>
+            <!-- Recommendation Cards -->
+            <div class="rec-grid" id="rec-container">
+                <div style="color: var(--text-muted);">Analyzing your performance...</div>
+            </div>
+        </section>
+
         <!-- Practice Quizzes -->
+
         <h2 class="section-title">Practice Library</h2>
 
         <!-- Filter Bar -->
@@ -956,7 +1172,8 @@
         // Init
         document.addEventListener('DOMContentLoaded', () => {
             loadStats();
-            loadCategories(); // Load categories dynamically
+            loadCategories();
+            loadRecommendations();
             loadDailyQuizzes();
             loadPracticeQuizzes('all');
 
@@ -1071,6 +1288,65 @@
                     });
                 }
             } catch (e) { console.error('Categories error', e); }
+        }
+
+        // ═══════ AI RECOMMENDATIONS ═══════
+        async function loadRecommendations() {
+            try {
+                const res = await fetch('/api/quizzes/recommendations/', {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                });
+                if (res.status === 401) return;
+                const data = await res.json();
+
+                if (data.success && data.data.recommendations.length > 0) {
+                    const section = document.getElementById('rec-section');
+                    const container = document.getElementById('rec-container');
+                    const insightsEl = document.getElementById('insights-strip');
+
+                    section.style.display = 'block';
+
+                    // Render insight chips
+                    if (data.data.category_insights && data.data.category_insights.length > 0) {
+                        insightsEl.innerHTML = data.data.category_insights.map(i => `
+                            <div class="insight-chip">
+                                <span>${i.emoji}</span>
+                                <span style="color: #cbd5e1;">${i.category_name}</span>
+                                <span class="score ${i.status}">${i.avg_score}%</span>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Render recommendation cards
+                    container.innerHTML = data.data.recommendations.map(r => {
+                        const tagClass = r.priority === 1 ? 'focus'
+                            : r.priority === 2 ? 'new'
+                                : r.priority === 3 ? 'challenge'
+                                    : 'popular';
+                        return `
+                            <div class="rec-card">
+                                <span class="rec-tag ${tagClass}">${r.tag}</span>
+                                <h4 class="quiz-title" style="margin-bottom: 6px;">${r.title}</h4>
+                                <div class="rec-meta">
+                                    <span>${r.category.emoji} ${r.category.name}</span>
+                                    <span>•</span>
+                                    <span>⏱ ${r.duration_minutes}m</span>
+                                    <span>•</span>
+                                    <span>${r.total_questions} Q</span>
+                                    <span>•</span>
+                                    <span style="text-transform: capitalize;">${r.difficulty}</span>
+                                </div>
+                                <p class="rec-reason">${r.reason}</p>
+                                <button class="btn-quiz" onclick="startQuiz('${r.id}')" style="background: var(--primary-accent); color: white;">
+                                    🚀 Start Quiz
+                                </button>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } catch (e) {
+                console.error('Recommendations error', e);
+            }
         }
 
         async function loadDailyQuizzes() {
@@ -1412,6 +1688,8 @@
             });
         })();
     </script>
+
+    {% include 'components/chatbot.html' %}
 </body>
 
 </html>

@@ -3,6 +3,7 @@ Business logic services for quizzes app.
 
 Services:
 - QuizService: Core quiz functionality (browse, start, submit, results)
+- RecommendationService: AI-powered smart study recommendations
 - QuestionService: Question management
 """
 
@@ -628,3 +629,234 @@ class QuizService:
             'started_at': attempt.started_at.isoformat(),
             'status': attempt.status
         }, None
+
+
+class RecommendationService:
+    """
+    AI-powered Smart Study Recommender.
+
+    Analyzes user's QuizAttempt history to identify weak areas
+    and recommends the optimal next quizzes for maximum learning.
+    """
+
+    # Configurable thresholds
+    WEAK_THRESHOLD = 60.0        # Avg score below this = weak category
+    STRONG_THRESHOLD = 80.0      # Avg score above this = strong category
+    RECOMMENDATIONS_LIMIT = 6    # Max recommendations to return
+    CACHE_TTL = 300              # 5 min cache per user
+
+    @staticmethod
+    def get_recommendations(user, limit=None):
+        """
+        Generate personalized quiz recommendations for a user.
+
+        Algorithm:
+            1. Calculate average score per category from graded attempts.
+            2. Identify WEAK categories (avg < 60%) -> Priority 1.
+            3. Identify UNEXPLORED categories (0 attempts) -> Priority 2.
+            4. Suggest CHALLENGE quizzes from STRONG categories (avg > 80%) -> Priority 3.
+            5. Fallback: Popular quizzes by total_attempts if no history.
+
+        Args:
+            user: CustomUser instance
+            limit: Max number of recommendations (default: RECOMMENDATIONS_LIMIT)
+
+        Returns:
+            dict: { 'recommendations': [...], 'category_insights': [...] }
+        """
+        if limit is None:
+            limit = RecommendationService.RECOMMENDATIONS_LIMIT
+
+        # Check cache first
+        cache_key = f'recommendations:{user.id}'
+        cached = cache.get(cache_key)
+        if cached:
+            return cached
+
+        recommendations = []
+
+        # ── Step 1: Get user's category performance ──────────────────────
+        category_performance = (
+            QuizAttempt.objects.filter(
+                user=user,
+                status='graded'
+            )
+            .values(
+                'quiz__category__id',
+                'quiz__category__name',
+                'quiz__category__slug',
+                'quiz__category__emoji',
+                'quiz__category__color',
+            )
+            .annotate(
+                avg_score=Avg('percentage_score'),
+                attempt_count=Count('id'),
+            )
+            .order_by('avg_score')
+        )
+
+        attempted_category_ids = set()
+        weak_categories = []
+        strong_categories = []
+        category_insights = []
+
+        for perf in category_performance:
+            cat_id = perf['quiz__category__id']
+            attempted_category_ids.add(cat_id)
+
+            avg = round(perf['avg_score'], 1)
+            insight = {
+                'category_name': perf['quiz__category__name'],
+                'category_slug': perf['quiz__category__slug'],
+                'emoji': perf['quiz__category__emoji'] or '📝',
+                'color': perf['quiz__category__color'],
+                'avg_score': avg,
+                'attempts': perf['attempt_count'],
+                'status': 'weak' if avg < RecommendationService.WEAK_THRESHOLD
+                          else ('strong' if avg >= RecommendationService.STRONG_THRESHOLD else 'improving'),
+            }
+            category_insights.append(insight)
+
+            if avg < RecommendationService.WEAK_THRESHOLD:
+                weak_categories.append(perf)
+            elif avg >= RecommendationService.STRONG_THRESHOLD:
+                strong_categories.append(perf)
+
+        # ── Step 2: Get IDs of quizzes the user already passed ───────────
+        passed_quiz_ids = set(
+            QuizAttempt.objects.filter(
+                user=user,
+                status='graded',
+                is_passed=True,
+            ).values_list('quiz_id', flat=True)
+        )
+
+        # ── Step 3: Base queryset for recommendable quizzes ──────────────
+        base_qs = (
+            Quiz.objects.filter(is_published=True, is_active=True)
+            .exclude(category__slug='daily-challenge')
+            .exclude(id__in=passed_quiz_ids)
+            .select_related('category')
+            .annotate(
+                active_question_count=Count(
+                    'questions', filter=Q(questions__is_active=True)
+                )
+            )
+        )
+
+        def _serialize(quiz, reason, priority, tag):
+            return {
+                'id': str(quiz.id),
+                'title': quiz.title,
+                'description': quiz.description,
+                'category': {
+                    'name': quiz.category.name,
+                    'slug': quiz.category.slug,
+                    'color': quiz.category.color,
+                    'emoji': quiz.category.emoji or '📝',
+                },
+                'difficulty': quiz.difficulty,
+                'duration_minutes': quiz.duration_minutes,
+                'total_questions': quiz.active_question_count,
+                'average_score': quiz.average_score,
+                'reason': reason,
+                'priority': priority,
+                'tag': tag,
+            }
+
+        # ── Priority 1: Fix Weaknesses ───────────────────────────────────
+        for weak in weak_categories:
+            if len(recommendations) >= limit:
+                break
+
+            cat_name = weak['quiz__category__name']
+            avg = round(weak['avg_score'], 1)
+
+            quizzes = base_qs.filter(
+                category_id=weak['quiz__category__id'],
+                difficulty__in=['easy', 'medium'],
+            ).order_by('difficulty', '-average_score')[:2]
+
+            for quiz in quizzes:
+                if len(recommendations) >= limit:
+                    break
+                recommendations.append(_serialize(
+                    quiz,
+                    reason=f"Your avg score in {cat_name} is {avg}% — practice to improve!",
+                    priority=1,
+                    tag='🔴 Focus Area',
+                ))
+
+        # ── Priority 2: Explore New Categories ───────────────────────────
+        unexplored = (
+            Category.objects.filter(is_active=True)
+            .exclude(id__in=attempted_category_ids)
+            .exclude(slug='daily-challenge')
+            .order_by('order', 'name')
+        )
+
+        for cat in unexplored:
+            if len(recommendations) >= limit:
+                break
+
+            quiz = (
+                base_qs.filter(category=cat, difficulty='easy')
+                .order_by('-total_attempts')
+                .first()
+            )
+            if not quiz:
+                quiz = base_qs.filter(category=cat).order_by('-total_attempts').first()
+
+            if quiz:
+                recommendations.append(_serialize(
+                    quiz,
+                    reason=f"You haven't tried {cat.name} yet — start with an easy one!",
+                    priority=2,
+                    tag='🆕 New Topic',
+                ))
+
+        # ── Priority 3: Challenge Yourself ───────────────────────────────
+        for strong in strong_categories:
+            if len(recommendations) >= limit:
+                break
+
+            cat_name = strong['quiz__category__name']
+            avg = round(strong['avg_score'], 1)
+
+            quiz = (
+                base_qs.filter(
+                    category_id=strong['quiz__category__id'],
+                    difficulty='hard',
+                )
+                .order_by('-total_attempts')
+                .first()
+            )
+            if quiz:
+                recommendations.append(_serialize(
+                    quiz,
+                    reason=f"You're strong in {cat_name} ({avg}%) — try a hard challenge!",
+                    priority=3,
+                    tag='🏆 Challenge',
+                ))
+
+        # ── Fallback: Popular Quizzes ────────────────────────────────────
+        if not recommendations:
+            popular = base_qs.order_by('-total_attempts', '-average_score')[:limit]
+            for quiz in popular:
+                recommendations.append(_serialize(
+                    quiz,
+                    reason="Popular quiz — great place to start!",
+                    priority=4,
+                    tag='🔥 Popular',
+                ))
+
+        result = {
+            'recommendations': recommendations[:limit],
+            'category_insights': sorted(
+                category_insights, key=lambda x: x['avg_score']
+            ),
+            'total': len(recommendations[:limit]),
+        }
+
+        cache.set(cache_key, result, RecommendationService.CACHE_TTL)
+        return result

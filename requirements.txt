@@ -100,3 +100,6 @@ sentry-sdk
 django-celery-beat
 xhtml2pdf
 django-anymail[brevo]
+
+# AI Chatbot
+openai

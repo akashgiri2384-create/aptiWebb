@@ -13,6 +13,7 @@ from core.frontend_views import (
 from core.views_debug import debug_email_view
 from core.views import cleanup_logs_view
 from accounts import views as account_views
+from core import views as core_views
 
 urlpatterns = [
     # Frontend pages
@@ -45,6 +46,9 @@ urlpatterns = [
     path('api/admin-panel/', include('admin_panel.urls')),
     path('api/dashboard/', include('dashboard.urls')),
     path('api/reports/', include('reports.urls')),
+
+    # AI Chatbot
+    path('api/chat/ask/', core_views.chat_api, name='chat-api'),
 ]
 
 # Error handlers

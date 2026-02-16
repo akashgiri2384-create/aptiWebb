@@ -1,5 +1,5 @@
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from django.core.management import call_command
 from django.conf import settings
@@ -38,3 +38,38 @@ def error_404(request, exception):
 def error_500(request):
     from django.http import JsonResponse
     return JsonResponse({'error': 'Server Error'}, status=500)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def chat_api(request):
+    """
+    POST /api/chat/ask/
+
+    Prof. Curio AI chatbot endpoint.
+    Accepts: { "message": "...", "history": [...] }
+    Returns: { "success": true, "reply": "..." }
+    """
+    from .chatbot_service import ChatbotService
+
+    message = request.data.get('message', '').strip()
+    if not message:
+        return Response({
+            'success': False,
+            'error': 'Message is required.'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    history = request.data.get('history', [])
+
+    success, reply, error = ChatbotService.get_response(message, history)
+
+    if success:
+        return Response({
+            'success': True,
+            'reply': reply
+        })
+    else:
+        return Response({
+            'success': False,
+            'error': error
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

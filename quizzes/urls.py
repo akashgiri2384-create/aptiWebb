@@ -24,6 +24,9 @@ urlpatterns = [
     path('attempts/<uuid:attempt_id>/submit/', views.submit_quiz, name='submit-quiz'),
     path('attempts/<uuid:attempt_id>/', views.get_results, name='get-results'),
     
+    # AI Recommendations
+    path('recommendations/', views.quiz_recommendations, name='quiz-recommendations'),
+
     # User stats
     path('stats/', views.user_quiz_stats, name='user-quiz-stats'),
 ]

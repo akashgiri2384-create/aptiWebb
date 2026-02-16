@@ -18,7 +18,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 import logging
 
-from .services import QuizService
+from .services import QuizService, RecommendationService
 
 logger = logging.getLogger('quizzy')
 
@@ -274,3 +274,30 @@ def list_categories(request):
         'success': True,
         'data': data
     })
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def quiz_recommendations(request):
+    """
+    GET /api/quizzes/recommendations/
+
+    Get AI-powered personalized quiz recommendations.
+
+    Returns quizzes tailored to the user's weak areas, unexplored
+    categories, and challenge suggestions based on quiz history.
+    """
+    try:
+        limit = int(request.query_params.get('limit', 6))
+        data = RecommendationService.get_recommendations(request.user, limit=limit)
+
+        return Response({
+            'success': True,
+            'data': data
+        })
+    except Exception as e:
+        logger.error(f"Error generating recommendations: {str(e)}")
+        return Response({
+            'success': False,
+            'error': {'message': 'Failed to generate recommendations'}
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
